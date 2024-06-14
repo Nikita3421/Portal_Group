@@ -1,23 +1,25 @@
 {% extends "base.html" %}
 
+
 {% block content %}
 
+{% load custom_tags %}
 
-
-{% for voting in votings  %}
-<a href ="{% url 'polls:voting-detail' voting.pk %}">{{ voting }}</a>
+<h1>{{ voting }}</h1>
     <br>
 
     
-    {% comment %} {% for option in voting.options.all %}
+     {% for option in voting.options.all %}
     <form method="post" action="{% url 'polls:vote-toggle' option.pk %}">
         {% csrf_token %}
         <button type="submit" class="btn btn-primary">{{option }}</button>
-
+        
+        {% if user.is_authenticated %}
         {% if  voting|is_voted:user %}
         <div class="progress">
             <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: {{option.votes_count_perc}}%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{{option.votes_count_perc}}%</div>
           </div>
+        {% endif %}
         {% endif %}
         
     </form>
@@ -26,10 +28,6 @@
     
 
     {{voting.votes_count}} votes
-    <br> {% endcomment %}
+    <br> 
 
-{% endfor %}
-
-{% endblock content %}
-
-
+{% endblock  %}

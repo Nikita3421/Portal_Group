@@ -1,0 +1,26 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrahead %}
+    {{ block.super }}
+    {% load static %}
+    <script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/inlines.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <script type="text/javascript">
+        (function($) {
+            $(document).ready(function() {
+                // Add a custom button to add more fields
+                var addButton = '<a href="#" id="custom-add-row" class="button add-row">Add another child</a>';
+                $('#child_set-group .inline-group').append(addButton);
+
+                $('#custom-add-row').click(function(e) {
+                    e.preventDefault();
+                    $('#child_set-group .add-row a').trigger('click');
+                });
+            });
+        })(django.jQuery);
+    </script>
+{% endblock %}
