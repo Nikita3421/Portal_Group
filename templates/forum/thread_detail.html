@@ -9,7 +9,7 @@
 
   {% if item|model_name == 'voting' %}
   
-    <h1>{{ item }}</h1>
+    <h3>{{ item }}</h3>
     <br>
     
     {% for option in item.options.all %}
@@ -32,13 +32,17 @@
     {{item.votes_count}} votes
 
   {% elif item|model_name == 'text' %}
-  <p>{{ item }}  ({{ item|model_name }})</p>
+    <h3>{{ item }}  </h3>
+    <p>{{ item.content }}</p>
   {% elif item|model_name == 'image' %}
-  <p>{{ item }}  ({{ item|model_name }})</p>
+    <h3>{{ item }}  </h3>
+    <img src="{{ item.file.url }}">
   {% elif item|model_name == 'video' %}
-  <p>{{ item }}  ({{ item|model_name }})</p>
+  <h3>{{ item }}  </h3>
+  {{item.url}}
   {% elif item|model_name == 'file' %}
-  <p>{{ item }}  ({{ item|model_name }})</p>
+  <h3>{{ item }}  </h3>
+  <a href ={{item.file.url}} >file</a>
   {% endif %}
 
 

@@ -8,6 +8,7 @@ from django.http import Http404,HttpResponseRedirect
 
 
 from . import models
+from .forms import OptionFormSet
 
 
 # Create your views here.
@@ -52,9 +53,12 @@ class PostCreateUpdateView(LoginRequiredMixin,TemplateResponseMixin, View):
         return super().dispatch(request, thread_id, model_name, id)
 
     def get(self, request, thread_id, model_name, id=None):
+        formset=None
+        if self.model == models.Voting :
+            formset = OptionFormSet(instance=self.obj)
         form = self.get_form(self.model, instance=self.obj)
         return self.render_to_response(
-            {'form': form, 'object': self.obj}
+            {'form': form, 'object': self.obj,'formset':formset}
         )
 
     def post(self, request, thread_id, model_name, id=None):
@@ -64,13 +68,21 @@ class PostCreateUpdateView(LoginRequiredMixin,TemplateResponseMixin, View):
             data=request.POST,
             files=request.FILES,
         )
-        if form.is_valid():
+        
+        if form.is_valid() :
             obj = form.save(commit=False)
             obj.creator = request.user
             obj.save()
             if not id:
-                # new post
                 models.Post.objects.create(thread=self.thread, item=obj)
+            if self.model == models.Voting:
+                formset = OptionFormSet(request.POST,instance=obj)
+                if formset.is_valid() :
+                    formset.save()
+                else:
+                    return self.render_to_response(
+                {'form': form, 'object': self.obj}
+            )
             return redirect('forum:thread-detail', self.thread.id)
         return self.render_to_response(
             {'form': form, 'object': self.obj}
@@ -94,7 +106,7 @@ class VoteToggle(LoginRequiredMixin,View):
         previous_vote =  models.Vote.objects.filter(user=self.request.user,option=option).exists()
         if vote.exists() and not option.voting.revote:
             #messages: you cannot revote
-            return redirect('polls:voting-list') 
+            return HttpResponseRedirect(self.request.META.get('HTTP_REFERER', ''))
         if vote.exists():
             vote.delete()
         if not  previous_vote:
