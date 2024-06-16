@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<ul>Sign up</form>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        {{ form.username }}
+        <label for="username">Username</label>
+    </div>
+    <div>
+        {{ form.email }}
+        <label for="email">Email</label>
+    </div>
+    <div>
+        {{ form.password1 }}
+        <label for="password1">Password 1</label>
+    </div>
+    <div>
+        {{ form.password2 }}
+        <label for="password2">Password 2</label>
+    </div>
+    <button type="submit">Sign up</button>
+    <a href="{% url 'auth_sys:login' %}">Login</a>
+    <hr>
+</form>
+
+{% endblock content %}
