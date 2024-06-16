@@ -57,7 +57,7 @@ ROOT_URLCONF = 'Portal_Group.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,10 +126,9 @@ STATICFILES_DIRS=[
     BASE_DIR / 'static',
 ]
 
-# LOGIN_REDIRECT_URL = ''
-# LOGOUT_REDIRECT_URL= ''
-
-# LOGIN_URL = 'login'
+LOGIN_URL = "auth_sys:login"
+LOGIN_REDIRECT_URL = "forum:thread-list"
+LOGOUT_REDIRECT_URL = "auth_system:login"
 
 
 MEDIA_URL = 'media/'
