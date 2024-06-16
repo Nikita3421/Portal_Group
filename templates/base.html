@@ -7,13 +7,12 @@
 </head>
 <body>
     <nav>
-        <ul>Hello world</ul>
-        {% comment %} <a href="{% url 'track:task-list' %}">Головна</a>
-        <a href="{% url 'track:register' %}">Реєстрація</a>
-        <form action="{% url 'track:logout' %}" method="post">
+        <a href="#">Головна</a>
+        <a href="{% url 'auth_sys:signup' %}">Реєстрація</a>
+        <form action="{% url 'auth_sys:logout' %}" method="post">
             {% csrf_token %}
             <button type="submit">Вихід</button>
-        </form> {% endcomment %}
+        </form>
     </nav>
     
     {% block content %}

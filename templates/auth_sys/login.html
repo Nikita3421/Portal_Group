@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<ul>Login</form>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        {{ form.username }}
+        <label for="username">Username</label>
+    </div>
+    <div>
+        {{ form.password }}
+        <label for="username">Password</label>
+    </div>
+    <button type="submit">Login</button>
+    <a href="{% url 'auth_sys:signup' %}">Sign up</a>
+    <hr>
+</form>
+
+{% endblock content %}
