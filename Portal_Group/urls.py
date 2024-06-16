@@ -22,6 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('forum/',include('forum.urls')),
+    path('', include('auth_sys.urls')),
 ]
 
 urlpatterns += static(
