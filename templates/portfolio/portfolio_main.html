@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if user == portfolio.user %}
+        <h1>Вы желаете посмотреть/изменить свой рабочий профиль "{{ portfolio.user.username }}"?</h1>
+        <p>Что именно вы хотите сделать?</p>
+        <ul>
+            <li><a href="{% url 'auth_sys:portfolio_detail' portfolio.pk %}">Портфолио</a></li>
+            <li><a href="{% url 'auth_sys:projects_list' portfolio.pk %}">Информация о проектах</a></li>
+        </ul>
+    {% else %}
+        <h1>Вы желаете ознакомиться с рабочим профилем "{{ portfolio.user.username }}"?</h1>
+        <p>С чем именно вы желаете ознакомиться?</p>
+        <ul>
+            <li><a href="{% url 'auth_sys:portfolio_detail' portfolio.pk %}">Портфолио</a></li>
+            <li><a href="{% url 'auth_sys:projects_list' portfolio.pk %}">Информация о проектах</a></li>
+        </ul>
+    {% endif %} 
+{% endblock content %}

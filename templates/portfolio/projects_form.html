@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div >
+    <h2>{{ view.title }}</h2>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <button type="submit">Зберегти</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
