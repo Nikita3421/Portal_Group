@@ -13,7 +13,7 @@
       <ul>
         <li><a href="{% url 'main:home' %}">Home</a></li>
         <li><a href="{% url 'forum:thread-list' %}">Forum</a></li>
-        <li><a href="{% url 'auth_sys:portfolio_main' %}">Porfolio</a></li>
+        <li><a href="{% url 'auth_sys:portfolio_main' user.portfolio.pk %}">Porfolio</a></li>
         {% if user.is_authenticated %}
             <li><a href="{% url 'auth_sys:logout' %}">Logout</a></li>
         {% else %}
