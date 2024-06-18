@@ -14,5 +14,3 @@ urlpatterns = [
     path('projects_list/<int:pk>/', views.ProjectsInformationView.as_view(), name="projects_list"),
     path('projects_create/', views.ProjectsCreateView.as_view(), name="projects_create"),
 ]
-
-app_name = "auth_sys"
