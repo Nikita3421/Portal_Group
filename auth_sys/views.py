@@ -1,9 +1,16 @@
-from django.shortcuts import render, redirect
-from auth_sys.forms import SignUpForm, LoginForm
-from django.views.generic import CreateView
+from django.db.models.query import QuerySet
+from django.http import HttpRequest
+from django.http.response import HttpResponse as HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
+from auth_sys.forms import SignUpForm, LoginForm, UserCreationForm
+from django.views.generic import CreateView, DetailView, View, ListView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.views import LoginView as AuthLoginView
 from django.contrib.auth import login, logout
-from django.urls import reverse_lazy
+from auth_sys.forms import PortfolioForm , ProjectsForm
+from auth_sys import models
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
 class SignUpView(CreateView):
@@ -26,4 +33,3 @@ def logout_view(request):
     logout(request)
     messages.success(request, 'Вы успешно вышли из системы!')
     return redirect(reverse_lazy("auth_sys:login"))
-
