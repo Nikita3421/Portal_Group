@@ -7,7 +7,7 @@
 </head>
 <body>
     <nav>
-        <a href="{% url 'forum:thread-list' %}">Головна</a>
+        <a href="{% url 'auth_sys:portfolio_main' user.portfolio.pk %}">Головна</a>
         <a href="{% url 'auth_sys:signup' %}">Реєстрація</a>
         <form action="{% url 'auth_sys:logout' %}" method="post">
             {% csrf_token %}
