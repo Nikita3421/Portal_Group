@@ -17,12 +17,15 @@ class SignUpView(CreateView):
     template_name = "auth_sys/signup.html"
     form_class = SignUpForm
     success_url = reverse_lazy('auth_sys:login')
-    
+
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
         messages.success(self.request, 'Вы успешно зарегистрированы!')
-        return redirect(reverse_lazy("home"))
+        return redirect(reverse_lazy("main:home"))
+    
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
 
 class CustomLoginView(AuthLoginView):
     form_class = LoginForm
@@ -32,11 +35,7 @@ class CustomLoginView(AuthLoginView):
 def logout_view(request):
     logout(request)
     messages.success(request, 'Вы успешно вышли из системы!')
-    return redirect(reverse_lazy("auth_sys:login"))
-
-def logout_view(request):
-    logout(request)
-    return redirect(reverse_lazy("auth_sys:login"))
+    return redirect(reverse_lazy("auth_sys:signup"))
 
 # портфолио + его главная страница
 class PortfolioDetailView(DetailView):
