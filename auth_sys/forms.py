@@ -3,6 +3,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from auth_sys import models
+from .models import Portfolio
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=63)
@@ -43,7 +44,7 @@ class ProjectsForm(forms.ModelForm):
     class Meta:
         model = models.PortfolioProjects
         fields = [
-            'titel',
+            'title',
             'description',
             ]
         

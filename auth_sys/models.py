@@ -25,7 +25,7 @@ class Portfolio(models.Model):
 
 class PortfolioProjects(models.Model):
     portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE, related_name='projects')
-    titel = models.CharField(max_length=511)
+    title = models.CharField(max_length=511)
     description = models.TextField()
     due_date = models.DateTimeField(auto_now_add=True)
     

@@ -15,7 +15,7 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 nav {
@@ -57,3 +57,50 @@ main {
     min-height: 200vh;
     box-sizing: border-box;
 }
+
+footer {
+    position: fixed;
+    padding: 10px 20px;
+    right: 0;
+    bottom: 0;
+    text-align: center; 
+    width: 100%;
+    z-index: 1000;
+    box-shadow: inset 0px 2px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.current {
+    background: white;
+    margin: 10px;
+    padding: 10px;
+    padding: 8px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+ .current:hover {
+    background-color: #8a8383;
+ }
+
+.next {
+    background: white;
+    margin: 10px;
+    padding: 10px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+ .next:hover {
+    background-color: #8a8383;
+ }
+
+.previous {
+    background: white;
+    margin: 10px;
+    padding: 10px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+ .previous:hover {
+    background-color: #8a8383;
+ }

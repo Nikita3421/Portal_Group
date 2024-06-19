@@ -57,6 +57,7 @@ class PortfolioMainDetailView(DetailView):
 # проэкты портфолио
 
 class ProjectsInformationView(ListView):
+    paginate_by = 2
     model = models.PortfolioProjects
     template_name = 'portfolio/projects_list.html'
     context_object_name = "projects"
