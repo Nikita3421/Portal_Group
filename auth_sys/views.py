@@ -22,7 +22,7 @@ class SignUpView(CreateView):
         user = form.save()
         login(self.request, user)
         messages.success(self.request, 'Вы успешно зарегистрированы!')
-        return redirect(reverse_lazy("home"))
+        return redirect(reverse_lazy("main:home"))
 
 class CustomLoginView(AuthLoginView):
     form_class = LoginForm
@@ -58,6 +58,7 @@ class PortfolioMainDetailView(DetailView):
 # проэкты портфолио
 
 class ProjectsInformationView(ListView):
+    paginate_by = 2     
     model = models.PortfolioProjects
     template_name = 'portfolio/projects_list.html'
     context_object_name = "projects"
@@ -65,7 +66,7 @@ class ProjectsInformationView(ListView):
     def get_queryset(self):
         return super().get_queryset().filter(portfolio=self.portfolio)
     
-    def dispatch(self, request: HttpRequest, pk, *args: reverse_lazy, **kwargs: reverse_lazy) -> HttpResponse:
+    def dispatch(self, request: HttpRequest, pk, *args, **kwargs) -> HttpResponse:
         self.portfolio = get_object_or_404(models.Portfolio, id = pk )
         return super().dispatch(request, *args, **kwargs)
 

@@ -13,7 +13,8 @@ from .forms import OptionFormSet
 
 # Create your views here.
 
-class ThreadListView(ListView): 
+class ThreadListView(ListView):
+    paginate_by = 3
     model = models.Thread
     context_object_name='threads'
     

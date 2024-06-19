@@ -5,10 +5,22 @@
     {% for project in projects %}
 
         <div >
-            <h2>{{ project.titel }}</h2>
+            <h2>{{ project.title }}</h2>
             <p>{{ project.description }}</p>
             <p>{{ project.due_date }}</p>
         </div>
     {% endfor %}
+
+    <footer>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="previous">previous</a>
+        {% endif %}
+        <span class="current">
+            {{ page_obj.number }}
+        </span> 
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="next">next</a>
+        {% endif %}
+    </footer>
 
 {% endblock content %}
