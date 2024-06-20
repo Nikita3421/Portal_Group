@@ -6,7 +6,7 @@ from django.urls import reverse
 class Portfolio(models.Model):
     name = models.CharField(max_length=255)
     surname = models.CharField(max_length=255)
-    birthdate = models.DateTimeField(null=True, blank=True)
+    birthdate = models.DateField(null=True, blank=True)
     motivation_letter = models.TextField()
     number = models.IntegerField()
     email = models.CharField(max_length=511)
