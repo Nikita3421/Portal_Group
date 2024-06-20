@@ -16,39 +16,3 @@ class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
 
-# portfolio forms
-
-class PortfolioForm(forms.ModelForm):
-    class Meta:
-        model = models.Portfolio
-        fields = [
-            'name',
-            'surname',
-            'birthdate',
-            'motivation_letter',
-            'number',
-            'email',
-            's_skills', 
-            'studying', 
-            'expirience', 
-            'name_and_url',
-            'user', 
-            ]
-        
-    def __init__(self, *args, **kwargs):
-        super(PortfolioForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({"class": "form-control"})
-
-class ProjectsForm(forms.ModelForm):
-    class Meta:
-        model = models.PortfolioProjects
-        fields = [
-            'title',
-            'description',
-            ]
-        
-    def __init__(self, *args, **kwargs):
-        super(ProjectsForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({"class": "form-control"})        
