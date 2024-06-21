@@ -9,7 +9,7 @@ class Portfolio(models.Model):
     birthdate = models.DateField(null=True, blank=True)
     motivation_letter = models.TextField()
     number = models.IntegerField()
-    email = models.CharField(max_length=511)
+    email = models.EmailField(max_length=511)
     s_skills = models.TextField()
     studying = models.TextField()
     expirience = models.TextField()
