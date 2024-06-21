@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div >
+<section class="portfolio-form">
     <h2>{{ view.title }}</h2>
     <form method="post" novalidate>
         {% csrf_token %}
@@ -10,5 +10,5 @@
             <button type="submit">Зберегти</button>
         </div>
     </form>
-</div>
+</section>
 {% endblock %}
