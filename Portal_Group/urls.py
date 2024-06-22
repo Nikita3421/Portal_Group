@@ -24,7 +24,7 @@ urlpatterns = [
     path('forum/',include('forum.urls')),
     path('', include('main.urls')),
     path('auth_sys/', include('auth_sys.urls')),
-    path('portfolio/', include('portfolio.urls'))
+    path('portfolio/', include('portfolio.urls')),
     path('announsements/', include('announsements.urls')),
 ]
 
