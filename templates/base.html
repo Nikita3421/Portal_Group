@@ -18,6 +18,8 @@
         {% if user.is_authenticated %}
           {% if user.portfolio.pk %}
               <li><a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}">Portfolio</a></li>
+          {% else %}
+              <li><a href="{% url 'portfolio:portfolio_create' %}">Portfolio Create</a></li>
           {% endif %}
           <li><a href="{% url 'auth_sys:logout' %}">Logout</a></li>
         {% else %}

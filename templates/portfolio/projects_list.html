@@ -9,7 +9,13 @@
             <p>{{ project.description }}</p>
             <p>{{ project.due_date }}</p>
         </div>
+        <li><a href="{% url 'portfolio:projects_update' project.pk %}"> Изменить информацию о проектах</a></li>   
+        <form method="post" novalidate action="{% url 'portfolio:projects_delete' project.pk %}">
+            {% csrf_token %}
+            <button type="submit" >Delete</button>
+        </form>
     {% endfor %}
+    <li><a href="{% url 'portfolio:projects_create' user.portfolio.pk %}"> Сreate project information</a></li>
 
     <footer>
         {% if page_obj.has_previous %}
