@@ -1,19 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Sign in{% endblock %}
 
 {% block content %}
-  <form method="post">
+  <form method="post" class="auth-form">
     {% csrf_token %}
-    <h2>Login</h2>
-    <div class="form-group">
-      {{ form.username.label_tag }}
+      <div class="title">Sign in</div>
+      <label for="username">Username</label>
       {{ form.username }}
-    </div>
-    <div class="form-group">
-      {{ form.password.label_tag }}
+      <label for="password">Password</label>
       {{ form.password }}
-    </div>
-    <button type="submit">Login</button>
+      <button type="submit" class="auth-form-btn">Sign in</button>
   </form>
 {% endblock %}

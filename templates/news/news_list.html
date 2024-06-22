@@ -22,5 +22,14 @@
 {% endfor %}
 
   <a href="{% url 'announsements:announsement_create' %}" class="btn btn-primary">Создать обьявление</a>
+<footer>
+  {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}" class="previous">previous</a>
+  {% endif %}
+  <a href="?page={{ page_obj.number }}" class="current">{{ page_obj.number }}</a>
+  {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}" class="next">next</a>
+  {% endif %}
+</footer>
 
 {% endblock %}
