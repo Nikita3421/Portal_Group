@@ -19,7 +19,6 @@ class PortfolioForm(forms.ModelForm):
             'studying', 
             'expirience', 
             'name_and_url',
-            'user', 
             ]
         
     name = forms.CharField(
@@ -133,17 +132,7 @@ class PortfolioForm(forms.ModelForm):
             )
         )
     
-    user = forms.CharField(
-            label='User',
-            widget=forms.Select(
-                attrs = {
-                    'class': "form_input",
-                    'id': "id_user",
-                    'placeholder': "User",
-                },
-                choices=User.objects.values_list('username', 'username')
-            )
-        )
+    
     
 class ProjectsForm(forms.ModelForm):
     class Meta:
@@ -152,7 +141,27 @@ class ProjectsForm(forms.ModelForm):
             'title',
             'description',
             ]
-        
+    title = forms.CharField(
+            label='Title',
+            widget=forms.TextInput(
+                attrs = {
+                    'class': "form_input",
+                    'id': "title",
+                    'placeholder': "Title",
+                }
+            )
+        )
+    description = forms.CharField(
+            label='Description',
+            widget=forms.Textarea(
+                attrs = {
+                    'class': "form__input",
+                    'id': "description",
+                    'placeholder': "Description",
+                }
+            )
+        )   
+
     def __init__(self, *args, **kwargs):
         super(ProjectsForm, self).__init__(*args, **kwargs)
         for field in self.fields:

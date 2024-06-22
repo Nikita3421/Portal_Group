@@ -7,6 +7,7 @@
         <ul>
             <li><a href="{% url 'portfolio:portfolio_detail' portfolio.pk %}">Портфолио</a></li>
             <li><a href="{% url 'portfolio:projects_list' portfolio.pk %}">Информация о проектах</a></li>
+            <li><a href="{% url 'portfolio:portfolio_update' portfolio.pk %}">Изменить Портфолио</a></li>
         </ul>
     {% else %}
         <h1>Вы желаете ознакомиться с рабочим профилем "{{ portfolio.user.username }}"?</h1>
