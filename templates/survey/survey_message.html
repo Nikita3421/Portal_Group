@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h1>Thank you for completing  {{survey}} your answers are saved </h1>
+
+{% if survey.recomplete %}
+    <h3>Would you like to recomplete it?</h3>
+    <a href ='{% url "survey:fill-survey" survey.pk %}' >Change answers<a>
+{% else %}
+    <h3>You can't change your answers</h3>
+{% endif %}
+
+{% endblock content %}
+
+
+
