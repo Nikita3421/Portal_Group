@@ -22,7 +22,7 @@ class SignUpView(CreateView):
         user = form.save()
         login(self.request, user)
         messages.success(self.request, 'Вы успешно зарегистрированы!')
-        return redirect(reverse_lazy("home"))
+        return redirect(reverse_lazy("main:home"))
 
 class CustomLoginView(AuthLoginView):
     form_class = LoginForm
