@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% for project in projects %}
+
+        <div >
+            <h2>{{ project.title }}</h2>
+            <p>{{ project.description }}</p>
+            <p>{{ project.due_date }}</p>
+        </div>
+        <li><a href="{% url 'portfolio:projects_update' project.pk %}"> Изменить информацию о проектах</a></li>   
+        <form method="post" novalidate action="{% url 'portfolio:projects_delete' project.pk %}">
+            {% csrf_token %}
+            <button type="submit" >Delete</button>
+        </form>
+    {% endfor %}
+    <li><a href="{% url 'portfolio:projects_create' user.portfolio.pk %}"> Сreate project information</a></li>
+
+    <footer>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="previous">previous</a>
+        {% endif %}
+        <span class="current">
+            {{ page_obj.number }}
+        </span> 
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="next">next</a>
+        {% endif %}
+    </footer>
+
+{% endblock content %}

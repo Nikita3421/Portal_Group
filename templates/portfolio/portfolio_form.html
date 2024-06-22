@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="portfolio-form">
+    <div class="title">Create your portfolio</div>
+    <form method="post" class="form" novalidate>
+        {% csrf_token %}
+        {{ form.name }}
+        {{ form.surname }}
+        {{ form.birthdate }}
+        {{ form.motivation_letter }}
+        {{ form.number }}
+        {{ form.email }}
+        {{ form.s_skills }}
+        {{ form.studying }}
+        {{ form.expirience }}
+        {{ form.name_and_url }}
+        {% if user == portfolio.user %}
+            <div>
+                <button type="submit" class="form-btn">Update</button>
+            </div>
+        {% else %}  
+            <div>
+                <button type="submit" class="form-btn">Save</button>
+            </div>
+        {% endif %} 
+    </form>
+</section>
+{% endblock %}

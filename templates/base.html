@@ -1,24 +1,35 @@
+<!-- templates/base.html -->
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Group project</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
+  <title>Portal Group</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 <body>
+  <header>
     <nav>
-        {% comment %} <ul>Hello world</ul> {% endcomment %}
-        {% comment %} <a href="{% url 'track:task-list' %}">Головна</a>
-        <a href="{% url 'track:register' %}">Реєстрація</a>
-        <form action="{% url 'track:logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Вихід</button>
-        </form> {% endcomment %}
+      <ul>
+        <li><a href="{% url 'main:home' %}">Home</a></li>
+        <li><a href="{% url 'announsements:news_list' %}">News</a></li>
+        <li><a href="{% url 'forum:thread-list' %}">Forum</a></li>
+        {% if user.is_authenticated %}
+          {% if user.portfolio.pk %}
+              <li><a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}">Portfolio</a></li>
+          {% else %}
+              <li><a href="{% url 'portfolio:portfolio_create' %}">Portfolio Create</a></li>
+          {% endif %}
+          <li><a href="{% url 'auth_sys:logout' %}">Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'auth_sys:login' %}">Login</a></li>
+          <li><a href="{% url 'auth_sys:signup' %}">Sign Up</a></li>
+        {% endif %}
+      </ul>
     </nav>
-    
+  </header>
+  <main>
     {% block content %}
-    {% endblock content%}
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    {% endblock %}
+  </main>
 </body>
 </html>
