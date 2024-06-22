@@ -15,7 +15,7 @@
         <li><a href="{% url 'forum:thread-list' %}">Forum</a></li>
         {% if user.is_authenticated %}
           {% if user.portfolio and user.portfolio.pk %}
-              <li><a href="{% url 'auth_sys:portfolio_main' user.portfolio.pk %}">Portfolio</a></li>
+              <li><a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}">Portfolio</a></li>
           {% endif %}
           <li><a href="{% url 'auth_sys:logout' %}">Logout</a></li>
         {% else %}

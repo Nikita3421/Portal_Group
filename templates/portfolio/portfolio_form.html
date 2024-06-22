@@ -1,14 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div >
-    <h2>{{ view.title }}</h2>
-    <form method="post" novalidate>
+<section class="portfolio-form">
+    <div class="title">Create your portfolio</div>
+    <form method="post" class="form" novalidate>
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.name }}
+        {{ form.surname }}
+        {{ form.birthdate }}
+        {{ form.motivation_letter }}
+        {{ form.number }}
+        {{ form.email }}
+        {{ form.s_skills }}
+        {{ form.studying }}
+        {{ form.expirience }}
+        {{ form.name_and_url }}
+        {{ form.user }}
         <div>
-            <button type="submit">Зберегти</button>
+            <button type="submit" class="form-btn">Зберегти</button>
         </div>
     </form>
-</div>
+</section>
 {% endblock %}
