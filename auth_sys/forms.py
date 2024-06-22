@@ -57,4 +57,26 @@ class SignUpForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
+        
+    username = forms.CharField(
+        label='Username',
+            widget=forms.TextInput(
+                attrs = {
+                    'class': "auth-form-input",
+                    'id': "username",
+                    'placeholder': "Username",
+                }
+            )
+    )
+    
+    password = forms.CharField(
+        label='Password',
+            widget=forms.PasswordInput(
+                attrs = {
+                    'class': "auth-form-input",
+                    'id': "password",
+                    'placeholder': "Password",
+                }
+            )
+    )
 

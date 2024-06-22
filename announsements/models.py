@@ -5,8 +5,8 @@ from django.urls import reverse
 class Announsement(models.Model):
     title = models.CharField(max_length=250)
     text = models.TextField()
-    creation_date = models.DateTimeField()
     media = models.ImageField(upload_to="images/", blank=True, null=True)
+    creation_date = models.DateTimeField()
 
     def __str__(self):
         return self.title
