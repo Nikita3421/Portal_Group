@@ -8,7 +8,51 @@ class SignUpForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']    
+        fields = ['username', 'email', 'password1', 'password2']
+        
+    username = forms.CharField(
+        label='Username',
+            widget=forms.TextInput(
+                attrs = {
+                    'class': "auth-form-input",
+                    'id': "username",
+                    'placeholder': "Username",
+                }
+            )
+    )
+    
+    email = forms.EmailField(
+        label='Email',
+            widget=forms.EmailInput(
+                attrs = {
+                    'class': "auth-form-input",
+                    'id': "email",
+                    'placeholder': "Email",
+                }
+            )
+    )
+    
+    password1 = forms.CharField(
+        label='Password 1',
+            widget=forms.PasswordInput(
+                attrs = {
+                    'class': "auth-form-input",
+                    'id': "password1",
+                    'placeholder': "Password 1",
+                }
+            )
+    )
+    
+    password2 = forms.CharField(
+        label='Password 2',
+            widget=forms.PasswordInput(
+                attrs = {
+                    'class': "auth-form-input",
+                    'id': "password2",
+                    'placeholder': "Password 2",
+                }
+            )
+    ) 
         
 class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):

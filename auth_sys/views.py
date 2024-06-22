@@ -16,7 +16,7 @@ class SignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        messages.success(self.request, 'Вы успешно зарегистрированы!')
+        messages.success(self.request, 'You registered successfully!')
         return redirect(reverse_lazy("main:home"))
     
     def form_invalid(self, form):
@@ -29,5 +29,5 @@ class CustomLoginView(AuthLoginView):
 
 def logout_view(request):
     logout(request)
-    messages.success(request, 'Вы успешно вышли из системы!')
+    messages.success(request, 'You left the system successfully!')
     return redirect(reverse_lazy("auth_sys:signup"))
