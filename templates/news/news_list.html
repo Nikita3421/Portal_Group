@@ -27,7 +27,10 @@
   <p></p>
 {% endfor %}
 
-  <a href="{% url 'announsements:announsement_create' %}" class="btn btn-primary">Создать обьявление</a>
+  {% if user.is_superuser %}
+    <a href="{% url 'announsements:announsement_create' %}" class="btn btn-primary">Создать обьявление</a>
+  {% endif %}
+
 <footer>
   {% if page_obj.has_previous %}
       <a href="?page={{ page_obj.previous_page_number }}" class="previous">previous</a>
@@ -38,7 +41,4 @@
   {% endif %}
 </footer>
 
-  {% if user.is_superuser %}
-    <a href="{% url 'announsements:announsement_create' %}" class="btn btn-primary">Создать обьявление</a>
-  {% endif %}
 {% endblock %}
