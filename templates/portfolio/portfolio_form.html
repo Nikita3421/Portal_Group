@@ -15,10 +15,15 @@
         {{ form.studying }}
         {{ form.expirience }}
         {{ form.name_and_url }}
-        {{ form.user }}
-        <div>
-            <button type="submit" class="form-btn">Зберегти</button>
-        </div>
+        {% if user == portfolio.user %}
+            <div>
+                <button type="submit" class="form-btn">Update</button>
+            </div>
+        {% else %}  
+            <div>
+                <button type="submit" class="form-btn">Save</button>
+            </div>
+        {% endif %} 
     </form>
 </section>
 {% endblock %}

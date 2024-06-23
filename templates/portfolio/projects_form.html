@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div >
-    <h2>{{ view.title }}</h2>
-    <form method="post" novalidate>
+<section class="portfolio-form">
+    <div class="title">Fill information about your projects</div>
+    <form method="post" class="form" novalidate>
         {% csrf_token %}
-        {{ form.as_p }}
-        <div>
-            <button type="submit">Зберегти</button>
-        </div>
+        {{ form.title }}
+        {{ form.description }}
+        {% if pk %}
+            <div>
+                <button type="submit" class="form-btn">Update</button>
+            </div>
+        {% else %}  
+            <div>
+                <button type="submit" class="form-btn">Save</button>
+            </div>
+        {% endif %}
     </form>
-</div>
+</section>
 {% endblock %}

@@ -21,10 +21,14 @@ class Portfolio(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse('auth_sys: ', kwargs={'pk': self.pk})
+        return reverse('portfolio:projects_create', kwargs={'portfolio_id': self.pk})
+    
 
 class PortfolioProjects(models.Model):
     portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE, related_name='projects')
     title = models.CharField(max_length=511)
     description = models.TextField()
     due_date = models.DateTimeField(auto_now_add=True)
+
+    def get_absolute_url(self):
+        return reverse('portfolio:portfolio_main', kwargs={'pk': self.portfolio.pk})

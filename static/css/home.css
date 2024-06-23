@@ -36,12 +36,14 @@ nav ul {
 
 nav ul li {
     margin-right: 20px;
+    margin: 1 auto;
 }
 
 nav ul li a {
     display: block;
     color: #fff;
     text-align: center;
+    margin: 1 auto;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 18px;
@@ -74,45 +76,55 @@ footer {
 }
 
 .current {
-    background: white;
+    color: #c9d1d9;
+    background: #0d1117;
+    border: 1px solid #30363db3;
     margin: 10px;
     padding: 10px;
     padding: 8px 12px;
     border-radius: 15px;
     cursor: pointer;
+    text-decoration: none;
 }
  .current:hover {
-    background-color: #8a8383;
+    background-color: #292e36;
  }
 
 .next {
-    background: white;
+    color: #c9d1d9;
+    background: #0d1117;
+    border: 1px solid #30363db3;
     margin: 10px;
     padding: 10px;
     padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
 }
  .next:hover {
-    background-color: #8a8383;
+    background-color: #292e36;
  }
 
 .previous {
-    background: white;
+    color: #c9d1d9;
+    background: #0d1117;
+    border: 1px solid #30363db3;
     margin: 10px;
     padding: 10px;
     padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
 }
  .previous:hover {
-    background-color: #8a8383;
+    background-color: #292e36;
  }
 
 .portfolio-form {
     background: #0d1117;
     margin-left: 660px;
     margin-right: 660px;
+    color: #fff;
     padding: 2em;
     height: 100%;
     width: 465px;
@@ -130,9 +142,7 @@ footer {
     font-family: sans-serif;
     font-size: 36px;
     font-weight: 600;
-    margin-top: 10px;
-    margin-left: 50px;
-    margin-right: 50px;
+    text-align: center;
   }
 
 .form {
@@ -143,17 +153,8 @@ footer {
     width: clamp(120px, 50vw, 420px);
     height: 2.5rem;
     padding: 0 1.25rem;
-    background-color: #0d1117;
-    border: 1px solid #30363db3;
-    border-radius: 2px;
-    margin: 0.625rem auto;
-    transition: all 250ms;    
-}
-
-.form__input {
-    width: clamp(120px, 50vw, 420px);
-    height: 5em;
-    padding: 0 1.25rem;
+    color: #fff;
+    caret-color: #fff;
     background-color: #0d1117;
     border: 1px solid #30363db3;
     border-radius: 2px;
@@ -161,25 +162,42 @@ footer {
     transition: all 250ms;
 }
 
-.form__input::placeholder{
-    padding-top: 10px;
-    color: #8d96a0;
+.form__input {
+    width: clamp(120px, 50vw, 420px);
+    height: 5em;
+    padding: 0 1.25rem;
+    color: #fff;
+    caret-color: #c9d1d9;
+    background-color: #0d1117;
+    border: 1px solid #30363db3;
+    border-radius: 2px;
+    margin: 0.625rem auto;
+    transition: all 250ms;
+    line-height: 3;
 }
+
+ .form__input::placeholder{
+    color: #8d96a0;
+ }
 
 .form_input::placeholder{
     padding-top: 10px;
     color: #8d96a0;
 }
+ textarea {
+     font-family: Arial;
+     resize: vertical;
+ }
+
+ textarea input {
+     padding-bottom: 10px;
+ }
 
 .form_label {
     color: grey;
     display: block;
 }
 
-textarea {
-    font-family: Arial;
-    resize: vertical;
-}
 
 input[type="date"] {
     font-family: Arial;
@@ -225,3 +243,76 @@ select {
  .form-btn:focus {
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
  }
+ .form_input input[type="text"] {
+    padding-block: 1px;
+ }
+
+ .title {
+    font-size: 20px;
+ }
+
+.auth-form {
+    padding: 16px;
+    font-size: 14px;
+    background-color: #161b22;
+    border-top: 0;
+    border-radius: 6px;
+    border: 1px solid #30363db3;
+    width: 288px;
+    height: auto;
+    margin: 0 auto;
+    line-height: 1.6;
+    overflow: hidden;
+    margin-bottom: 2rem;    
+    position: relative;
+    box-shadow: inset 0px 1px 0px 0px #0104093d;
+}
+
+.auth-form-input {
+    display: block;
+    width: 100%;
+    margin: 5px;
+    margin-bottom: 10px;
+    padding: 5px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #fff;
+    background-color: #0d1117;
+    border: 1px solid #30363db3;
+    border-radius: 6px;
+    transition: 80ms cubic-bezier(0.33, 1, 0.68, 1); 
+    box-sizing: border-box;
+ }
+
+.auth-form label {
+    display: block;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.auth-form-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 5px 16px;
+    margin-left: 5px;
+    line-height: 20px;
+    color: #ffffff;
+    background-color: #238636;
+    box-shadow: 0px 1px 0px 0px #01040966;
+    transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+    position: relative;
+    font-size: 14px;
+    font-weight: 550;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 6px;
+    user-select: none;
+    border: 1px solid #238636;
+    border-radius: 6px;
+    appearance: none;
+    padding-inline: 6px;
+}

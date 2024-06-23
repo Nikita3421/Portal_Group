@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<h1>{{survey}}</h1>
+
+<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+
+<form action="" method="post" enctype="multipart/form-data">
+  {{ wizard.management_form }}
+  {{ wizard.form.as_p }}
+
+    {% csrf_token %}
+    {% if wizard.steps.prev %}
+    <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% translate "first step" %}</button>
+    <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% translate "prev step" %}</button>
+    {% endif %}
+
+
+    <p><input type="submit" value="save results"></p>
+  </form>
+
+{% endblock content %}

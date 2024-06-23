@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 # Create your views here.
 
 class NewsListView(ListView):
+    paginate_by = 3
     model = models.Announsement
     context_object_name = 'announsements'
     template_name = "news/news_list.html"
