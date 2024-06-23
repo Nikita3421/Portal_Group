@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, View, CreateView
+from django.views.generic import ListView, View, CreateView, UpdateView, DeleteView
 from announsements import models
+from announsements.mixins import UserIsOwnerMixin
 from django.urls import reverse_lazy
 from announsements.forms import AnnounsementForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -35,3 +36,16 @@ class AnnounsementCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.creator = self.request.user
         return super().form_valid(form)
+    
+
+class AnnounsementUpdateView(LoginRequiredMixin, UpdateView):
+    model = models.Announsement
+    form_class = AnnounsementForm
+    template_name = "news/announsement_update.html"
+    success_url = reverse_lazy("announsements:news_list")
+
+
+class AnnounsementDeleteView(LoginRequiredMixin, DeleteView):
+    model = models.Announsement
+    success_url = reverse_lazy("announsements:news_list")
+    template_name = "news/announsement_delete.html"
