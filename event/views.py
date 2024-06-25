@@ -5,7 +5,7 @@ from .models import Event
 from datetime import date, datetime, timezone
 from calendar import monthrange, month_name
 from django.http import HttpResponseRedirect
-from django.utils import timezone  # Импортируем timezone из Django
+from django.utils import timezone
 
 
 @login_required
@@ -15,26 +15,22 @@ def create_event(request):
         if form.is_valid():
             form.instance.created_by = request.user
             form.save()
-            return redirect('event:calendar')  # Предположим, что у вас есть URL-шаблон с именем 'event_list'
+            return redirect('event:calendar')
     else:
         form = EventForm()
     return render(request, 'event/create_event.html', {'form': form})
 
 @login_required
 def calendar_view(request, year=None, month=None):
-    # Если year и month не заданы, берем текущий год и месяц
     if year is None or month is None:
-        current_date = timezone.localtime()  # Получаем локальное текущее время с использованием Django timezone
+        current_date = timezone.localtime()
         year = current_date.year
         month = current_date.month
 
-    # Получаем количество дней в выбранном месяце
     _, num_days = monthrange(year, month)
 
-    # Генерируем список дней месяца
     days_of_month = list(range(1, num_days + 1))
 
-    # Получаем все события для выбранного месяца
     events = Event.objects.filter(start_time__year=year, start_time__month=month)
     
     month_name_str = month_name[month]
