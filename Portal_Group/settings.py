@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'survey',
     'formtools',
     'portfolio',
-    'pro_file',
     'announsements',
     'event',
 ]
