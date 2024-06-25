@@ -8,7 +8,7 @@
     <div class="card-body">
       <h2 class="card-title">{{announsement.title}}</h2>
       <p class="card-text">{{announsement.text}}</p>
-      <p class="card-text"><small class="text-body-secondary">Last updated {{announsement.creation_date}}</small></p>
+      <p class="card-text"><small class="text-body-secondary">Last updated {{announsement.creation_date}} by {{announsement.creator}}</small></p>
       <!-- лайки -->
       <form action="{% url 'announsements:announsement_like_toggle' announsement.id %}" method="post">
         {% csrf_token %}
@@ -26,7 +26,7 @@
 
   <p></p>
 {% endfor %}
-
+  
   {% if user.is_superuser %}
     <a href="{% url 'announsements:announsement_create' %}" class="btn btn-primary">Создать обьявление</a>
   {% endif %}
