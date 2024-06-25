@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+{%for announsement in announsements%}
+<div class="card mb-3">
+    <img src="/media/{{ announsement.media }}" class="card-img-top" alt="Зображення" style="max-width: 290px;">
+    <div class="card-body">
+      <h2 class="card-title">{{announsement.title}}</h2>
+      <p class="card-text">{{announsement.text}}</p>
+      <p class="card-text"><small class="text-body-secondary">Last updated {{announsement.creation_date}} by {{announsement.creator}}</small></p>
+      <!-- лайки -->
+      <form action="{% url 'announsements:announsement_like_toggle' announsement.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-sm {% if request.user in announsement.likes.all %}btn-success{% else %}btn-outline-success{% endif %}">
+            нравится {{ announsement.likes.count }}
+        </button>
+
+        {% if user.is_superuser %}
+          <a href="{% url 'announsements:announsement_update' announsement.id%}" class="btn btn-secondary">редактировать</a>
+        {% endif %}  
+
+      </form>
+    </div>
+  </div>
+
+  <p></p>
+{% endfor %}
+  
+  {% if user.is_superuser %}
+    <a href="{% url 'announsements:announsement_create' %}" class="btn btn-primary">Создать обьявление</a>
+  {% endif %}
+
+<footer>
+  {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}" class="previous">previous</a>
+  {% endif %}
+  <a href="?page={{ page_obj.number }}" class="current">{{ page_obj.number }}</a>
+  {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}" class="next">next</a>
+  {% endif %}
+</footer>
+
+{% endblock %}

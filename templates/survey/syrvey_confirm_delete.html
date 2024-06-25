@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class='container'>
+
+    <h2>Delete task</h2>
+    <p> Are you sure you want to delete task {{object.title}} </p>
+
+    <form method='post'>
+        {% csrf_token %}
+        <button type='submit' class='btn btn-danger'>Yes, delete </button>
+        <a href='{% url "survey:survey-list"  %}' > Go back to survey list </a >
+    </form>
+
+</div>
+
+{% endblock content %}
+
+
+

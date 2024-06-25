@@ -22,7 +22,12 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('forum/',include('forum.urls')),
-    path('', include('auth_sys.urls')),
+    path('survey/',include('survey.urls')),
+    path('', include('main.urls')),
+    path('auth_sys/', include('auth_sys.urls')),
+    path('portfolio/', include('portfolio.urls')),
+    path('announsements/', include('announsements.urls')),
+    path('event/', include('event.urls')),
 ]
 
 urlpatterns += static(
