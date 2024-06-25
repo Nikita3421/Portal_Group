@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'formtools',
     'portfolio',
     'announsements',
+    'event',
 ]
 
 MIDDLEWARE = [

@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-3">
-    <h2>{{ view.title }}</h2>
+<div class="container">
+    <h2>Оновити оголошення</h2>
     <form method="post" enctype="multipart/form-data">
-        
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Зберегти</button>
+        <button type="submit" class="btn btn-primary">Оновити оголошення</button>
         <a href="{% url 'announsements:news_list' %}" class="btn btn-secondary">Назад до списку оголошень</a>
+        <a href="{% url 'announsements:announsement_delete' announsement.id%}" class="btn btn-danger">Видалити оголошення</a>
     </form>
 </div>
 {% endblock %}

@@ -1,11 +1,31 @@
 {% extends "base.html" %}
 
-{% block content %}
-  <h1>Welcome to the Portal</h1>
-  <p>This is the home page.</p>
-  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">Было создана группой инвалидов, Сценарист: Адольф Шварцнигер.<br>
-    А также: Райан Гослинг и его приспешники. Злодей Британий: Пеппе
-  </a>
-{% endblock %}
-
-
+  {% block content %}
+  <h1 style="text-align: center;">Welcome to the Portal</h1>
+  
+  <div class="card-container">
+    <div class="card">
+      <h2>Forum</h2>
+      <p>Join the discussion on our forum.</p>
+      <a href="{% url 'forum:thread-list' %}" class="btn_3">Go to Forum</a>
+    </div>
+    <div class="card">
+      <h2>News</h2>
+      <p>Stay updated with the latest news.</p>
+      <a href="{% url 'announsements:news_list' %}" class="btn_3">Read News</a>
+    </div>
+    <div class="card">
+      <h2>Portfolio</h2>
+      <p>Create and manage your projects.</p>
+      {% if user.is_authenticated %}
+      {% if user.portfolio and user.portfolio.pk %}
+      <a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}" class="btn_3">Go to Portfolio</a>
+      {% else %}
+      <a href="{% url 'portfolio:portfolio_create' %}" class="btn_3">Create Portfolio</a>
+      {% endif %}
+      {% else %}
+      <a href="{% url 'auth_sys:login' %}" class="btn_3">Sign in to Create Portfolio</a>
+      {% endif %}
+    </div>
+  </div>
+  {% endblock %}
