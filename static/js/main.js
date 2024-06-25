@@ -104,11 +104,11 @@ document.addEventListener('DOMContentLoaded', function() {
           var dayItem = document.createElement('li');
           dayItem.textContent = day.date;
           dayItem.setAttribute('data-day', day.date);
-          dayItem.setAttribute('data-month', day.month + 1); // месяцы в JavaScript начинаются с 0
+          dayItem.setAttribute('data-month', day.month + 1); 
           dayItem.setAttribute('data-year', day.year);
           weekRow.appendChild(dayItem);
   
-          // Проверка наличия эвентов и добавление класса
+ 
           if (hasEvent(day.year, day.month, day.date)) {
             dayItem.classList.add('event-day');
           }
@@ -116,12 +116,8 @@ document.addEventListener('DOMContentLoaded', function() {
         daysList.appendChild(weekRow);
       });
     }
-  
-    // Пример функции проверки наличия эвентов (замените на свою логику)
+
     function hasEvent(year, month, day) {
-      // Здесь может быть ваша логика, проверяющая наличие эвентов в этот день
-      // Возвращайте true, если есть эвенты на этот день, и false в противном случае
-      // Это пример, замените на свою логику
       return (year === 2024 && month === 5 && day === 24) || (year === 2024 && month === 5 && day === 26);
     }
   });
