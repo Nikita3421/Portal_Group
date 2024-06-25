@@ -40,9 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'forum',
+    'survey',
+    'formtools',
     'portfolio',
     'pro_file',
     'announsements',
+    'event',
 ]
 
 MIDDLEWARE = [

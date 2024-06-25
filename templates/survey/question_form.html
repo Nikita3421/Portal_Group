@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+  <h1>
+    {% if object %}
+      Edit question "{{ object.title }}"
+    {% else %}
+      Add new question
+    {% endif %}
+  </h1>
+
+    <form action="" method="post" enctype="multipart/form-data">
+      {{ form.as_p }}
+
+      {% if formset %}
+      <h3>Options:</h3>
+        {{ formset.management_form }}
+          {% for form in formset %}
+              {{ form.as_p }}
+          {% endfor %}
+      {% endif %}
+      {% csrf_token %}
+      <p><input type="submit" value="Save question"></p>
+    </form>
+
+{% endblock %}

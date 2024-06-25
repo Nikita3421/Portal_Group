@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Calendar</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/calendar.css' %}">
+</head>
+<body>
+    
+    <div class="card">
+        <h2>{{ year }} / {{ month_name }}</h2>
+        <div class="navigation">
+            <a href="{% url 'event:calendar-with-date' prev_year prev_month %}">Previous Month</a>
+            <a href="{% url 'event:calendar-with-date' next_year next_month %}">Next Month</a>
+        </div>
+        <div class="calendar">
+            {% for day in days_of_month %}
+                <div class="day {% for event in events %}{% if event.start_time.day == day %}event{% endif %}{% endfor %}" data-day="{{ day }}">
+                    {{ day }}
+                    {% for event in events %}
+                        {% if event.start_time.day == day %}
+                        <div class="event-info" id="event-{{ day }}" style="display: none;">
+                            <strong>{{ event.title }}</strong><br>
+                            <h1 style="font-size: 20px;">Date:</h1>
+                            <p>{{ event.start_time|date:"Y-m-d" }} - {{ event.end_time|date:"Y-m-d" }}</p>
+                            <h3>Description:</h3>
+                            <p>{{ event.description }}</p>
+                            <h3>Category:</h3>
+                            <p>{{ event.category }}</p>
+                            <h3>Status:</h3>
+                            <p>{{ event.status }}</p>
+                            <h3>Type:</h3>
+                            <p>{{ event.event_type }}</p>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        {% if user.is_authenticated and user.is_superuser %}
+            <a class="button_3" href="{% url 'event:create-event' %}">Create Event</a>
+        {% endif %}
+        <a class="button_2" href="/">Back to Main</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const days = document.querySelectorAll('.day.event');
+
+            days.forEach(day => {
+                day.addEventListener('mouseenter', function() {
+                    const dayNumber = this.getAttribute('data-day');
+                    const eventInfos = document.querySelectorAll('.event-info');
+                    eventInfos.forEach(info => {
+                        info.style.display = 'none';
+                    });
+
+                    const eventInfo = document.getElementById('event-' + dayNumber);
+                    if (eventInfo) {
+                        eventInfo.style.display = 'block';
+                    }
+                });
+
+                day.addEventListener('mouseleave', function() {
+                    const eventInfos = document.querySelectorAll('.event-info');
+                    eventInfos.forEach(info => {
+                        info.style.display = 'none';
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

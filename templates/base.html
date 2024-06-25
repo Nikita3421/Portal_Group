@@ -1,29 +1,45 @@
-<!-- templates/base.html -->
+<!-- Основной шаблон и менюшка -->
 
 <!DOCTYPE html>
 <html>
 <head>
   <title>Portal Group</title>
   {% load static %}
+  <script src="{% static 'js/main.js' %}" defer></script>
   <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 <body>
   <header>
     <nav>
       <ul>
+        <li><a href="{% url 'event:calendar' %}">
+              <img class="calendar" src="{% static 'img/calendar.png' %}" alt="Not Found">
+            </a>
+        </li>
         <li><a href="{% url 'main:home' %}">Home</a></li>
         <li><a href="{% url 'announsements:news_list' %}">News</a></li>
         <li><a href="{% url 'forum:thread-list' %}">Forum</a></li>
         {% if user.is_authenticated %}
-          {% if user.portfolio.pk %}
-              <li><a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}">Portfolio</a></li>
+          {% if user.portfolio and user.portfolio.pk %}
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn">Portfolio</a>
+              <div class="dropdown-content">
+                <a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}">Main Portfolio</a>
+                <a href="{% url 'portfolio:portfolio_detail' user.portfolio.pk %}">Portfolio Information</a>
+                <a href="{% url 'portfolio:projects_list' user.portfolio.pk %}">Projects Information</a>
+              </div>
+            </li>
           {% else %}
-              <li><a href="{% url 'portfolio:portfolio_create' %}">Portfolio Create</a></li>
-          {% endif %}
-          <li><a href="{% url 'auth_sys:logout' %}">Logout</a></li>
+          <li><a href="{% url 'portfolio:portfolio_create' %}">Create Portfolio</a></li>
+        {% endif %}
+        <li><a href="{% url 'auth_sys:logout' %}">Logout</a></li>
         {% else %}
           <li><a href="{% url 'auth_sys:login' %}">Sign in</a></li>
           <li><a href="{% url 'auth_sys:signup' %}">Sign Up</a></li>
         {% endif %}
+        <!-- <li><a href="{% url 'main:home' %}">
+          <img class="add-friend" src="{% static 'img/add-user.png' %}" alt="Not Found">
+        </a> -->
+    </li>
       </ul>
     </nav>
   </header>
