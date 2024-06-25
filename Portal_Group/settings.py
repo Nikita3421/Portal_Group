@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'forum',
     'portfolio',
-
+    'pro_file',
     'announsements',
 ]
 

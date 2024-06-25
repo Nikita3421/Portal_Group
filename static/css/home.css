@@ -316,3 +316,8 @@ select {
     appearance: none;
     padding-inline: 6px;
 }
+
+a {
+    color: #fff;
+    text-decoration: none;
+}

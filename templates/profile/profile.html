@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if user.portfolio.pk %}
+        <h1>Your profile, {{ portfolio.name }} {{ portfolio.surname }}</h1>
+        <ul>{{ portfolio.name }} {{ portfolio.surname }}</ul>
+        <li><a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}">Portfolio</a></li>
+    {% else %}
+        <h1>Your profile, {{ profile.username }}</h1>
+        <li><a href="{% url 'portfolio:portfolio_create' %}">Portfolio Create</a></li>
+    {% endif %}
+
+{% endblock content %}

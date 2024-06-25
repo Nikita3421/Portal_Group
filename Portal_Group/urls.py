@@ -26,6 +26,7 @@ urlpatterns = [
     path('auth_sys/', include('auth_sys.urls')),
     path('portfolio/', include('portfolio.urls')),
     path('announsements/', include('announsements.urls')),
+    path('profile/', include('pro_file.urls')),
 ]
 
 urlpatterns += static(
