@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+{% include "survey/survey_nav_tabs.html" %}
+
+{{survey}}
+<br>
+link to complete survey <a href='{% url "survey:fill-survey" survey.pk %}' >{% url "survey:fill-survey" survey.pk %}</a>
+<br>
+<a href='{% url "survey:survey-answers-download" survey.pk %}'>Download in csv file</a>
+
+<table class="table">
+    <thead>
+      <tr>
+
+        <th scope="col">user</th>
+        <th scope="col">created</th>
+               
+        {% for page in survey.pages.all %}
+           {% for question in  page.questions.all %}
+            <th scope="col">{{question.item}}</th>
+           {% endfor %} 
+        {% endfor %}
+
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for result in survey.results.all %}
+        <tr>
+          <th scope="row">{{result.user}}</th>
+          <th scope="row">{{result.created}}</th>
+          {% for record in result.records.all %}
+          <td>{{ record.answer }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+
+
+      {% comment %} {{survey.records|dictsort:"user"}}
+      {% regroup survey.records by user as user_list %}
+
+      {% for user in user_list %}
+        <tr>
+          <th scope="row">{{user.grouper}}</th>
+          {% for data in user.list %}
+            <td>{{ data.answer }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %} {% endcomment %}
+      
+    </tbody>
+  </table>
+
+{% endblock content %}

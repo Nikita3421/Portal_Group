@@ -5,7 +5,7 @@ from django.views.generic.base import TemplateResponseMixin
 from django.forms.models import modelform_factory
 from django.apps import apps
 from django.http import Http404,HttpResponseRedirect
-
+from django.urls import reverse_lazy
 
 from . import models
 from .forms import OptionFormSet
@@ -21,6 +21,29 @@ class ThreadListView(ListView):
 class ThreadDetailView(DetailView): 
     model = models.Thread
     context_object_name='thread'
+    
+    
+    
+class ThreadCreateView(LoginRequiredMixin,CreateView): 
+    model = models.Thread
+    fields = ['title']
+    
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
+    
+    
+class ThreadDeleteView(DeleteView): 
+    model = models.Thread
+    success_url = reverse_lazy('forum:thread-list')
+    
+
+    
+class ThreadUpdateView(UpdateView): 
+    model = models.Thread
+    fields = ['title']
+    
+
     
     
 class PostCreateUpdateView(LoginRequiredMixin,TemplateResponseMixin, View):

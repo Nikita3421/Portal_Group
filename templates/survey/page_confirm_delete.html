@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class='container'>
+
+    <h2>Delete page</h2>
+    <p> Are you sure you want to delete page {{object.title}} </p>
+
+    <form method='post'>
+        {% csrf_token %}
+        <button type='submit' class='btn btn-danger'>Yes, delete </button>
+        <a href='{% url "survey:survey-detail" object.survey.pk  %}' > Go back to survey </a >
+    </form>
+
+</div>
+
+{% endblock content %}
+
+
+

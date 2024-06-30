@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+
+{% load forum %} 
+
+{% block content %}
+
+{% include "survey/survey_nav_tabs.html" %}
+
+<h1>{{survey}}</h1>
+
+
+{% for page in survey.pages.all %}
+  <div class="card">
+    <h5 class="card-header">page {{forloop.counter}} of {{survey.pages.count}}</h5>
+    <div class="card-body">
+      <h5 class="card-title">{{page}}</h5>
+      <p class="card-text">{{page.description}}</p>
+      <p class="card-text"><a href="{% url 'survey:page-update' page.pk %}"  >Edit</a></p>
+      <p class="card-text"><a href="{% url 'survey:page-delete' page.pk %}"  >Delete</a></p>
+    </div>
+  </div>
+
+
+  <br>
+
+  {% for question in page.questions.all %}
+    {% with item=question.item %}
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{item}}</h5>
+          <p class="card-text">
+            {% if item|model_name == 'optionquestion' %}
+              <ul>
+                {% for option in item.options.all %}
+                  <li>{{option}}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </p>
+
+
+      <a href="{% url "survey:question-update" page.id item|model_name item.id %}">
+        Edit
+      </a>
+      
+      <form method='post' action ='{% url "survey:question-delete" question.pk %}' >  
+        {% csrf_token %}
+        <button type="submit" >Delete question</button>
+      </form>
+
+        </div>
+      </div>
+
+      <br>
+    {% endwith %}
+
+  {% endfor %}
+  <h4>Add new questions to this page</h4> 
+    <ul >
+      <li>
+        <a href="{% url "survey:question-create" page.id "textquestion" %}">Text question</a>
+      </li>
+      <li>
+        <a href="{% url "survey:question-create" page.id "optionquestion" %}">Question with options</a>
+      </li>
+    </ul>
+    <br><br>
+
+{% endfor %}
+
+<a href ='{% url "survey:page-create" survey.pk %}'>Create new page</a>
+
+
+
+
+
+{% endblock content %}

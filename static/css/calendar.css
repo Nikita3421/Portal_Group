@@ -1,0 +1,107 @@
+body {
+    background-color: #121212;
+    color: #E0E0E0;
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    background-color: #1E1E1E;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+h2 {
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.navigation a {
+    color: #BB86FC;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navigation a:hover {
+    background-color: #333333;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.day {
+    background-color: #2C2C2C;
+    padding: 15px;
+    border-radius: 4px;
+    text-align: center;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.day.event {
+    cursor: pointer;
+    background-color: coral;
+}
+
+.day:hover {
+    background-color: #3D3D3D;
+}
+
+.event-info {
+    background-color: #333333;
+    padding: 10px;
+    border-radius: 4px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    width: 200px;
+    color: #FFFFFF;
+}
+
+.event-info strong {
+    color: #BB86FC;
+}
+
+.event-info h3 {
+    font-size: 14px;
+    color: #BB86FC;
+}
+
+.event-info p,
+.event-info ul {
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+.event-info ul {
+    padding-left: 20px;
+}
+
+.button_2, .button_3 {
+    display: inline-block;
+    background-color: #BB86FC;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin: 20px 10px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.button_2:hover, .button_3:hover {
+    background-color: #9F68D6;
+}
