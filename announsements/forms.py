@@ -4,7 +4,7 @@ from announsements.models import Announsement
 class AnnounsementForm(forms.ModelForm):
     class Meta:
         model = Announsement
-        fields = ["title", "text", "creation_date", "media"]
+        fields = ["title", "text", "media"]
         widgets = {
             "media": forms.FileInput()
         }
@@ -14,5 +14,5 @@ class AnnounsementForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs.update({"class": "form-control"})
 
-        self.fields["creation_date"].widget.attrs["class"] += " my-custom=datepicker"
+        #self.fields["creation_date"].widget.attrs["class"] += " my-custom=datepicker"
 

@@ -28,11 +28,11 @@ class AnnounsementLikeToggle(LoginRequiredMixin, View):
         return HttpResponseRedirect(announsement.get_absolute_url())
 
 
-class AnnounsementCreateView(LoginRequiredMixin, CreateView):
+class AnnounsementCreateView(LoginRequiredMixin, CreateView, UserIsOwnerMixin):
     model = models.Announsement
     template_name = "news/announsement_form.html"
     form_class = AnnounsementForm
-    success_url = reverse_lazy("main:home")
+    success_url = reverse_lazy("announsements:news_list")
 
     def form_valid(self, form):
         form.instance.creator = self.request.user
