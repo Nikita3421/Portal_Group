@@ -56,6 +56,15 @@
       {% csrf_token %}
     </form>
     {% endwith %}
+
+    <div class="dropdown">
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="{% url 'complaints:complaint-create' 'post' post.id  %}">Complain</a></li>
+      </ul>
+    </div>
+
+
+
 </div>
 {% empty %}
 <p>No posts on this thread yet</p>

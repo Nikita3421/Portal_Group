@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.views.generic import ListView,DetailView,CreateView,View,UpdateView,DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
 from django.views.generic.base import TemplateResponseMixin
 from django.forms.models import modelform_factory
 from django.apps import apps
@@ -13,10 +13,11 @@ from .forms import OptionFormSet
 
 # Create your views here.
 
-class ThreadListView(ListView): 
+class ThreadListView(PermissionRequiredMixin,ListView): 
     paginate_by = 2
     model = models.Thread
     context_object_name='threads'
+    permission_required = 'forum.view_thread'
     
 class ThreadDetailView(DetailView): 
     model = models.Thread

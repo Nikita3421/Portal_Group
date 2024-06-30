@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'Gallery',
     'announsements',
     'event',
+    'complaints',
 ]
 
 MIDDLEWARE = [
