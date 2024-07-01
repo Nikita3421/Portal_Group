@@ -14,6 +14,6 @@
         {{ form.password1 }}
         <label for="password2">Password 2</label>
         {{ form.password2 }}
-    <button type="submit" class="auth-form-btn">Sign up</button>
+    <button type="submit" class="auth-form-btn" href="{% url 'auth_sys:login' %}">Sign up</button>
   </form>
 {% endblock %}

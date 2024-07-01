@@ -1,11 +1,11 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.views.generic import ListView,DetailView,CreateView,View,UpdateView,DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
 from django.views.generic.base import TemplateResponseMixin
 from django.forms.models import modelform_factory
 from django.apps import apps
 from django.http import Http404,HttpResponseRedirect
-
+from django.urls import reverse_lazy
 
 from . import models
 from .forms import OptionFormSet
@@ -13,14 +13,38 @@ from .forms import OptionFormSet
 
 # Create your views here.
 
-class ThreadListView(ListView): 
+class ThreadListView(PermissionRequiredMixin,ListView): 
     paginate_by = 2
     model = models.Thread
     context_object_name='threads'
+    permission_required = 'forum.view_thread'
     
 class ThreadDetailView(DetailView): 
     model = models.Thread
     context_object_name='thread'
+    
+    
+    
+class ThreadCreateView(LoginRequiredMixin,CreateView): 
+    model = models.Thread
+    fields = ['title']
+    
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
+    
+    
+class ThreadDeleteView(DeleteView): 
+    model = models.Thread
+    success_url = reverse_lazy('forum:thread-list')
+    
+
+    
+class ThreadUpdateView(UpdateView): 
+    model = models.Thread
+    fields = ['title']
+    
+
     
     
 class PostCreateUpdateView(LoginRequiredMixin,TemplateResponseMixin, View):

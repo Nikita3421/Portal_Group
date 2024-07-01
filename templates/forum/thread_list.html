@@ -4,9 +4,20 @@
 
     {% for thread in threads %}
 
-        <a href='{% url "forum:thread-detail" thread.pk %}'> {{thread}}</a>
-
+        <a href='{% url "forum:thread-detail" thread.pk %}'> {{thread}}</a> 
+        <br>
+        <a href='{% url "forum:thread-delete" thread.pk %}'>Delete</a>
+        <br>
+        <a href='{% url "forum:thread-update" thread.pk %}'> Edit</a>
+        <br>
+    {% empty %}
+        No thread yet create new one 
+        <br>
+    
     {% endfor %}
+
+    <a href='{% url "forum:thread-create" %}' >Create new thread<a>
+
 
     <footer>
         {% if page_obj.has_previous %}
