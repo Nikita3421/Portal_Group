@@ -27,6 +27,7 @@ urlpatterns = [
     path('auth_sys/', include('auth_sys.urls')),
     path('portfolio/', include('portfolio.urls')),
     path('announsements/', include('announsements.urls')),
+    path('gallery/', include('Gallery.urls')),
     path('event/', include('event.urls')),
     path('complaint/', include('complaints.urls')),
 ]
