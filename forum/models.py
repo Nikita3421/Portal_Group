@@ -37,6 +37,7 @@ class Post(models.Model):
     )
     object_id = models.PositiveIntegerField()
     item = GenericForeignKey('content_type', 'object_id')
+    reply = models.ForeignKey('self',on_delete=models.SET_NULL,null=True)
     
 class ItemBase(models.Model):
     creator = models.ForeignKey(
