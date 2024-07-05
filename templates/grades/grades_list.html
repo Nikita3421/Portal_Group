@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+{% for grade in grades %}
+    <h2>ученик: {{grade.user}}</h2>
+    <h3>предмет: {{grade.predmet}}</h3>
+    <p>оценка: {{grade.ocenka}}</p>
+    <p>коментарий: {{grade.comment}}</p>
+    <p>оценено: {{grade.creation_date}} by {{grade.creator}}</p>
+    <hr>
+{% endfor %}
+
+    {% if user.is_superuser %}
+    <a href="{% url 'grades:grade_create' %}" class="btn btn-primary">Создать оценки</a>
+    {% endif %}
+
+{% endblock %}
