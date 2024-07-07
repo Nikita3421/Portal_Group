@@ -31,6 +31,7 @@ urlpatterns = [
     path('event/', include('event.urls')),
     path('complaint/', include('complaints.urls')),
     path('grades/', include('grades.urls')),
+    path('media_center', include('media_center.urls'))
 ]
 
 urlpatterns += static(
