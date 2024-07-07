@@ -45,10 +45,11 @@
           <li><a href="{% url 'auth_sys:login' %}">Sign in</a></li>
           <li><a href="{% url 'auth_sys:signup' %}">Sign Up</a></li>
         {% endif %}
-        <!-- <li><a href="{% url 'main:home' %}">
-          <img class="add-friend" src="{% static 'img/add-user.png' %}" alt="Not Found">
-        </a> -->
-    </li>
+        <li>
+          <a href="{% url 'friends:friend_list' %}">
+            <img class="add-friend" src="{% static 'img/friends.png' %}" alt="Not Found">
+          </a>
+        </li>
       </ul>
     </nav>
   </header>
