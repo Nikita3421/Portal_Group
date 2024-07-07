@@ -5,7 +5,6 @@
 <head>
   <title>Portal Group</title>
   {% load static %}
-  <script src="{% static 'js/main.js' %}" defer></script>
   <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 <body>
   <header>
@@ -24,16 +23,24 @@
           {% if user.portfolio and user.portfolio.pk %}
             <li class="dropdown">
               <a href="javascript:void(0)" class="dropbtn">Portfolio</a>
-              <div class="dropdown-content">
+              <div class="dropdown-content"> {% comment "" %}<img src="/media/{% endcomment %}
                 <a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}">Main Portfolio</a>
                 <a href="{% url 'portfolio:portfolio_detail' user.portfolio.pk %}">Portfolio Information</a>
                 <a href="{% url 'portfolio:projects_list' user.portfolio.pk %}">Projects Information</a>
               </div>
             </li>
           {% else %}
-          <li><a href="{% url 'portfolio:portfolio_create' %}">Create Portfolio</a></li>
-        {% endif %}
-        <li><a href="{% url 'auth_sys:logout' %}">Logout</a></li>
+            <li><a href="{% url 'portfolio:portfolio_create' %}">Create Portfolio</a></li>
+          {% endif %}
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">
+            <img class="rounded-circle profile-photo" src="{{ user.profile.profile_photo.url }}" alt="idk">
+          </a>
+          <div class="dropdown-content">
+            <a href="{% url 'profile:profile-info'%}">Profile Info</a>
+            <a href="{% url 'auth_sys:logout' %}">Logout</a>
+          </div>
+        </li>
         {% else %}
           <li><a href="{% url 'auth_sys:login' %}">Sign in</a></li>
           <li><a href="{% url 'auth_sys:signup' %}">Sign Up</a></li>
@@ -49,5 +56,6 @@
     {% block content %}
     {% endblock %}
   </main>
+  <script src="{% static 'js/main.js' %}" defer></script>
 </body>
 </html>

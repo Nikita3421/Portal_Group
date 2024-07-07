@@ -7,7 +7,7 @@ body {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #3c3c3c;
+    background-color: hsl(0, 0%, 24%);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
@@ -30,7 +30,7 @@ body {
     padding: 6px;
 }
 button {
-    background-color: #BB86FC;
+    background-color: #21262d;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -41,7 +41,7 @@ button {
 
 .back-button {
     display: inline-block;
-    background-color: #BB86FC;
+    background-color: #21262d;
     color: #FFFFFF;
     text-decoration: none;
     padding: 10px 20px;
@@ -52,9 +52,9 @@ button {
 }
 
 button:hover {
-    background-color: #9F68D6;
+    background-color: #292e36;
 }
 
 .back-button:hover {
-    background-color: #9F68D6;
+    background-color: #292e36;
 }
