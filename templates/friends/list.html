@@ -23,9 +23,9 @@
                     <div class="buttons">
                         <form method="post" action="{% url 'friends:delete_friend' friendship.friend.id %}">
                             {% csrf_token %}
-                            <button type="submit" class="delete-button">Delete</button>
+                            <button type="submit" class="delete-button"><img style="height: 20px; width: 20;" src="{% static 'img/delete.png' %}" alt="dfdf"></button>
                         </form>
-                        <button class="message-button" data-friend-id="{{ friendship.friend.id }}">Message</button>
+                        <button class="message-button" data-friend-id="{{ friendship.friend.id }}"><img style="height: 20px; width: 20px;" src="{% static 'img/chat.png' %}" alt="qweqwe"></button>
                     </div>
                 </li>
                 {% else %}
@@ -34,9 +34,9 @@
                     <div class="buttons">
                         <form method="post" action="{% url 'friends:delete_friend' friendship.user.id %}">
                             {% csrf_token %}
-                            <button type="submit" class="delete-button">Delete</button>
+                            <button type="submit" class="delete-button"><img style="height: 20px; width: 20;" src="{% static 'img/delete.png' %}" alt="dfdf"></button>
                         </form>
-                        <button class="message-button" data-friend-id="{{ friendship.user.id }}">Message</button>
+                        <img src="{% static 'img/chat.png' %}" alt="qweqwe"></button>
                     </div>
                 </li>
                 {% endif %}
