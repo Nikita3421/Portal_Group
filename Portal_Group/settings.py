@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'event',
     'complaints',
     'grades',
+    'madia_center'
 ]
 
 MIDDLEWARE = [
