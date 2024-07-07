@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'portfolio',
     'announsements',
     'event',
+    'pro_file',
 ]
 
 MIDDLEWARE = [

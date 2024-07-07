@@ -19,7 +19,7 @@ h2 {
 }
 
 .navigation a {
-    color: #BB86FC;
+    color: #fff;
     text-decoration: none;
     margin: 0 10px;
     padding: 10px;
@@ -72,12 +72,12 @@ h2 {
 }
 
 .event-info strong {
-    color: #BB86FC;
+    color: #21262d;
 }
 
 .event-info h3 {
     font-size: 14px;
-    color: #BB86FC;
+    color: #21262d;
 }
 
 .event-info p,
@@ -92,7 +92,7 @@ h2 {
 
 .button_2, .button_3 {
     display: inline-block;
-    background-color: #BB86FC;
+    background-color: #21262d;
     color: #FFFFFF;
     text-decoration: none;
     padding: 10px 20px;
@@ -103,5 +103,5 @@ h2 {
 }
 
 .button_2:hover, .button_3:hover {
-    background-color: #9F68D6;
+    background-color: #292e36;
 }

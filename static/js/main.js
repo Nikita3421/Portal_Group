@@ -121,4 +121,13 @@ document.addEventListener('DOMContentLoaded', function() {
       return (year === 2024 && month === 5 && day === 24) || (year === 2024 && month === 5 && day === 26);
     }
   });
+
+const popUpForm = document.getElementById("profilePhotoForm");
+var button = document.getElementById("profilePhotoBtn");
+
+
+button.addEventListener("click", function() {
+  popUpForm.style.display = "block";
+  button.style.display = "none";
   
+});

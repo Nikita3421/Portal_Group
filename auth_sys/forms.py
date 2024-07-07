@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from pro_file.models import Profile
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=63)
@@ -79,4 +80,3 @@ class LoginForm(AuthenticationForm):
                 }
             )
     )
-

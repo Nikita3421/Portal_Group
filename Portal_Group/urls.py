@@ -28,6 +28,7 @@ urlpatterns = [
     path('portfolio/', include('portfolio.urls')),
     path('announsements/', include('announsements.urls')),
     path('event/', include('event.urls')),
+    path('profile/', include('pro_file.urls')), 
 ]
 
 urlpatterns += static(
