@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+    path('profile/', include('pro_file.urls')), 
     path('admin/', admin.site.urls),
     path('forum/',include('forum.urls')),
     path('survey/',include('survey.urls')),
@@ -28,7 +29,6 @@ urlpatterns = [
     path('portfolio/', include('portfolio.urls')),
     path('announsements/', include('announsements.urls')),
     path('event/', include('event.urls')),
-    path('profile/', include('pro_file.urls')), 
 ]
 
 urlpatterns += static(
