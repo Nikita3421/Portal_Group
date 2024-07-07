@@ -29,10 +29,10 @@ urlpatterns = [
     path('announsements/', include('announsements.urls')),
     path('event/', include('event.urls')),
     path('gallery/', include('Gallery.urls')),
-    path('profile/', include('pro_file.urls')),
     path('event/', include('event.urls')),
     path('complaint/', include('complaints.urls')),
     path('grades/', include('grades.urls')),
+    path('profile/', include('pro_file.urls')),
 ]
 
 urlpatterns += static(
