@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'announsements',
     'event',
     'complaints',
+    'grades',
     'friends',
 ]
 
