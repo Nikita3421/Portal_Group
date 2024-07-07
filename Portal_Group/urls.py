@@ -30,6 +30,7 @@ urlpatterns = [
     path('gallery/', include('Gallery.urls')),
     path('event/', include('event.urls')),
     path('complaint/', include('complaints.urls')),
+    path('friends/', include('friends.urls')),
 ]
 
 urlpatterns += static(

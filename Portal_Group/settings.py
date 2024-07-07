@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'rest_framework',
+    'channels',
     'auth_sys',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
     'announsements',
     'event',
     'complaints',
+    'friends',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +151,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'main:home'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
