@@ -1,0 +1,83 @@
+body {
+    background-color: #121212;
+    color: #c9d1d9;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    height: auto;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.upload-form {
+    margin: 20px;
+    text-align: center;
+}
+
+.file-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.file-list li {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-list a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #44ab50; /* Зеленый цвет для кнопки Download */
+    color: white; 
+    text-decoration: none;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.download-btn:hover {
+    background-color: #45a049; 
+}
+
+.delete-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #ff4d4f; 
+    color: white; 
+    text-decoration: none;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    background-color: #ff3336;
+}
