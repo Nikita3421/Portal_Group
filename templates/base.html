@@ -17,6 +17,8 @@
         <li><a href="{% url 'main:home' %}">Home</a></li>
         <li><a href="{% url 'announsements:news_list' %}">News</a></li>
         <li><a href="{% url 'forum:thread-list' %}">Forum</a></li>
+        <li><a href="{% url 'gallery:gallery_main' %}">Gallery</a></li>
+        <li><a href="{% url 'grades:grades_list' %}" >Електрический дневник</a></li>
         {% if user.is_authenticated %}
           {% if user.portfolio and user.portfolio.pk %}
             <li class="dropdown">

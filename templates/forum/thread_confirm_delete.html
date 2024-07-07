@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class='container'>
+
+    <h2>Delete page</h2>
+    <p> Are you sure you want to delete thread {{object.title}} </p>
+
+    <form method='post'>
+        {% csrf_token %}
+        <button type='submit' class='btn btn-danger'>Yes, delete </button>
+        <a href='{% url "forum:thread-list"   %}' > Go back to forum </a >
+    </form>
+
+</div>
+
+{% endblock content %}
+
+
+

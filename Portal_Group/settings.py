@@ -43,9 +43,12 @@ INSTALLED_APPS = [
     'survey',
     'formtools',
     'portfolio',
+    'Gallery',
     'announsements',
     'event',
     'pro_file',
+    'complaints',
+    'grades',
 ]
 
 MIDDLEWARE = [

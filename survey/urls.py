@@ -23,6 +23,7 @@ urlpatterns = [
     
     path('<int:page_id>/question/<str:model_name>/create', views.QuestionCreateUpdateView.as_view(),name='question-create'),
     path('<int:page_id>/question/<str:model_name>/<int:id>', views.QuestionCreateUpdateView.as_view(),name='question-update'),
+    path('question/<int:pk>/delete', views.QuestionDeleteView.as_view(),name='question-delete'),
 
 ]
 

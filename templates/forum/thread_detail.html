@@ -4,8 +4,14 @@
 
 {% load forum %} 
 
-{% for post in thread.posts.all %}
+{% for post in posts %}
   {% with item=post.item %}
+
+
+  {% if post.reply %}
+  <h3>{{ post.reply.item }}</h3>
+
+  {% endif %}
 
   {% if item|model_name == 'voting' %}
   
@@ -31,6 +37,8 @@
     
     {{item.votes_count}} votes
 
+    
+
   {% elif item|model_name == 'text' %}
     <h3>{{ item }}  </h3>
     <p>{{ item.content }}</p>
@@ -48,7 +56,7 @@
 
 
 
-    <a href="{% url "forum:post-update" thread.id item|model_name item.id %}">
+    <a href="{% url "forum:post-update" thread.id item|model_name post.id %}">
       Edit
     </a>
     <form action="{% url "forum:post-delete" post.id %}" method="post">
@@ -56,6 +64,20 @@
       {% csrf_token %}
     </form>
     {% endwith %}
+
+    <div class="dropdown">
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="{% url 'complaints:complaint-create' 'post'  post.id  %}">Complain</a></li>
+        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "text"   post.id  %}">Reply with text</a></li>
+        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "image"  post.id  %}">Reply with image</a></li>
+        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "video"  post.id  %}">Reply with video</a></li>
+        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "file"   post.id  %}">Reply with file</a></li>
+        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "voting" post.id  %}">Reply with voting</a></li>
+      </ul>
+    </div>
+
+
+
 </div>
 {% empty %}
 <p>No posts on this thread yet</p>
@@ -78,6 +100,18 @@
       <li>
         <a href="{% url "forum:post-create" thread.id "voting" %}">Voting</a>
       </li>
+
+
+      <footer>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="previous">previous</a>
+        {% endif %}
+        <a href="?page={{ page_obj.number }}" class="current">{{ page_obj.number }}</a>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="next">next</a>
+        {% endif %}
+    </footer>
+
 
 {% endblock content %}
 

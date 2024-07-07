@@ -92,8 +92,10 @@ class PageUpdateView(LoginRequiredMixin,UpdateView):
 
 class PageDeleteView(LoginRequiredMixin,DeleteView):
     model = models.Page
-    fields = ['title','description']
     template_name = 'survey/page_confirm_delete.html'
+    
+    def get_success_url(self) -> str:
+        return reverse_lazy('survey:survey-detail',args=[self.get_object().survey.pk] )
 
     
 class FillSurveyView(LoginRequiredMixin,SessionWizardView):
@@ -255,8 +257,12 @@ class QuestionCreateUpdateView(LoginRequiredMixin,TemplateResponseMixin, View):
             {'form': form, 'object': self.obj}
         )
         
-class QuestionDelete(DeleteView):
-    pass
+class QuestionDeleteView(View):
+    def post(self,request,pk):
+        question = get_object_or_404(models.Question,id=pk)
+        question.item.delete()
+        question.delete()
+        return redirect('survey:survey-detail',question.page.survey.pk)
         
 class DownloadAnswersview(View):
     def get(self,request,pk):

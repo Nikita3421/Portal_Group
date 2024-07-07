@@ -1,11 +1,12 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render,get_object_or_404,redirect
 from django.views.generic import ListView,DetailView,CreateView,View,UpdateView,DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
 from django.views.generic.base import TemplateResponseMixin
 from django.forms.models import modelform_factory
 from django.apps import apps
 from django.http import Http404,HttpResponseRedirect
-
+from django.urls import reverse_lazy
 
 from . import models
 from .forms import OptionFormSet
@@ -13,14 +14,56 @@ from .forms import OptionFormSet
 
 # Create your views here.
 
-class ThreadListView(ListView): 
+class ThreadListView(PermissionRequiredMixin,ListView): 
     paginate_by = 2
     model = models.Thread
     context_object_name='threads'
+    permission_required = 'forum.view_thread'
     
-class ThreadDetailView(DetailView): 
+class ThreadPostListView(ListView): 
+    model = models.Post
+    context_object_name='posts'
+    template_name ='forum/thread_detail.html'
+    paginate_by =10
+    
+    def get_queryset(self):
+        return super().get_queryset().filter(thread=self.thread)
+    
+    def dispatch(self, request,pk, *args, **kwargs):
+        self.thread = get_object_or_404(models.Thread,pk=pk)
+        return super().dispatch(request,pk, *args, **kwargs)
+    
+    def get_context_data(self, **kwargs) :
+        context = super().get_context_data(**kwargs)
+        context["thread"] = self.thread
+        return context
+    
+    
+    
+    
+    
+    
+    
+class ThreadCreateView(LoginRequiredMixin,CreateView): 
     model = models.Thread
-    context_object_name='thread'
+    fields = ['title']
+    
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
+    
+    
+class ThreadDeleteView(DeleteView): 
+    model = models.Thread
+    success_url = reverse_lazy('forum:thread-list')
+    
+
+    
+class ThreadUpdateView(UpdateView): 
+    model = models.Thread
+    fields = ['title']
+    
+
     
     
 class PostCreateUpdateView(LoginRequiredMixin,TemplateResponseMixin, View):
@@ -88,6 +131,53 @@ class PostCreateUpdateView(LoginRequiredMixin,TemplateResponseMixin, View):
         return self.render_to_response(
             {'form': form, 'object': self.obj}
         )
+
+class PostReplyView(PostCreateUpdateView):
+    template_name = 'forum/reply_form.html'
+    
+    def dispatch(self, request, model_name, id):
+        self.model = self.get_model(model_name)
+        self.obj = get_object_or_404(
+            models.Post, id=id
+        )
+        return super(PostCreateUpdateView,self).dispatch(request,model_name, id)
+    
+    def get(self, request, model_name, id):
+        formset=None
+        if self.model == models.Voting :
+            formset = OptionFormSet()
+        form = self.get_form(self.model)
+        return self.render_to_response(
+            {'form': form, 'object': self.obj,'formset':formset}
+        )
+        
+    def post(self, request, model_name, id):
+        form = self.get_form(
+            self.model,
+            data=request.POST,
+            files=request.FILES,
+        )
+        
+        if form.is_valid() :
+            obj = form.save(commit=False)
+            obj.creator = request.user
+            obj.save()
+            models.Post.objects.create(thread=self.obj.thread, item=obj,reply=self.obj)
+            
+            if self.model == models.Voting:
+                formset = OptionFormSet(request.POST,instance=obj)
+                if formset.is_valid() :
+                    formset.save()
+                else:
+                    return self.render_to_response(
+                {'form': form, 'object': self.obj}
+            )
+            return redirect('forum:thread-detail', self.obj.thread.id)
+        return self.render_to_response(
+            {'form': form, 'object': self.obj}
+        )
+
+        
 
 
 class PostDeleteView(View):

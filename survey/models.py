@@ -12,6 +12,9 @@ class Survey(models.Model):
     title = models.CharField(max_length=255)
     recomplete =models.BooleanField(default=True)
     created = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='surveys')
+
+    class Meta:
+        ordering = ['created']
     
     def __str__(self):
         return self.title
@@ -52,6 +55,9 @@ class Question(models.Model):
     )
     object_id = models.PositiveIntegerField()
     item = GenericForeignKey('content_type', 'object_id')
+    created = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        ordering = ['created']
     
 class TextQuestion(models.Model):
     title = models.CharField(max_length=255) 
@@ -69,6 +75,7 @@ class Option(models.Model):
     question = models.ForeignKey(OptionQuestion,on_delete=models.CASCADE,related_name='options')
     title = models.CharField(max_length=255) 
     
+    
     def __str__(self):
         return self.title
     class Meta:
@@ -80,8 +87,16 @@ class Result(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     class Meta:
         unique_together= ['survey','user']
-
+        
+        
 class Record(models.Model):
     question = models.ForeignKey(Question,on_delete=models.CASCADE,related_name='records')
     answer =models.CharField(max_length=255) 
     result = models.ForeignKey(Result,on_delete=models.CASCADE,related_name='records')
+    
+    class Meta:
+        ordering =['question__page', 'question']
+        unique_together= ['question','result']
+        
+    def __str__(self):
+        return f'answer for {self.question} page {self.question.page}'
