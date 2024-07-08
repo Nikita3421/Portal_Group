@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+    <script src="{% static 'js/reactions.js' %}" defer></script>
+</head>
+<body>
+    <div id="user-id" style="display: none;">{{ request.user.id }}</div>
+    <div id="friend-username" style="display: none;">{{ friend.username }}</div>
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <div class="container">
+        <div class="sidebar">
+            <h2>Friends</h2>
+            <ul>
+                {% for friendship in friends %}
+                {% if friendship.user == request.user %}
+                <li>
+                    {{ friendship.friend.username }}
+                    <div class="buttons">
+                        <form method="post" action="{% url 'friends:delete_friend' friendship.friend.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="delete-button"><img style="height: 20px; width: 20;" src="{% static 'img/delete.png' %}" alt="dfdf"></button>
+                        </form>
+                        <button class="message-button" data-friend-id="{{ friendship.friend.id }}"><img style="height: 20px; width: 20px;" src="{% static 'img/chat.png' %}" alt="qweqwe"></button>
+                    </div>
+                </li>
+                {% else %}
+                <li>
+                    {{ friendship.user.username }}
+                    <div class="buttons">
+                        <form method="post" action="{% url 'friends:delete_friend' friendship.user.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="delete-button"><img style="height: 20px; width: 20;" src="{% static 'img/delete.png' %}" alt="dfdf"></button>
+                        </form>
+                        <img src="{% static 'img/chat.png' %}" alt="qweqwe"></button>
+                    </div>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="top-bar">
+                <a href="{% url 'main:home' %}" class="main-page">Main Page</a>
+                <a href="{% url 'friends:mailbox' %}" class="mailbox-button">Mailbox</a>
+                <a href="{% url 'friends:send_friend_request' %}" class="add-friend-button">Add Friends</a>
+            </div>
+            <div class="chat-box" id="chat-box">
+                <div class="chat-messages" id="chat-messages">
+                    {% for message in messages %}
+                    {% if message.sender == request.user %}
+                    <div class="message sent-message" data-message-id="{{ message.id }}">
+                        <p>{{ message.content }}</p>
+                        <span class="message-details">You</span>
+                    </div>
+                    {% else %}
+                    <div class="message received-message" data-message-id="{{ message.id }}">
+                        <p>{{ message.content }}</p>
+                        <span class="message-details">{{ message.sender.username }}</span>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-input" placeholder="Type a message...">
+                    <button id="chat-send-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
