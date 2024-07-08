@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if user.portfolio.pk %}
+    <div class="layout">
+        <div class="profile-container">
+            <img class="rounded-circle profile-main-photo" src="{{ user.profile.profile_photo.url }}" height="256" width="256" alt="idk">
+            <div class="profile-username">{{ profiles.username }}</div>
+            <div class="mb-16px">
+                <form class="mb-16px" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.profile_photo }}
+                    <button class="small-green-btn" type="submit">Save</button>
+                    <a class="small-gray-btn" href="{% url 'profile:profile-info' %}">Cancel</a>
+                </form>
+                <a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}">Portfolio</a>
+            </div>
+        </div>
+        <div class="mt-16px">
+            <div class="project-container">
+                <h1>Your projects</h1>
+                {% for portfolio_project in portfolio_projects %}
+                    <div class="mb-16px project-item">
+                        <div class="project-item-content">
+                            <div class="project-item-content-title">
+                                <a href="{% url 'portfolio:portfolio_detail' user.portfolio.pk %}">{{ portfolio_project.title }}</a>
+                                <div class="project-item-content-createdtime">{{ portfolio_project.due_date }}</div>
+                            </div>
+                            <span class="project-item-content-description">{{ portfolio_project.description }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="layout">
+        <div class="profile-container">
+            <img class="rounded-circle profile-main-photo" src="{{ user.profile.profile_photo.url }}" height="256" width="256" alt="idk">
+            <div class="profile-username">{{ profiles.username }}</div>
+            <div class="mb-16px">
+                <form class="mb-16px" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.profile_photo }}
+                    <button class="small-green-btn" type="submit">Save</button>
+                    <a class="small-gray-btn" href="{% url 'profile:profile-info' %}">Cancel</a>
+                </form>
+                <a class="mb-16px" href="{% url 'portfolio:portfolio_create' %}">Portfolio Create</a>
+            </div>
+        </div>
+        <div class="mt-16px">
+            <div class="project-container">
+                <h1>Your projects</h1>
+                <div>You should first create portfolio</div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endblock content %}
