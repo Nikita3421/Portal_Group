@@ -8,6 +8,9 @@
     <p>оценка: {{grade.ocenka}}</p>
     <p>коментарий: {{grade.comment}}</p>
     <p>оценено: {{grade.creation_date}} by {{grade.creator}}</p>
+    {% if user.is_superuser %}
+    <a href="{% url 'grades:grade_delete' grade.id%}">удалить оценку</a>
+    {% endif %}
     <hr>
 {% endfor %}
 
