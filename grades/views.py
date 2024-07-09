@@ -23,3 +23,9 @@ class GradeCreateView(LoginRequiredMixin, CreateView, UserIsOwnerMixin):
     def form_valid(self, form):
         form.instance.creator = self.request.user
         return super().form_valid(form)
+    
+
+class GradeDeleteView(LoginRequiredMixin, DeleteView):
+    model = models.Grade
+    success_url = reverse_lazy("grades:grades_list")
+    template_name = "grades/grade_delete.html"
