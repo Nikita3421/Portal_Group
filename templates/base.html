@@ -1,5 +1,3 @@
-<!-- Основной шаблон и менюшка -->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,19 +5,22 @@
   {% load static %}
   <script src="{% static 'js/main.js' %}" defer></script>
   <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+</head>
 <body>
   <header>
     <nav>
       <ul>
-        <li><a href="{% url 'event:calendar' %}">
-              <img class="calendar" src="{% static 'img/calendar.png' %}" alt="Not Found">
-            </a>
+        <li>
+          <a href="{% url 'event:calendar' %}">
+            <img class="calendar" src="{% static 'img/calendar.png' %}" alt="Not Found">
+          </a>
         </li>
         <li><a href="{% url 'main:home' %}">Home</a></li>
         <li><a href="{% url 'announsements:news_list' %}">News</a></li>
         <li><a href="{% url 'forum:thread-list' %}">Forum</a></li>
         <li><a href="{% url 'gallery:gallery_main' %}">Gallery</a></li>
-        <li><a href="{% url 'grades:grades_list' %}" >Електрический дневник</a></li>
+        <li><a href="{% url 'grades:grades_list' %}">Електрический дневник</a></li>
+        <li><a href="{% url 'media_upload' %}">Upload Media</a></li> <!-- Добавленная кнопка -->
         {% if user.is_authenticated %}
           {% if user.portfolio and user.portfolio.pk %}
             <li class="dropdown">
@@ -32,16 +33,12 @@
             </li>
           {% else %}
           <li><a href="{% url 'portfolio:portfolio_create' %}">Create Portfolio</a></li>
-        {% endif %}
+          {% endif %}
         <li><a href="{% url 'auth_sys:logout' %}">Logout</a></li>
         {% else %}
           <li><a href="{% url 'auth_sys:login' %}">Sign in</a></li>
           <li><a href="{% url 'auth_sys:signup' %}">Sign Up</a></li>
         {% endif %}
-        <!-- <li><a href="{% url 'main:home' %}">
-          <img class="add-friend" src="{% static 'img/add-user.png' %}" alt="Not Found">
-        </a> -->
-    </li>
       </ul>
     </nav>
   </header>

@@ -4,14 +4,26 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
 }
 
 .card-container {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 600px;
 }
 
 .card {
@@ -19,65 +31,70 @@ body {
     border: 1px solid #30363d;
     border-radius: 10px;
     padding: 20px;
-    width: 300px;
-    height: auto;
+    width: 100%;
+    margin-bottom: 20px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
 }
 
-.upload-form {
-    margin: 20px;
-    text-align: center;
+.card h1 {
+    margin-bottom: 20px;
+    color: #58a6ff;
 }
 
 .file-list {
     list-style: none;
     padding: 0;
-    margin: 0;
-    width: 100%;
 }
 
 .file-list li {
-    background-color: #161b22;
+    background-color: #1d2127;
     border: 1px solid #30363d;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    border-radius: 5px;
     padding: 10px;
+    margin-bottom: 10px;
+}
+
+.file-list li span {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.file-list a {
+.file-list li a {
     color: #58a6ff;
     text-decoration: none;
 }
 
-.download-btn {
-    display: inline-block;
-    padding: 8px 12px;
-    background-color: #44ab50; /* Зеленый цвет для кнопки Download */
-    color: white; 
-    text-decoration: none;
-    border-radius: 4px;
-    margin-left: 10px;
-}
-
-.download-btn:hover {
-    background-color: #45a049; 
+.file-list li a:hover {
+    text-decoration: underline;
 }
 
 .delete-btn {
-    display: inline-block;
-    padding: 8px 12px;
-    background-color: #ff4d4f; 
-    color: white; 
-    text-decoration: none;
-    border-radius: 4px;
-    margin-left: 10px;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .delete-btn:hover {
-    background-color: #ff3336;
+    background-color: #e96060;
+}
+
+.btn-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-upload:hover {
+    background-color: #0056b3;
 }

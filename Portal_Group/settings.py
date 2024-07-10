@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'event',
     'complaints',
     'grades',
-    'madia_center'
+    'media_center'
 ]
 
 MIDDLEWARE = [
@@ -61,7 +61,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Portal_Group.urls'
+ROOT_URLCONF = 'Portal_Group.urls'  
 
 TEMPLATES = [
     {
