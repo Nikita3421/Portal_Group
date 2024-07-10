@@ -1,22 +1,34 @@
 {% extends "base.html" %}
 
+
+
+{% load forum %}
+
 {% block content %}
 
     {% for thread in threads %}
 
         <a href='{% url "forum:thread-detail" thread.pk %}'> {{thread}}</a> 
         <br>
-        <a href='{% url "forum:thread-delete" thread.pk %}'>Delete</a>
-        <br>
+        {% if user|has_perms:'forum.change_thread' %}
+            <a href='{% url "forum:thread-delete" thread.pk %}'>Delete</a>
+            <br>
+        {% endif %}
+
+        {% if user|has_perms:'forum.delete_post' %}
         <a href='{% url "forum:thread-update" thread.pk %}'> Edit</a>
         <br>
+        {% endif %}
+
     {% empty %}
         No thread yet create new one 
         <br>
     
     {% endfor %}
 
+    {% if user|has_perms:'forum.delete_post' %}
     <a href='{% url "forum:thread-create" %}' >Create new thread<a>
+        {% endif %}
 
 
     <footer>
