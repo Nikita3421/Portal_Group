@@ -48,10 +48,10 @@ INSTALLED_APPS = [
     'Gallery',
     'announsements',
     'event',
-    'pro_file',
     'complaints',
     'grades',
     'friends',
+    'pro_file',
 ]
 
 MIDDLEWARE = [
