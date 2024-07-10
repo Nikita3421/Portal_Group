@@ -19,7 +19,7 @@
                 {% for friendship in friends %}
                 {% if friendship.user == request.user %}
                 <li>
-                    {{ friendship.friend.username }}
+                    <h1 style="font-size: 15px;">{{ friendship.friend.username }}</h1>
                     <div class="buttons">
                         <form method="post" action="{% url 'friends:delete_friend' friendship.friend.id %}">
                             {% csrf_token %}
@@ -30,13 +30,13 @@
                 </li>
                 {% else %}
                 <li>
-                    {{ friendship.user.username }}
+                    <h1 style="font-size: 15px;">{{ friendship.user.username }}</h1>
                     <div class="buttons">
                         <form method="post" action="{% url 'friends:delete_friend' friendship.user.id %}">
                             {% csrf_token %}
                             <button type="submit" class="delete-button"><img style="height: 20px; width: 20;" src="{% static 'img/delete.png' %}" alt="dfdf"></button>
                         </form>
-                        <img src="{% static 'img/chat.png' %}" alt="qweqwe"></button>
+                        <button class="message-button" data-friend-id="{{ friendship.user.id }}"><img style="height: 20px; width: 20px;" src="{% static 'img/chat.png' %}" alt="qweqwe"></button>
                     </div>
                 </li>
                 {% endif %}
@@ -67,7 +67,7 @@
                 </div>
                 <div class="chat-input">
                     <input type="text" id="chat-input" placeholder="Type a message...">
-                    <button id="chat-send-button">Send</button>
+                    <button id="chat-send-button"><img style="width: 25px; height: 20px;" src="{% static 'img/send-message.png' %}" alt="asfasf"></button>
                 </div>
             </div>
         </div>

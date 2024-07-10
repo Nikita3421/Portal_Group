@@ -75,9 +75,9 @@ document.addEventListener('DOMContentLoaded', function() {
       var daysInMonth = lastDay.getDate();
   
       var startDate = new Date(firstDay);
-      startDate.setDate(startDate.getDate() - startDate.getDay()); // начальная дата
+      startDate.setDate(startDate.getDate() - startDate.getDay());
       var endDate = new Date(lastDay);
-      endDate.setDate(endDate.getDate() + 6 - endDate.getDay()); //конечная дата
+      endDate.setDate(endDate.getDate() + 6 - endDate.getDay());
       var weeks = [];
   
       while (startDate <= endDate) {
