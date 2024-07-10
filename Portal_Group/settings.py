@@ -139,8 +139,8 @@ STATICFILES_DIRS=[
 ]
 
 LOGIN_URL = "auth_sys:login"
-LOGIN_REDIRECT_URL = "forum:thread-list"
-LOGOUT_REDIRECT_URL = "auth_system:login"
+LOGIN_REDIRECT_URL = "main:home"
+LOGOUT_REDIRECT_URL = "auth_sys:login"
 
 
 MEDIA_URL = 'media/'
@@ -152,7 +152,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'main:home'
 
 CHANNEL_LAYERS = {
     'default': {

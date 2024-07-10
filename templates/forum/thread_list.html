@@ -10,12 +10,12 @@
 
         <a href='{% url "forum:thread-detail" thread.pk %}'> {{thread}}</a> 
         <br>
-        {% if user|has_perms:'forum.change_thread' %}
+        {% if user|has_perms:'forum.delete_thread' %}
             <a href='{% url "forum:thread-delete" thread.pk %}'>Delete</a>
             <br>
         {% endif %}
 
-        {% if user|has_perms:'forum.delete_post' %}
+        {% if user|has_perms:'forum.change_post' %}
         <a href='{% url "forum:thread-update" thread.pk %}'> Edit</a>
         <br>
         {% endif %}
@@ -26,7 +26,7 @@
     
     {% endfor %}
 
-    {% if user|has_perms:'forum.delete_post' %}
+    {% if user|has_perms:'forum.add_post' %}
     <a href='{% url "forum:thread-create" %}' >Create new thread<a>
         {% endif %}
 

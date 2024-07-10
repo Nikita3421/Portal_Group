@@ -1,5 +1,8 @@
 <!-- Основной шаблон и менюшка -->
 
+{% load forum %} 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +22,10 @@
         <li><a href="{% url 'forum:thread-list' %}">Forum</a></li>
         <li><a href="{% url 'gallery:gallery_main' %}">Gallery</a></li>
         <li><a href="{% url 'grades:grades_list' %}" >Електрический дневник</a></li>
+        {% if user|has_perms:'survey.view_survey' %}
+        <li><a href="{% url 'grades:grades_list' %}" >Survey</a></li>
+        {% endif %}
+        
         {% if user.is_authenticated %}
           {% if user.portfolio and user.portfolio.pk %}
             <li class="dropdown">
