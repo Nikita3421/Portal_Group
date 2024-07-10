@@ -8,17 +8,18 @@ from django.apps import apps
 from django.http import Http404,HttpResponseRedirect
 from django.urls import reverse_lazy
 
+from .mixins import PermissionOrOwnerRequiredMixin
 from . import models
 from .forms import OptionFormSet
 
 
 # Create your views here.
 
-class ThreadListView(PermissionRequiredMixin,ListView): 
+class ThreadListView(ListView): 
     paginate_by = 2
     model = models.Thread
     context_object_name='threads'
-    permission_required = 'forum.view_thread'
+    
     
 class ThreadPostListView(ListView): 
     model = models.Post
@@ -44,33 +45,39 @@ class ThreadPostListView(ListView):
     
     
     
-class ThreadCreateView(LoginRequiredMixin,CreateView): 
+class ThreadCreateView(PermissionRequiredMixin,CreateView): 
     model = models.Thread
     fields = ['title']
+    permission_required = 'forum.create_thread'
     
     def form_valid(self, form):
         form.instance.creator = self.request.user
         return super().form_valid(form)
     
     
-class ThreadDeleteView(DeleteView): 
+class ThreadDeleteView(PermissionRequiredMixin,DeleteView): 
     model = models.Thread
     success_url = reverse_lazy('forum:thread-list')
+    permission_required = 'forum.delete_thread'
     
-
     
-class ThreadUpdateView(UpdateView): 
+class ThreadUpdateView(PermissionRequiredMixin,UpdateView): 
     model = models.Thread
+    permission_required = 'forum.change_thread'
     fields = ['title']
     
 
     
     
-class PostCreateUpdateView(LoginRequiredMixin,TemplateResponseMixin, View):
+class PostCreateUpdateView(PermissionOrOwnerRequiredMixin,TemplateResponseMixin, View):
     thread = None
     model = None
     obj = None
+    permission_required = 'forum.change_post'
     template_name = 'forum/content_form.html'
+    
+    def get_object(self):
+        return self.obj
 
     def get_model(self, model_name):
         if model_name in ['text', 'video', 'image', 'file','voting']:
@@ -180,7 +187,8 @@ class PostReplyView(PostCreateUpdateView):
         
 
 
-class PostDeleteView(View):
+class PostDeleteView(PermissionOrOwnerRequiredMixin,View):
+    permission_required = 'forum.delete_post'
     def post(self, request, pk):
         content = get_object_or_404(
             models.Post, id=pk

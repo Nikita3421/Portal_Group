@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'complaints',
     'grades',
     'friends',
+    'pro_file',
 ]
 
 MIDDLEWARE = [

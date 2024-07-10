@@ -32,6 +32,7 @@ urlpatterns = [
     path('complaint/', include('complaints.urls')),
     path('grades/', include('grades.urls')),
     path('friends/', include('friends.urls')),
+    path('profile/', include('pro_file.urls')),
 ]
 
 urlpatterns += static(

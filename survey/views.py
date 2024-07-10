@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.views.generic import ListView,DetailView,CreateView,View,UpdateView,DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
 from django.views.generic.base import TemplateResponseMixin
 from django.forms.models import modelform_factory
 from django.apps import apps
