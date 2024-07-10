@@ -48,7 +48,7 @@ class ThreadPostListView(ListView):
 class ThreadCreateView(PermissionRequiredMixin,CreateView): 
     model = models.Thread
     fields = ['title']
-    permission_required = 'forum.create_thread'
+    permission_required = 'forum.add_thread'
     
     def form_valid(self, form):
         form.instance.creator = self.request.user
