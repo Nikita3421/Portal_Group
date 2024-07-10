@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+
+{% load forum %} 
+
+
 {% block content %}
     
 {% for grade in grades %}
@@ -8,13 +12,13 @@
     <p>оценка: {{grade.ocenka}}</p>
     <p>коментарий: {{grade.comment}}</p>
     <p>оценено: {{grade.creation_date}} by {{grade.creator}}</p>
-    {% if user.is_superuser %}
+    {% if user|has_perms:'grades.delete_grade' %}
     <a href="{% url 'grades:grade_delete' grade.id%}">удалить оценку</a>
     {% endif %}
     <hr>
 {% endfor %}
 
-    {% if user.is_superuser %}
+    {% if user|has_perms:'grades.add_grade' %}
     <a href="{% url 'grades:grade_create' %}" class="btn btn-primary">Создать оценки</a>
     {% endif %}
 

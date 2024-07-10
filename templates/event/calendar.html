@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Event Calendar</title>
     {% load static %}
+    {% load forum %} 
     <link rel="stylesheet" type="text/css" href="{% static 'css/calendar.css' %}">
 </head>
 <body>
@@ -38,7 +39,7 @@
                 </div>
             {% endfor %}
         </div>
-        {% if user.is_authenticated and user.is_superuser %}
+        {% if user|has_perms:'event.add_event' %}
             <a class="button_3" href="{% url 'event:create-event' %}">Create Event</a>
         {% endif %}
         <a class="button_2" href="/">Back to Main</a>

@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import EventForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,permission_required
 from .models import Event
 from datetime import date, datetime, timezone
 from calendar import monthrange, month_name
 from django.http import HttpResponseRedirect
 from django.utils import timezone
 
-
 @login_required
+@permission_required('event.add_event', raise_exception=True)
 def create_event(request):
     if request.method == 'POST':
         form = EventForm(request.POST)

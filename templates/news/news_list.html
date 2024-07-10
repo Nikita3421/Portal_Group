@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load forum %} 
+
 {% block content %}
     
 {%for announsement in announsements%}
@@ -16,9 +18,13 @@
             нравится {{ announsement.likes.count }}
         </button>
 
-        {% if user.is_superuser %}
+        {% if user|has_perms:'announsements.change_announsement' %}
           <a href="{% url 'announsements:announsement_update' announsement.id%}" class="btn btn-secondary">редактировать</a>
         {% endif %}  
+
+        {% if user|has_perms:'announsements.delete_announsement' %}
+        <a href="{% url 'announsements:announsement_delete' announsement.id%}" class="btn btn-secondary">Delete</a>
+      {% endif %}  
 
       </form>
     </div>
@@ -27,9 +33,9 @@
   <p></p>
 {% endfor %}
   
-  {% if user.is_superuser %}
-    <a href="{% url 'announsements:announsement_create' %}" class="btn btn-primary">Создать обьявление</a>
-  {% endif %}
+{% if user|has_perms:'announsements.add_announsement' %}
+  <a href="{% url 'announsements:announsement_create' %}" class="btn btn-primary">Создать обьявление</a>
+{% endif %}
 
 <footer>
   {% if page_obj.has_previous %}
