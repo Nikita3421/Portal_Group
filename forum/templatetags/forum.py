@@ -13,3 +13,10 @@ def model_name(obj):
 @register.filter(name="is_voted")
 def is_voted(voting,user):
     return voting.is_voted(user)
+
+@register.filter(name="has_perms")
+def has_perms(user,perms):
+    if isinstance(perms, str):
+        perms = (perms,)
+    return user.has_perms(perms)
+
