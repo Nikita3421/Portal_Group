@@ -1,24 +1,36 @@
-{% extends "base.html" %}
-
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/gallery.css' %}">
-
-{% block content %}
-  {% for gallery in gallerys %}
-
-            <div class="card-container">
-              <div class="card" card_id=" {{ gallery.id }}">
-                  {% if gallery.image %}
-                    <img src="{{ gallery.image.url }}" class="card-img-top" alt="Зображення"  style="max-width: 290px;">
-                  {% endif %}
-                  <div class="card-body">
-                    <h2 class="card-title">{{gallery.title}}</h2>
-                    <p class="card-text">{{gallery.description}}</p>
-                    <p class="card-text"><small class="text-body-secondary">Was added {{gallery.create_date}}</small></p>
-                    <p class="card-text">{{gallery.user}}</p>
-                  </div>
-              </div>
-            </div>   
-  {% endfor %}    
-{% endblock content %}
+    <title>Gallery</title>
+</head>
+<header>
+    <li><a href="{% url 'main:home' %}">Home</a></li>
+    <li><a href="{% url 'gallery:gallery_create' %}">Gallery create</a></li>
+</header>
+<body>
+    {% block content %}
+    <div class="gallery-container">
+        {% for gallery in gallerys %}
+        <div class="card-container">
+            <div class="card">
+                {% if gallery.image %}
+                    <img src="{{ gallery.image.url }}" class="card-img-top" alt="{{ gallery.title }}" style="max-width: 290px;">
+                {% endif %}
+                <div class="card-body">
+                    <h2 class="card-title">{{ gallery.title }}</h2>
+                    <p class="card-text">{{ gallery.description }}</p>
+                    <p class="card-text"><small class="text-body-secondary">Was added {{ gallery.create_date }}</small></p>
+                    <p class="card-text">{{ gallery.user }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock content %}
+</body>
+</html>
 
