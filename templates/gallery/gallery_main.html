@@ -7,11 +7,14 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/gallery.css' %}">
     <title>Gallery</title>
 </head>
-<header>
-    <li><a href="{% url 'main:home' %}">Home</a></li>
-    <li><a href="{% url 'gallery:gallery_create' %}">Gallery create</a></li>
-</header>
 <body>
+    <header class="nav">
+        <ul>
+            <li><a href="{% url 'main:home' %}">Home</a></li>
+            <li><a href="{% url 'gallery:gallery_create' %}">Gallery create</a></li>
+        </ul>
+    </header>
+    <div class="divider"></div>
     {% block content %}
     <div class="gallery-container">
         {% for gallery in gallerys %}

@@ -8,6 +8,7 @@ body {
   gap: 20px;
   padding: 20px;
   justify-content: space-between;
+  margin-top: 15px;
 }
 
 .card-container {
@@ -44,4 +45,46 @@ body {
     .card-container {
       padding: 10px;
   }
+}
+
+.nav {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  border-color: white;
+}
+
+.nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav ul li {
+  margin-right: 20px;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: #c9d1d9;
+  font-size: 20px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav ul li a:hover {
+  background-color: #0d1117;
+  transform: scale(1.05);
+}
+
+.divider {
+  margin-top: 5px;
+  height: 1px;
+  background-color: #30363d;
+  width: 100%;
 }
