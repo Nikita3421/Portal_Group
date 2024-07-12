@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+{% load i18n %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Friend List</title>
+    <title>{% translate "Friend List" %} </title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/list.css' %}">
     <script src="{% static 'js/reactions.js' %}" defer></script>
@@ -14,7 +16,7 @@
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
     <div class="container">
         <div class="sidebar">
-            <h2>Friends</h2>
+            <h2>{% translate "Friends" %} </h2>
             <ul>
                 {% for friendship in friends %}
                 {% if friendship.user == request.user %}
@@ -45,9 +47,9 @@
         </div>
         <div class="main-content">
             <div class="top-bar">
-                <a href="{% url 'main:home' %}" class="main-page">Main Page</a>
-                <a href="{% url 'friends:mailbox' %}" class="mailbox-button">Mailbox</a>
-                <a href="{% url 'friends:send_friend_request' %}" class="add-friend-button">Add Friends</a>
+                <a href="{% url 'main:home' %}" class="main-page">{% translate "Main Page" %}</a>
+                <a href="{% url 'friends:mailbox' %}" class="mailbox-button">{% translate "Mailbox" %}</a>
+                <a href="{% url 'friends:send_friend_request' %}" class="add-friend-button">{% translate "Add Friends" %}</a>
             </div>
             <div class="chat-box" id="chat-box">
                 <div class="chat-messages" id="chat-messages">
@@ -55,7 +57,7 @@
                     {% if message.sender == request.user %}
                     <div class="message sent-message" data-message-id="{{ message.id }}">
                         <p>{{ message.content }}</p>
-                        <span class="message-details">You</span>
+                        <span class="message-details">{% translate "You" %}</span>
                     </div>
                     {% else %}
                     <div class="message received-message" data-message-id="{{ message.id }}">

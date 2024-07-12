@@ -1,13 +1,14 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 
 
 {% block content %}
   <h1>
     {% if object %}
-      Edit content "{{ object.title }}"
+      {% translate "Edit content" %} "{{ object.title }}"
     {% else %}
-      Add new content
+      {% translate "Add new content" %}
     {% endif %}
   </h1>
 
@@ -15,14 +16,14 @@
       {{ form.as_p }}
 
       {% if formset %}
-      <h3>Options:</h3>
+      <h3>{% translate "Options" %}:</h3>
         {{ formset.management_form }}
           {% for form in formset %}
               {{ form.as_p }}
           {% endfor %}
       {% endif %}
       {% csrf_token %}
-      <p><input type="submit" value="Save post"></p>
+      <button type="submit" class="btn btn-success">{% translate "Save post" %} </button>
     </form>
 
 {% endblock %}

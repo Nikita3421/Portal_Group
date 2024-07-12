@@ -1,19 +1,20 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Sign up{% endblock %}
+{% block title %}{% translate "Sign up" %}{% endblock %}
 
 {% block content %}
   <form method="post" class="auth-form">
     {% csrf_token %}
-    <div class="title">Sign up</div>
-        <label for="username">Username</label>
+    <div class="title">{% translate "Sign up" %}</div>
+        <label for="username">{% translate "Username" %}</label>
         {{ form.username }}
-        <label for="email">Email</label>
+        <label for="email">{% translate "Email" %}</label>
         {{ form.email }}
-        <label for="password1">Password 1</label>
+        <label for="password1">{% translate "Password 1" %}</label>
         {{ form.password1 }}
-        <label for="password2">Password 2</label>
+        <label for="password2">{% translate "Password 2" %}</label>
         {{ form.password2 }}
-    <button type="submit" class="auth-form-btn" href="{% url 'auth_sys:login' %}">Sign up</button>
+    <button type="submit" class="auth-form-btn" href="{% url 'auth_sys:login' %}">{% translate "Sign up" %}</button>
   </form>
 {% endblock %}

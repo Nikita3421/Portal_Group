@@ -1,21 +1,23 @@
 <!DOCTYPE html>
+{% load i18n %}
+
 <html>
 <head>
-    <title>Mailbox</title>
+    <title>{% translate "Mailbox" %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/mailbox.css' %}">
 </head>
 <body>
     <div class="container">
-        <h2>Mailbox</h2>
+        <h2>{% translate "Mailbox" %}</h2>
         <ul>
             {% for request in pending_requests %}
                 <li>
-                    <div class="request-info">{{ request.user.username }} wants to be your friend.</div>
+                    <div class="request-info">{{ request.user.username }} {% translate "wants to be your friend" %}.</div>
                     <form method="post" action="{% url 'friends:accept_friend_request' %}">
                         {% csrf_token %}
                         <input type="hidden" name="request_id" value="{{ request.id }}">
-                        <button type="submit">Accept</button>
+                        <button type="submit">{% translate "Accept" %}</button>
                     </form>
                 </li>
             {% endfor %}

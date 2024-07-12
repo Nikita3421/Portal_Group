@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 
 {% load forum %} 
@@ -7,19 +8,19 @@
 {% block content %}
     
 {% for grade in grades %}
-    <h2>ученик: {{grade.user}}</h2>
-    <h3>предмет: {{grade.predmet}}</h3>
-    <p>оценка: {{grade.ocenka}}</p>
-    <p>коментарий: {{grade.comment}}</p>
-    <p>оценено: {{grade.creation_date}} by {{grade.creator}}</p>
+    <h2>{% translate "student" %}: {{grade.user}}</h2>
+    <h3>{% translate "subject" %}: {{grade.predmet}}</h3>
+    <p>{% translate "grade" %}: {{grade.ocenka}}</p>
+    <p>{% translate "commment" %}: {{grade.comment}}</p>
+    <p>{% translate "graded by" %}: {{grade.creation_date}} by {{grade.creator}}</p>
     {% if user|has_perms:'grades.delete_grade' %}
-    <a href="{% url 'grades:grade_delete' grade.id%}">удалить оценку</a>
+    <a href="{% url 'grades:grade_delete' grade.id%}">{% translate "Delete grade" %} </a>
     {% endif %}
     <hr>
 {% endfor %}
 
     {% if user|has_perms:'grades.add_grade' %}
-    <a href="{% url 'grades:grade_create' %}" class="btn btn-primary">Создать оценки</a>
+    <a href="{% url 'grades:grade_create' %}" class="btn btn-primary">{% translate "Create grade" %} </a>
     {% endif %}
 
 {% endblock %}

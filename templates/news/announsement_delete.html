@@ -2,13 +2,13 @@
 
 {% block content %}
 <div class="container">
-    <h2>Видалення оголошення</h2>
-    <p>Ви впевнені, що хочете видалити оголошення "{{ object.title }}"?</p>
+    <h2>{% translate "Delete announcement" %} </h2>
+    <p> {% translate "Are you sure you want to delete announcement?" %}{{ object.title }}"?</p>
 
     <form method="post">
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Так, видалити</button>
-        <a href="{% url 'announsements:news_list' %}" class="btn btn-secondary">Ні, повернутися до списку оголошень</a>
+        <button type="submit" class="btn btn-danger">{% translate "Yes delete" %} </button>
+        <a href="{% url 'announsements:news_list' %}" class="btn btn-secondary"> {% translate "No, Go back to announcements list" %} </a>
     </form>
 </div>
 {% endblock %}

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Send Friend Request</title>
+    <title>{% translate "Send Friend Request" %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/send.css' %}">
 </head>
 <body>
     <div class="container">
-        <h1>Send Friend Request</h1>
+        <h1>{% translate "Send Friend Request" %}</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Send Request</button>
+            <button type="submit">{% translate "Send Request" %}</button>
         </form>
     </div>
 </body>
