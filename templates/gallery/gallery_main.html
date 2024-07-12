@@ -1,17 +1,19 @@
 {% load static %}
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/gallery.css' %}">
-    <title>Gallery</title>
+    <title>{% translate "Gallery" %} </title>
 </head>
 <body>
     <header class="nav">
         <ul>
-            <li><a href="{% url 'main:home' %}">Home</a></li>
-            <li><a href="{% url 'gallery:gallery_create' %}">Gallery create</a></li>
+            <li><a href="{% url 'main:home' %}">{% translate "Home" %} </a></li>
+            <li><a href="{% url 'gallery:gallery_create' %}">{% translate "Gallery create" %} </a></li>
         </ul>
     </header>
     <div class="divider"></div>
@@ -26,7 +28,7 @@
                 <div class="card-body">
                     <h2 class="card-title">{{ gallery.title }}</h2>
                     <p class="card-text">{{ gallery.description }}</p>
-                    <p class="card-text"><small class="text-body-secondary">Was added {{ gallery.create_date }}</small></p>
+                    <p class="card-text"><small class="text-body-secondary">{% translate "Was added" %}  {{ gallery.create_date }}</small></p>
                     <p class="card-text">{{ gallery.user }}</p>
                 </div>
             </div>

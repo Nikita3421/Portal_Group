@@ -1,0 +1,724 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-13 00:11+0100\n"
+"PO-Revision-Date: 2024-07-13 00:22+0000\n"
+"Last-Translator:   <>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
+
+#: .\Portal_Group\settings.py:130
+msgid "English"
+msgstr "English"
+
+#: .\Portal_Group\settings.py:131
+msgid "German"
+msgstr "German"
+
+#: .\Portal_Group\settings.py:132
+msgid "Ukrainian"
+msgstr "Ukrainian"
+
+#: .\templates\auth_sys\login.html:3 .\templates\auth_sys\login.html:8
+#: .\templates\auth_sys\login.html:13 .\templates\base.html:81
+msgid "Sign in"
+msgstr "Anmelden"
+
+#: .\templates\auth_sys\login.html:9 .\templates\auth_sys\signup.html:10
+msgid "Username"
+msgstr "Benutzername"
+
+#: .\templates\auth_sys\login.html:11
+msgid "Password"
+msgstr "Passwort"
+
+#: .\templates\auth_sys\signup.html:4 .\templates\auth_sys\signup.html:9
+#: .\templates\auth_sys\signup.html:18
+msgid "Sign up"
+msgstr "Anmelden"
+
+#: .\templates\auth_sys\signup.html:12
+msgid "Email"
+msgstr "E-Mail"
+
+#: .\templates\auth_sys\signup.html:14
+msgid "Password 1"
+msgstr "Passwort:%1"
+
+#: .\templates\auth_sys\signup.html:16
+msgid "Password 2"
+msgstr "Passwort            <g id=\"2\">2</g>"
+
+#: .\templates\base.html:10
+msgid "Portal group"
+msgstr "8 Elektronischer Rechtsverkehr ."
+
+#: .\templates\base.html:28
+msgid "Language"
+msgstr "Sprache"
+
+#: .\templates\base.html:49 .\templates\gallery\gallery_main.html:15
+msgid "Home"
+msgstr "Startseite"
+
+#: .\templates\base.html:50 .\templates\main\home.html:14
+msgid "News"
+msgstr "Nachrichten"
+
+#: .\templates\base.html:51 .\templates\main\home.html:9
+msgid "Forum"
+msgstr "Forum"
+
+#: .\templates\base.html:52 .\templates\gallery\gallery_main.html:10
+#: .\templates\main\home.html:37
+msgid "Gallery"
+msgstr "Galerie"
+
+#: .\templates\base.html:53 .\templates\main\home.html:42
+msgid "E-diary"
+msgstr "e-Tagebuch"
+
+#: .\templates\base.html:55
+msgid "Survey"
+msgstr "Umfrage"
+
+#: .\templates\base.html:61 .\templates\main\home.html:19
+#: .\templates\portfolio\portfolio_main.html:8
+#: .\templates\portfolio\portfolio_main.html:16
+#: .\templates\profile\profile-update.html:16
+#: .\templates\profile\profile.html:31
+msgid "Portfolio"
+msgstr "Portfolio"
+
+#: .\templates\base.html:63
+msgid "Main Portfolio"
+msgstr "Hauptportfolio"
+
+#: .\templates\base.html:64
+msgid "Portfolio Information"
+msgstr "Portfolio-Informationen"
+
+#: .\templates\base.html:65
+msgid "Projects Information"
+msgstr "Projektinformationen"
+
+#: .\templates\base.html:69 .\templates\main\home.html:25
+msgid "Create Portfolio"
+msgstr "Portfolio erstellen aus"
+
+#: .\templates\base.html:76
+msgid "Profile info"
+msgstr "persönliche Informationen"
+
+#: .\templates\base.html:77
+msgid "Logout"
+msgstr "Abmelden"
+
+#: .\templates\base.html:82
+msgid "Sign Up"
+msgstr "Registrieren"
+
+#: .\templates\complaints\complaint_form.html:12
+#: .\templates\forum\thread_form.html:13
+#: .\templates\gallery\gallery_form.html:17
+#: .\templates\grades\grade_form.html:12
+#: .\templates\news\announsement_form.html:11
+#: .\templates\portfolio\portfolio_form.html:25
+#: .\templates\portfolio\projects_form.html:17
+#: .\templates\profile\profile-update.html:13
+#: .\templates\profile\profile-update.html:45
+#: .\templates\profile\profile.html:15 .\templates\profile\profile.html:25
+#: .\templates\profile\profile.html:61 .\templates\profile\profile.html:70
+msgid "Save"
+msgstr "Speichern"
+
+#: .\templates\event\calendar.html:7
+msgid "Event Calendar"
+msgstr "Veranstaltungskalender"
+
+#: .\templates\event\calendar.html:17
+msgid "Previous Month"
+msgstr "Voriger Monat"
+
+#: .\templates\event\calendar.html:18
+msgid "Next Month"
+msgstr "Nächster Monat"
+
+#: .\templates\event\calendar.html:28
+msgid "Date"
+msgstr "Datum"
+
+#: .\templates\event\calendar.html:30 .\templates\event\create_event.html:30
+msgid "Description"
+msgstr "Beschreibung"
+
+#: .\templates\event\calendar.html:32 .\templates\event\create_event.html:34
+msgid "Category"
+msgstr "Kategorie"
+
+#: .\templates\event\calendar.html:34 .\templates\event\create_event.html:38
+msgid "Status"
+msgstr "Rechtsstatus"
+
+#: .\templates\event\calendar.html:36 .\templates\event\create_event.html:42
+msgid "Type"
+msgstr "Typ"
+
+#: .\templates\event\calendar.html:45 .\templates\event\create_event.html:14
+#: .\templates\event\create_event.html:45
+msgid "Create Event"
+msgstr "Veranstaltung erstellen"
+
+#: .\templates\event\calendar.html:47 .\templates\event\create_event.html:47
+msgid "Back to Main"
+msgstr "Zurück zur Startseite"
+
+#: .\templates\event\create_event.html:6
+msgid "Portal Group"
+msgstr "8 Elektronischer Rechtsverkehr ."
+
+#: .\templates\event\create_event.html:18
+msgid "Title"
+msgstr "Title"
+
+#: .\templates\event\create_event.html:22
+msgid "Start time"
+msgstr "Startzeit"
+
+#: .\templates\event\create_event.html:26
+msgid "End time"
+msgstr "Ende"
+
+#: .\templates\forum\content_form.html:9
+msgid "Edit content"
+msgstr "Inhalt bearbeiten"
+
+#: .\templates\forum\content_form.html:11
+msgid "Add new content"
+msgstr "Inhalt erstellen"
+
+#: .\templates\forum\content_form.html:19
+#: .\templates\survey\question_form.html:19
+msgid "Options"
+msgstr "Optionen (Options)"
+
+#: .\templates\forum\content_form.html:26 .\templates\forum\reply_form.html:22
+msgid "Save post"
+msgstr "Beitrag speichern"
+
+#: .\templates\forum\reply_form.html:8
+msgid "Reply to"
+msgstr "Antwort an"
+
+#: .\templates\forum\thread_confirm_delete.html:8
+#: .\templates\survey\page_confirm_delete.html:8
+msgid "Delete page"
+msgstr "Seite löschen"
+
+#: .\templates\forum\thread_confirm_delete.html:9
+msgid "Are you sure you want to delete thread"
+msgstr "Sind Sie sicher, dass Sie diesen Thread löschen möchten?"
+
+#: .\templates\forum\thread_confirm_delete.html:13
+#: .\templates\survey\page_confirm_delete.html:13
+#: .\templates\survey\syrvey_confirm_delete.html:13
+msgid "Yes, delete"
+msgstr "Ja, löschen"
+
+#: .\templates\forum\thread_confirm_delete.html:14
+msgid "Go back to forum"
+msgstr "Zum Forum"
+
+#: .\templates\forum\thread_detail.html:39
+msgid "votes"
+msgstr "Abstimmungen"
+
+#: .\templates\forum\thread_detail.html:54
+msgid "file"
+msgstr "Datei"
+
+#: .\templates\forum\thread_detail.html:61
+#: .\templates\forum\thread_list.html:20 .\templates\news\news_list.html:24
+#: .\templates\portfolio\portfolio_form.html:21
+#: .\templates\portfolio\projects_form.html:13
+#: .\templates\survey\syrvey_detail.html:19
+#: .\templates\survey\syrvey_detail.html:45
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: .\templates\forum\thread_detail.html:77
+msgid "Complain"
+msgstr "Beschwerde"
+
+#: .\templates\forum\thread_detail.html:78
+msgid "Reply with text"
+msgstr "Mit Text antworten"
+
+#: .\templates\forum\thread_detail.html:79
+msgid "Reply with image"
+msgstr "Mit Bild antworten"
+
+#: .\templates\forum\thread_detail.html:80
+msgid "Reply with video"
+msgstr "Mit Video antworten"
+
+#: .\templates\forum\thread_detail.html:81
+msgid "Reply with file"
+msgstr "Mit Datei antworten"
+
+#: .\templates\forum\thread_detail.html:82
+msgid "Reply with voting"
+msgstr "Antworten Sie mit Voting"
+
+#: .\templates\forum\thread_detail.html:90
+msgid "No posts on this thread yet"
+msgstr "Noch keine Beiträge in diesem Thread"
+
+#: .\templates\forum\thread_detail.html:93
+msgid "Add new posts"
+msgstr "Neue Beiträge hinzufügen"
+
+#: .\templates\forum\thread_detail.html:96
+msgid "Text"
+msgstr "Text"
+
+#: .\templates\forum\thread_detail.html:99
+msgid "Image"
+msgstr "Bild"
+
+#: .\templates\forum\thread_detail.html:102
+msgid "Video"
+msgstr "Video"
+
+#: .\templates\forum\thread_detail.html:105
+msgid "File"
+msgstr "Datei"
+
+#: .\templates\forum\thread_detail.html:108
+msgid "Voting"
+msgstr "Teilnehmen"
+
+#: .\templates\forum\thread_detail.html:114
+#: .\templates\forum\thread_list.html:37 .\templates\news\news_list.html:44
+#: .\templates\portfolio\projects_list.html:23
+msgid "previous"
+msgstr "vorherige"
+
+#: .\templates\forum\thread_detail.html:118
+#: .\templates\forum\thread_list.html:41 .\templates\news\news_list.html:48
+#: .\templates\portfolio\projects_list.html:29
+msgid "next"
+msgstr "nächste"
+
+#: .\templates\forum\thread_list.html:15 .\templates\news\news_list.html:28
+#: .\templates\portfolio\projects_list.html:16
+#: .\templates\survey\syrvey_detail.html:20
+msgid "Delete"
+msgstr "Löschen"
+
+#: .\templates\forum\thread_list.html:25
+msgid "No thread yet create new one "
+msgstr "Noch kein Thread erstellt"
+
+#: .\templates\forum\thread_list.html:31
+msgid "Create new thread"
+msgstr "Neues Thema erstellen"
+
+#: .\templates\friends\list.html:8
+msgid "Friend List"
+msgstr "Freundesliste"
+
+#: .\templates\friends\list.html:19 .\templates\main\home.html:32
+msgid "Friends"
+msgstr "Freunde"
+
+#: .\templates\friends\list.html:50
+msgid "Main Page"
+msgstr "Hauptseite"
+
+#: .\templates\friends\list.html:51 .\templates\friends\mailbox.html:6
+#: .\templates\friends\mailbox.html:12
+msgid "Mailbox"
+msgstr "Mailbox, Posteingang"
+
+#: .\templates\friends\list.html:52
+msgid "Add Friends"
+msgstr "Freunde hinzufügen"
+
+#: .\templates\friends\list.html:60
+msgid "You"
+msgstr "Sie"
+
+#: .\templates\friends\mailbox.html:16
+msgid "wants to be your friend"
+msgstr "Sie"
+
+#: .\templates\friends\mailbox.html:20
+msgid "Accept"
+msgstr "Akzeptieren"
+
+#: .\templates\friends\send.html:4 .\templates\friends\send.html:10
+msgid "Send Friend Request"
+msgstr "Kontaktanfrage abschicken"
+
+#: .\templates\friends\send.html:14
+msgid "Send Request"
+msgstr "Anfrage senden"
+
+#: .\templates\gallery\gallery_detail.html:10
+#: .\templates\gallery\gallery_main.html:31
+msgid "Was added"
+msgstr "wurde hinzugefügt"
+
+#: .\templates\gallery\gallery_main.html:16
+msgid "Gallery create"
+msgstr "Galerie erstellen"
+
+#: .\templates\grades\grade_delete.html:5
+msgid "Deleting grade"
+msgstr "Note wird gelöscht"
+
+#: .\templates\grades\grade_delete.html:6
+msgid "Are you sure you want delete grade"
+msgstr "Sind Sie sicher, dass Sie die Note löschen möchten?"
+
+#: .\templates\grades\grade_delete.html:10
+#: .\templates\news\announsement_delete.html:10
+msgid "Yes delete"
+msgstr "Ja, löschen"
+
+#: .\templates\grades\grade_delete.html:11
+msgid "No go back to grades list"
+msgstr "Notenliste zurück"
+
+#: .\templates\grades\grade_form.html:13
+msgid "Go back to grades list"
+msgstr "Zurück zur Notenliste"
+
+#: .\templates\grades\grades_list.html:11
+msgid "student"
+msgstr "Teilnehmer"
+
+#: .\templates\grades\grades_list.html:12
+msgid "subject"
+msgstr "Thema"
+
+#: .\templates\grades\grades_list.html:13
+msgid "grade"
+msgstr "Note"
+
+#: .\templates\grades\grades_list.html:14
+msgid "commment"
+msgstr "Note"
+
+#: .\templates\grades\grades_list.html:15
+msgid "graded by"
+msgstr "benotet von"
+
+#: .\templates\grades\grades_list.html:17
+msgid "Delete grade"
+msgstr "Sorte  löschen"
+
+#: .\templates\grades\grades_list.html:23
+msgid "Create grade"
+msgstr "Note erstellen"
+
+#: .\templates\main\home.html:5
+msgid "Welcome to the Portal"
+msgstr "Willkommen im Portal"
+
+#: .\templates\main\home.html:10
+msgid "Join the discussion on our forum"
+msgstr "Nehmen Sie an der Diskussion in unserem Forum teil"
+
+#: .\templates\main\home.html:11
+msgid "Go to Forum"
+msgstr "Zum Forum"
+
+#: .\templates\main\home.html:15
+msgid "Stay updated with the latest news"
+msgstr "Bleiben Sie mit unseren aktuellen Nachrichten auf dem Laufenden"
+
+#: .\templates\main\home.html:16
+msgid "Read News"
+msgstr "Nachrichten lesen"
+
+#: .\templates\main\home.html:20
+msgid "Create and manage your projects"
+msgstr "Ihre Projekte anlegen und verwalten."
+
+#: .\templates\main\home.html:23
+msgid "Go to Portfolio"
+msgstr "Zum Portfolio"
+
+#: .\templates\main\home.html:28
+msgid "Sign in to Create Portfolio"
+msgstr "Melden Sie sich an, um ein Portfolio zu erstellen"
+
+#: .\templates\main\home.html:33
+msgid "Find a friends and chat with them"
+msgstr "Finde Freunde und chatte mit ihnen"
+
+#: .\templates\main\home.html:34
+msgid "Find a Friend"
+msgstr "ein Freund"
+
+#: .\templates\main\home.html:38
+msgid "If you want see intresting, funny, scary photo go to the Gallery"
+msgstr ""
+"Wenn Sie ein interessantes, lustiges, gruseliges Foto sehen möchten, gehen "
+"Sie in die Galerie"
+
+#: .\templates\main\home.html:39
+msgid "Go to the Gallery"
+msgstr "Weiter zur Galerie"
+
+#: .\templates\main\home.html:43
+msgid "Monitor your grades"
+msgstr "Überwachen Sie Ihre Noten"
+
+#: .\templates\main\home.html:44
+msgid "See your Grades"
+msgstr "Sieh dir deine Noten an"
+
+#: .\templates\news\announsement_delete.html:5
+#: .\templates\news\announsement_update.html:12
+msgid "Delete announcement"
+msgstr "Ankündigung löschen"
+
+#: .\templates\news\announsement_delete.html:6
+msgid "Are you sure you want to delete announcement?"
+msgstr "Sind Sie sicher, dass Sie diese Ankündigung löschen möchten?"
+
+#: .\templates\news\announsement_delete.html:11
+msgid "No, Go back to announcements list"
+msgstr "Nein, zurück zur Ankündigungsliste"
+
+#: .\templates\news\announsement_form.html:12
+#: .\templates\news\announsement_update.html:11
+msgid "Go back to announcements list"
+msgstr "Zurück zur Ankündigungsliste"
+
+#: .\templates\news\announsement_update.html:10
+msgid "Update announcement"
+msgstr "Ankündigung aktualisieren"
+
+#: .\templates\news\news_list.html:15
+msgid "Last updated"
+msgstr "Zuletzt aktualisiert"
+
+#: .\templates\news\news_list.html:15
+msgid "by"
+msgstr "von"
+
+#: .\templates\news\news_list.html:20
+msgid "Like"
+msgstr "Like"
+
+#: .\templates\news\news_list.html:39
+msgid "Create announcement"
+msgstr "Ankündigung erstellen"
+
+#: .\templates\portfolio\portfolio_form.html:6
+msgid "Create your portfolio"
+msgstr "Erstellen Sie Ihr Portfolio"
+
+#: .\templates\portfolio\portfolio_main.html:6
+msgid "Would you like to veiw/update your portfolio"
+msgstr "Möchten Sie Ihr Portfolio aktualisieren/aktualisieren"
+
+#: .\templates\portfolio\portfolio_main.html:9
+msgid "Update projects info"
+msgstr "Projektinformationen aktualisieren"
+
+#: .\templates\portfolio\portfolio_main.html:10
+msgid "Update portfolio"
+msgstr "Portfolio aktualisieren"
+
+#: .\templates\portfolio\portfolio_main.html:13
+msgid "Would you like to view portfolio?"
+msgstr "Möchten Sie sich das Portfolio ansehen?"
+
+#: .\templates\portfolio\portfolio_main.html:17
+msgid "Projects info"
+msgstr "Projektinfo"
+
+#: .\templates\portfolio\projects_form.html:6
+msgid "Fill information about your projects"
+msgstr "Füllen Sie Informationen zu Ihren Projekten aus"
+
+#: .\templates\portfolio\projects_list.html:13
+msgid "Change info about projects"
+msgstr "Informationen zu Projekten ändern"
+
+#: .\templates\portfolio\projects_list.html:19
+msgid "Create project information"
+msgstr "Projektinformationen erstellen"
+
+#: .\templates\profile\profile-update.html:14
+#: .\templates\profile\profile-update.html:46
+#: .\templates\profile\profile.html:16 .\templates\profile\profile.html:26
+#: .\templates\profile\profile.html:62 .\templates\profile\profile.html:71
+msgid "Cancel"
+msgstr "Projektinformationen erstellen"
+
+#: .\templates\profile\profile-update.html:21
+#: .\templates\profile\profile-update.html:53
+#: .\templates\profile\profile.html:36 .\templates\profile\profile.html:81
+msgid "Your projects"
+msgstr "Ihre Projekte"
+
+#: .\templates\profile\profile-update.html:48
+#: .\templates\profile\profile.html:76
+msgid "Portfolio Create"
+msgstr "Portfolio erstellen"
+
+#: .\templates\profile\profile-update.html:54
+#: .\templates\profile\profile.html:82
+msgid "You should first create portfolio"
+msgstr "Sie sollten zuerst ein Portfolio erstellen"
+
+#: .\templates\profile\profile.html:19 .\templates\profile\profile.html:64
+msgid "Edit profile photo"
+msgstr "Profilfoto bearbeiten"
+
+#: .\templates\profile\profile.html:29 .\templates\profile\profile.html:74
+msgid "Add profile photo"
+msgstr "Profilfoto bearbeiten"
+
+#: .\templates\survey\fill_form.html:9
+msgid "Step"
+msgstr "Schritt"
+
+#: .\templates\survey\fill_form.html:19
+msgid "first step"
+msgstr "Erster Schritt"
+
+#: .\templates\survey\fill_form.html:20
+msgid "prev step"
+msgstr "Vorheriger Schritt"
+
+#: .\templates\survey\page_confirm_delete.html:9
+msgid "Are you sure you want to delete page"
+msgstr "Sind Sie sicher, dass Sie Folgendes löschen möchten"
+
+#: .\templates\survey\page_confirm_delete.html:14
+msgid "Go back to survey"
+msgstr "Zur Übersicht"
+
+#: .\templates\survey\page_form.html:13 .\templates\survey\survey_form.html:14
+msgid "save"
+msgstr "Speichern"
+
+#: .\templates\survey\question_form.html:9
+msgid "Edit question"
+msgstr "Frage bearbeiten"
+
+#: .\templates\survey\question_form.html:11
+msgid "Add new question"
+msgstr "Deinen Kommentar posten"
+
+#: .\templates\survey\question_form.html:26
+msgid "Save question"
+msgstr "Frage speichern"
+
+#: .\templates\survey\survey_answers.html:10
+msgid "Link to complete survey"
+msgstr "Link zum Ausfüllen der Umfrage"
+
+#: .\templates\survey\survey_answers.html:12
+msgid "Download in csv file"
+msgstr "CSV-Datei herunterladen"
+
+#: .\templates\survey\survey_answers.html:18
+msgid "User"
+msgstr "Benutzer"
+
+#: .\templates\survey\survey_answers.html:19
+msgid "created"
+msgstr "erstellt"
+
+#: .\templates\survey\survey_message.html:9
+#, python-format
+msgid " Thank you for completing  %(survey)s your answers are saved "
+msgstr ""
+"Vielen Dank, dass Sie %(survey)s ausgefüllt haben. Ihre Antworten wurden "
+"gespeichert."
+
+#: .\templates\survey\survey_message.html:13
+msgid "Would you like to recomplete it?"
+msgstr "Möchtest du es erneut vervollständigen?"
+
+#: .\templates\survey\survey_message.html:14
+msgid "Change answers"
+msgstr "Antworten ändern für"
+
+#: .\templates\survey\survey_message.html:16
+msgid "You can't change your answers"
+msgstr "Sie können Ihre Antworten nicht ändern"
+
+#: .\templates\survey\survey_nav_tabs.html:4
+#, fuzzy
+#| msgid "Qustions"
+msgid "Questions"
+msgstr "Fragen"
+
+#: .\templates\survey\survey_nav_tabs.html:7
+msgid "Answers"
+msgstr "Antworten"
+
+#: .\templates\survey\syrvey_confirm_delete.html:8
+msgid "Delete survey"
+msgstr "Umfrage-Website löschen"
+
+#: .\templates\survey\syrvey_confirm_delete.html:9
+msgid " Are you sure you want to delete survey"
+msgstr "Sind Sie sich sicher, dass Sie diese Umfrage löschen wollen?"
+
+#: .\templates\survey\syrvey_confirm_delete.html:14
+msgid " Go back to survey list"
+msgstr "Zurück zur Umfrageliste"
+
+#: .\templates\survey\syrvey_detail.html:15
+msgid "page"
+msgstr "Seite"
+
+#: .\templates\survey\syrvey_detail.html:15
+msgid "of"
+msgstr "Seite"
+
+#: .\templates\survey\syrvey_detail.html:50
+msgid "Delete question"
+msgstr "Frage löschen"
+
+#: .\templates\survey\syrvey_detail.html:60
+msgid "Add new questions to this page"
+msgstr "Neue Fragen zu dieser Seite hinzufügen"
+
+#: .\templates\survey\syrvey_detail.html:63
+msgid "Text question"
+msgstr "Textfrage"
+
+#: .\templates\survey\syrvey_detail.html:66
+msgid "Question with options"
+msgstr "Frage mit Optionen"
+
+#: .\templates\survey\syrvey_detail.html:73
+msgid "Create new page"
+msgstr "Neue Seite erstellen"
+
+#: .\templates\survey\syrvey_list.html:23
+msgid "Create new survey"
+msgstr "Neues Quiz/Umfrage erstellen"

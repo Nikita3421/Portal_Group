@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
 
 {% block content %}
 <div class="container mt-3">
@@ -12,7 +14,7 @@
         </ul>
         {% endif %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Зберегти</button>
+        <button type="submit" class="btn btn-success">{% translate "Save" %} </button>
     </form>
 </div>
 {% endblock %}

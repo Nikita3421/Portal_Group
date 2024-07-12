@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 
 
@@ -11,33 +12,33 @@
         <a href='{% url "forum:thread-detail" thread.pk %}'> {{thread}}</a> 
         <br>
         {% if user|has_perms:'forum.delete_thread' %}
-            <a href='{% url "forum:thread-delete" thread.pk %}'>Delete</a>
+            <a href='{% url "forum:thread-delete" thread.pk %}'>{% translate "Delete" %}</a>
             <br>
         {% endif %}
 
         {% if user|has_perms:'forum.change_post' %}
-        <a href='{% url "forum:thread-update" thread.pk %}'> Edit</a>
+        <a href='{% url "forum:thread-update" thread.pk %}'> {% translate "Edit" %}</a>
         <br>
         {% endif %}
 
     {% empty %}
-        No thread yet create new one 
+        {% translate "No thread yet create new one " %}
         <br>
     
     {% endfor %}
 
     {% if user|has_perms:'forum.add_post' %}
-    <a href='{% url "forum:thread-create" %}' >Create new thread<a>
+    <a href='{% url "forum:thread-create" %}' >{% translate "Create new thread" %}<a>
         {% endif %}
 
 
     <footer>
         {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}" class="previous">previous</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="previous">{% translate "previous" %}</a>
         {% endif %}
         <a href="?page={{ page_obj.number }}" class="current">{{ page_obj.number }}</a>
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="next">next</a>
+            <a href="?page={{ page_obj.next_page_number }}" class="next">{% translate "next" %}</a>
         {% endif %}
     </footer>
 

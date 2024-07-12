@@ -1,16 +1,17 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 
 <div class='container'>
 
-    <h2>Delete page</h2>
-    <p> Are you sure you want to delete thread {{object.title}} </p>
+    <h2> {% translate "Delete page" %}</h2>
+    <p> {% translate "Are you sure you want to delete thread" %} {{object.title}} </p>
 
     <form method='post'>
         {% csrf_token %}
-        <button type='submit' class='btn btn-danger'>Yes, delete </button>
-        <a href='{% url "forum:thread-list"   %}' > Go back to forum </a >
+        <button type='submit' class='btn btn-danger'>{% translate "Yes, delete" %} </button>
+        <a href='{% url "forum:thread-list"   %}' > {% translate "Go back to forum" %} </a >
     </form>
 
 </div>

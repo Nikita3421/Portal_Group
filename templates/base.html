@@ -1,12 +1,13 @@
 <!-- Основной шаблон и менюшка -->
 
 {% load forum %} 
+{% load i18n %}
 
 
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Portal Group</title>
+  <title>{% translate "Portal group" %}</title>
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 <body>
@@ -17,40 +18,68 @@
               <img class="calendar" src="{% static 'img/calendar.png' %}" alt="Not Found">
             </a>
         </li>
-        <li><a href="{% url 'main:home' %}">Home</a></li>
-        <li><a href="{% url 'announsements:news_list' %}">News</a></li>
-        <li><a href="{% url 'forum:thread-list' %}">Forum</a></li>
-        <li><a href="{% url 'gallery:gallery_main' %}">Gallery</a></li>
-        <li><a href="{% url 'grades:grades_list' %}" >Електрический дневник</a></li>
+
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">
+            {% translate "Language" %}:
+          </a>
+          <div class="dropdown-content">
+            {% for language in languages %}
+
+              
+
+              <a href=" /{{language.code}}/ "
+              {% if language.code == LANGUAGE_CODE %} class="selected"{% endif %}>
+              {{ language.name_local }}
+              </a>
+
+            {% endfor %}
+
+          </div>
+        </li>
+
+
+
+        
+        
+        <li><a href="{% url 'main:home' %}">{% translate  "Home" %}</a></li>
+        <li><a href="{% url 'announsements:news_list' %}">{% translate "News" %}</a></li>
+        <li><a href="{% url 'forum:thread-list' %}">{% translate "Forum" %}</a></li>
+        <li><a href="{% url 'gallery:gallery_main' %}">{% translate "Gallery"  %}</a></li>
+        <li><a href="{% url 'grades:grades_list' %}" >{% translate "E-diary" %}</a></li>
         {% if user|has_perms:'survey.view_survey' %}
-        <li><a href="{% url 'grades:grades_list' %}" >Survey</a></li>
+        <li><a href="{% url 'survey:survey-list' %}" >{% translate "Survey" %}</a></li>
         {% endif %}
         
         {% if user.is_authenticated %}
           {% if user.portfolio and user.portfolio.pk %}
             <li class="dropdown">
-              <a href="javascript:void(0)" class="dropbtn">Portfolio</a>
+              <a href="javascript:void(0)" class="dropbtn">{% translate "Portfolio" %}</a>
               <div class="dropdown-content"> {% comment "" %}<img src="/media/{% endcomment %}
-                <a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}">Main Portfolio</a>
-                <a href="{% url 'portfolio:portfolio_detail' user.portfolio.pk %}">Portfolio Information</a>
-                <a href="{% url 'portfolio:projects_list' user.portfolio.pk %}">Projects Information</a>
+                <a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}">{% translate "Main Portfolio" %}</a>
+                <a href="{% url 'portfolio:portfolio_detail' user.portfolio.pk %}">{% translate "Portfolio Information" %}</a>
+                <a href="{% url 'portfolio:projects_list' user.portfolio.pk %}">{% translate "Projects Information" %}</a>
               </div>
             </li>
           {% else %}
-            <li><a href="{% url 'portfolio:portfolio_create' %}">Create Portfolio</a></li>
+            <li><a href="{% url 'portfolio:portfolio_create' %}">{% translate "Create Portfolio" %}</a></li>
           {% endif %}
         <li class="dropdown">
           <a href="javascript:void(0)" class="dropbtn">
             <img class="rounded-circle profile-photo" src="{{ user.profile.profile_photo.url }}" alt="idk">
           </a>
           <div class="dropdown-content">
-            <a href="{% url 'profile:profile-info'%}">Profile Info</a>
-            <a href="{% url 'auth_sys:logout' %}">Logout</a>
+            <a href="{% url 'profile:profile-info'%}">{% translate "Profile info" %}</a>
+            <a href="{% url 'auth_sys:logout' %}">{% translate "Logout" %}</a>
           </div>
         </li>
         {% else %}
-          <li><a href="{% url 'auth_sys:login' %}">Sign in</a></li>
-          <li><a href="{% url 'auth_sys:signup' %}">Sign Up</a></li>
+          <li><a href="{% url 'auth_sys:login' %}">{% translate "Sign in" %} </a></li>
+          <li><a href="{% url 'auth_sys:signup' %}">{% translate "Sign Up" %} </a></li>
         {% endif %}
         <li>
           <a href="{% url 'friends:friend_list' %}">

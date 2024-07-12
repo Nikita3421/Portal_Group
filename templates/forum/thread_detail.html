@@ -2,6 +2,7 @@
 
 {% block content %}
 
+{% load i18n %}
 {% load forum %} 
 
 {% for post in posts %}
@@ -35,7 +36,7 @@
     <br>
     {% endfor %}
     
-    {{item.votes_count}} votes
+    {{item.votes_count}} {% translate "votes" %}
 
     
 
@@ -50,14 +51,14 @@
   {{item.url}}
   {% elif item|model_name == 'file' %}
   <h3>{{ item }}  </h3>
-  <a href ={{item.file.url}} >file</a>
+  <a href ={{item.file.url}} >{% translate "file" %}</a>
   {% endif %}
 
 
 
     {% if item.creator == user or user|has_perms:'forum.change_post' %}
     <a href="{% url "forum:post-update" thread.id item|model_name item.id %}">
-      Edit
+      {% translate "Edit" %}
     </a>
     {% endif %}
 
@@ -73,12 +74,12 @@
 
     <div class="dropdown">
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="{% url 'complaints:complaint-create' 'post'  post.id  %}">Complain</a></li>
-        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "text"   post.id  %}">Reply with text</a></li>
-        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "image"  post.id  %}">Reply with image</a></li>
-        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "video"  post.id  %}">Reply with video</a></li>
-        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "file"   post.id  %}">Reply with file</a></li>
-        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "voting" post.id  %}">Reply with voting</a></li>
+        <li><a class="dropdown-item" href="{% url 'complaints:complaint-create' 'post'  post.id  %}">{% translate "Complain" %}</a></li>
+        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "text"   post.id  %}">{% translate "Reply with text" %}</a></li>
+        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "image"  post.id  %}">{% translate "Reply with image" %}</a></li>
+        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "video"  post.id  %}">{% translate "Reply with video" %}</a></li>
+        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "file"   post.id  %}">{% translate "Reply with file" %}</a></li>
+        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "voting" post.id  %}">{% translate "Reply with voting" %}</a></li>
       </ul>
     </div>
 
@@ -86,35 +87,35 @@
 
 </div>
 {% empty %}
-<p>No posts on this thread yet</p>
+<p>{% translate "No posts on this thread yet" %}</p>
 {% endfor %}
 
-<h3>Add new posts:</h3>
+<h3>{% translate "Add new posts" %} :</h3>
     <ul >
       <li>
-        <a href="{% url "forum:post-create" thread.id "text" %}">Text</a>
+        <a href="{% url "forum:post-create" thread.id "text" %}">{% translate "Text" %}</a>
       </li>
       <li>
-        <a href="{% url "forum:post-create" thread.id "image" %}">Image</a>
+        <a href="{% url "forum:post-create" thread.id "image" %}">{% translate "Image" %}</a>
       </li>
       <li>
-        <a href="{% url "forum:post-create" thread.id "video" %}">Video</a>
+        <a href="{% url "forum:post-create" thread.id "video" %}">{% translate "Video" %}</a>
       </li>
       <li>
-        <a href="{% url "forum:post-create" thread.id "file" %}">File</a>
+        <a href="{% url "forum:post-create" thread.id "file" %}">{% translate "File" %}</a>
       </li>
       <li>
-        <a href="{% url "forum:post-create" thread.id "voting" %}">Voting</a>
+        <a href="{% url "forum:post-create" thread.id "voting" %}">{% translate "Voting" %}</a>
       </li>
 
 
       <footer>
         {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}" class="previous">previous</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="previous">{% translate "previous" %}</a>
         {% endif %}
         <a href="?page={{ page_obj.number }}" class="current">{{ page_obj.number }}</a>
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="next">next</a>
+            <a href="?page={{ page_obj.next_page_number }}" class="next">{% translate "next" %}</a>
         {% endif %}
     </footer>
 

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 
 {% block content %}
 
@@ -7,16 +7,16 @@
 
 {{survey}}
 <br>
-link to complete survey <a href='{% url "survey:fill-survey" survey.pk %}' >{% url "survey:fill-survey" survey.pk %}</a>
+{% translate "Link to complete survey" %}  <a href='{% url "survey:fill-survey" survey.pk %}' >{{request.get_host}}{% url "survey:fill-survey" survey.pk %}</a>
 <br>
-<a href='{% url "survey:survey-answers-download" survey.pk %}'>Download in csv file</a>
+<a href='{% url "survey:survey-answers-download" survey.pk %}'>{% translate "Download in csv file" %} </a>
 
 <table class="table">
     <thead>
       <tr>
 
-        <th scope="col">user</th>
-        <th scope="col">created</th>
+        <th scope="col">{% translate "User" %} </th>
+        <th scope="col">{% translate "created" %} </th>
                
         {% for page in survey.pages.all %}
            {% for question in  page.questions.all %}
@@ -39,17 +39,6 @@ link to complete survey <a href='{% url "survey:fill-survey" survey.pk %}' >{% u
       {% endfor %}
 
 
-      {% comment %} {{survey.records|dictsort:"user"}}
-      {% regroup survey.records by user as user_list %}
-
-      {% for user in user_list %}
-        <tr>
-          <th scope="row">{{user.grouper}}</th>
-          {% for data in user.list %}
-            <td>{{ data.answer }}</td>
-          {% endfor %}
-        </tr>
-      {% endfor %} {% endcomment %}
       
     </tbody>
   </table>

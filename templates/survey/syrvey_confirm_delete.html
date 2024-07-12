@@ -1,16 +1,17 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 
 <div class='container'>
 
-    <h2>Delete survey</h2>
-    <p> Are you sure you want to delete survey {{object.title}} </p>
+    <h2>{% translate "Delete survey" %} </h2>
+    <p> {% translate " Are you sure you want to delete survey" %} {{object.title}} </p>
 
     <form method='post'>
         {% csrf_token %}
-        <button type='submit' class='btn btn-danger'>Yes, delete </button>
-        <a href='{% url "survey:survey-list"  %}' > Go back to survey list </a >
+        <button type='submit' class='btn btn-danger'>{% translate "Yes, delete" %}  </button>
+        <a href='{% url "survey:survey-list"  %}' > {% translate " Go back to survey list" %} </a >
     </form>
 
 </div>

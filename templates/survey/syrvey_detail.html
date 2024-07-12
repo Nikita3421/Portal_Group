@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 
 {% load forum %} 
 
@@ -12,12 +12,12 @@
 
 {% for page in survey.pages.all %}
   <div class="card">
-    <h5 class="card-header">page {{forloop.counter}} of {{survey.pages.count}}</h5>
+    <h5 class="card-header">{% translate "page" %}  {{forloop.counter}} {% translate "of" %}  {{survey.pages.count}}</h5>
     <div class="card-body">
       <h5 class="card-title">{{page}}</h5>
       <p class="card-text">{{page.description}}</p>
-      <p class="card-text"><a href="{% url 'survey:page-update' page.pk %}"  >Edit</a></p>
-      <p class="card-text"><a href="{% url 'survey:page-delete' page.pk %}"  >Delete</a></p>
+      <p class="card-text"><a href="{% url 'survey:page-update' page.pk %}"  >{% translate "Edit" %} </a></p>
+      <p class="card-text"><a href="{% url 'survey:page-delete' page.pk %}"  >{% translate "Delete" %} </a></p>
     </div>
   </div>
 
@@ -42,12 +42,12 @@
 
 
       <a href="{% url "survey:question-update" page.id item|model_name item.id %}">
-        Edit
+        {% translate "Edit" %} 
       </a>
       
       <form method='post' action ='{% url "survey:question-delete" question.pk %}' >  
         {% csrf_token %}
-        <button type="submit" >Delete question</button>
+        <button type="submit" >{% translate "Delete question" %} </button>
       </form>
 
         </div>
@@ -57,20 +57,20 @@
     {% endwith %}
 
   {% endfor %}
-  <h4>Add new questions to this page</h4> 
+  <h4>{% translate "Add new questions to this page" %} </h4> 
     <ul >
       <li>
-        <a href="{% url "survey:question-create" page.id "textquestion" %}">Text question</a>
+        <a href="{% url "survey:question-create" page.id "textquestion" %}">{% translate "Text question" %} </a>
       </li>
       <li>
-        <a href="{% url "survey:question-create" page.id "optionquestion" %}">Question with options</a>
+        <a href="{% url "survey:question-create" page.id "optionquestion" %}">{% translate "Question with options" %} </a>
       </li>
     </ul>
     <br><br>
 
 {% endfor %}
 
-<a href ='{% url "survey:page-create" survey.pk %}'>Create new page</a>
+<a href ='{% url "survey:page-create" survey.pk %}'>{% translate "Create new page" %} </a>
 
 
 

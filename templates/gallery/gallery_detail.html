@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="card mb-3">
@@ -6,7 +7,7 @@
     <div class="card-body">
       <h2 class="card-title">{{Gallery.title}}</h2>
       <p class="card-text">{{Gallery.description}}</p>
-      <p class="card-text"><small class="text-body-secondary">Was added {{Gallery.creation_date}}</small></p>
+      <p class="card-text"><small class="text-body-secondary">{% translate "Was added" %}  {{Gallery.creation_date}}</small></p>
       <p class="card-text">{{Gallery.user}}</p>
     </div>
 </div> 

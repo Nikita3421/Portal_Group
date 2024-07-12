@@ -1,20 +1,20 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
     {% if user == portfolio.user %}
-        <h1>Вы желаете посмотреть/изменить свой рабочий профиль "{{ portfolio.user.username }}"?</h1>
-        <p>Что именно вы хотите сделать?</p>
+        <h1>{% translate "Would you like to veiw/update your portfolio" %}  "{{ portfolio.user.username }}"?</h1>
         <ul>
-            <li><a href="{% url 'portfolio:portfolio_detail' portfolio.pk %}">Портфолио</a></li>
-            <li><a href="{% url 'portfolio:projects_list' portfolio.pk %}">Информация о проектах</a></li>
-            <li><a href="{% url 'portfolio:portfolio_update' portfolio.pk %}">Изменить Портфолио</a></li>
+            <li><a href="{% url 'portfolio:portfolio_detail' portfolio.pk %}">{% translate "Portfolio" %} </a></li>
+            <li><a href="{% url 'portfolio:projects_list' portfolio.pk %}">{% translate "Update projects info" %} \</a></li>
+            <li><a href="{% url 'portfolio:portfolio_update' portfolio.pk %}">{% translate "Update portfolio" %} </a></li>
         </ul>
     {% else %}
-        <h1>Вы желаете ознакомиться с рабочим профилем "{{ portfolio.user.username }}"?</h1>
-        <p>С чем именно вы желаете ознакомиться?</p>
+        <h1>{% translate "Would you like to view portfolio?" %} "{{ portfolio.user.username }}"?</h1>
+
         <ul>
-            <li><a href="{% url 'portfolio:portfolio_detail' portfolio.pk %}">Портфолио</a></li>
-            <li><a href="{% url 'portfolio:projects_list' portfolio.pk %}">Информация о проектах</a></li>
+            <li><a href="{% url 'portfolio:portfolio_detail' portfolio.pk %}"{% translate "Portfolio" %} ></a></li>
+            <li><a href="{% url 'portfolio:projects_list' portfolio.pk %}">{% translate "Projects info" %} </a></li>
         </ul>
     {% endif %} 
 {% endblock content %}

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 
 
 {% block content %}
@@ -20,7 +20,7 @@
 <br>
 {% endfor %}
 
-<a href= '{% url "survey:survey-create" %}' >Create new survey</a>
+<a href= '{% url "survey:survey-create" %}' >{% translate "Create new survey" %} </a>
 
 {% endblock content %}
 
