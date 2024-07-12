@@ -8,25 +8,23 @@
             <div class="profile-username">{{ profiles.username }}</div>
             <div class="mb-16px">
                 {% if user.profile.profile_photo.url %}
-                    <div class="profile-photo-form" id="profilePhotoForm" enctype="multipart/form-data">
-                        <form class="mb-16px" method="post">
-                            {% csrf_token %}
-                            {{ form.profile_photo }}
-                            <button class="small-green-btn" type="submit">{% translate "Save" %} </button>
-                            <a class="small-gray-btn" href="{% url 'profile:profile-info' %}">{% translate "Cancel" %} </a>
-                        </form>
-                    </div>
-                    <a id="profilePhotoBtn" href="{% url 'profile:profile-update' user.profile.pk %}" class="mb-16px btn profile-photo-btn">{% translate "Edit profile photo" %} </a>
+                    <form class="mb-16px profile-photo-form" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.profile_photo }}
+                        <button class="small-green-btn" type="submit">{% translate "Save" %}</button>
+                        <a class="small-gray-btn" href="{% url 'profile:profile-info' %}">{% translate "Cancel" %}</a>
+                    </form>
+                    <a id="profilePhotoBtn" href="{% url 'profile:profile-update' user.profile.pk %}" class="mb-16px btn profile-photo-btn">Edit profile photo</a>
                 {% else %}
-                    <div class="profile-photo-form" id="profilePhotoForm" enctype="multipart/form-data">
-                        <form class="mb-16px" method="post">
-                            {% csrf_token %}
-                            {{ form.profile_photo }}
-                            <button class="small-green-btn" type="submit">{% translate "Save" %} </button>
-                            <a class="small-gray-btn" href="{% url 'profile:profile-info' %}">{% translate "Cancel" %} </a>
-                        </form>
-                    </div>
-                    <button id="profilePhotoBtn" class="mb-16px btn profile-photo-btn">{% translate "Add profile photo" %} </button>
+                <div class="profile-photo-form" id="profilePhotoForm" enctype="multipart/form-data">
+                    <form class="mb-16px" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.profile_photo }}
+                        <button class="small-green-btn" type="submit">{% translate "Save" %}</button>
+                            <a class="small-gray-btn" href="{% url 'profile:profile-info' %}">{% translate "Cancel" %}</a>
+                    </form>
+                </div>
+                <button id="profilePhotoBtn" class="mb-16px btn profile-photo-btn">{% translate "Add profile photo" %}</button>
                 {% endif %}
                 <a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}">{% translate "Portfolio" %} </a>
             </div>
