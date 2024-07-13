@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список медиафайлов</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Список медиафайлов</h1>
+        <div class="card-container">
+            <ul class="file-list">
+                {% for file in files %}
+                <li>
+                    <span>
+                        <a href="{{ file.file.url }}" download>{{ file.title }}</a> (Загружен: {{ file.uploaded_at }})
+                        <a href="{{ file.file.url }}" download><button>Скачать</button></a>
+                    </span>
+                    <form method="post" action="{% url 'media_delete' file.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-btn">Удалить</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="upload-card">
+                <a href="{% url 'media_upload' %}" class="btn-upload">Загрузить новый файл</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

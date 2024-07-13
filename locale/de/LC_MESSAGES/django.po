@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-13 00:11+0100\n"
-"PO-Revision-Date: 2024-07-13 00:22+0000\n"
+"PO-Revision-Date: 2024-07-13 12:06+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -670,7 +670,6 @@ msgid "You can't change your answers"
 msgstr "Sie können Ihre Antworten nicht ändern"
 
 #: .\templates\survey\survey_nav_tabs.html:4
-#, fuzzy
 #| msgid "Qustions"
 msgid "Questions"
 msgstr "Fragen"

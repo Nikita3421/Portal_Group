@@ -142,6 +142,9 @@ class PostCreateUpdateView(PermissionOrOwnerRequiredMixin,TemplateResponseMixin,
 class PostReplyView(PostCreateUpdateView):
     template_name = 'forum/reply_form.html'
     
+    def get_object(self):
+        return self.obj.item
+    
     def dispatch(self, request, model_name, id):
         self.model = self.get_model(model_name)
         self.obj = get_object_or_404(
