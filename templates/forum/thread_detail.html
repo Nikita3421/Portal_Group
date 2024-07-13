@@ -4,7 +4,7 @@
 
 {% load i18n %}
 {% load forum %} 
-
+<div class="layout">
 {% for post in posts %}
   {% with item=post.item %}
 
@@ -107,6 +107,7 @@
       <li>
         <a href="{% url "forum:post-create" thread.id "voting" %}">{% translate "Voting" %}</a>
       </li>
+    </div>
 
 
       <footer>
