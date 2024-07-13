@@ -9,6 +9,7 @@ from django.contrib import messages
 # Create your views here.
 
 class GalleryListView(ListView):
+    paginate_by = 4
     model = models.Gallery
     template_name = 'gallery/gallery_main.html'
     context_object_name = "gallerys"

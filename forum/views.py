@@ -4,6 +4,7 @@ from django.views.generic import ListView,DetailView,CreateView,View,UpdateView,
 from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
 from django.views.generic.base import TemplateResponseMixin
 from django.forms.models import modelform_factory
+from django.core.paginator import Paginator
 from django.apps import apps
 from django.http import Http404,HttpResponseRedirect
 from django.urls import reverse_lazy
@@ -16,7 +17,7 @@ from .forms import OptionFormSet
 # Create your views here.
 
 class ThreadListView(ListView): 
-    paginate_by = 2
+    paginate_by = 3
     model = models.Thread
     context_object_name='threads'
     
@@ -73,6 +74,7 @@ class PostCreateUpdateView(PermissionOrOwnerRequiredMixin,TemplateResponseMixin,
     thread = None
     model = None
     obj = None
+    paginator = Paginator(obj, 3)
     permission_required = 'forum.change_post'
     template_name = 'forum/content_form.html'
     

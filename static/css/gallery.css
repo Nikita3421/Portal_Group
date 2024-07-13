@@ -1,5 +1,6 @@
 body {
   background-color: #010409;
+  font-family: "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 .gallery-container {
@@ -28,6 +29,10 @@ body {
   text-align: center;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   transition: transform 0.2s;
+}
+
+.card-body {
+  color: #fff;
 }
 
 .card:hover {
@@ -87,4 +92,60 @@ body {
   height: 1px;
   background-color: #30363d;
   width: 100%;
+}
+
+footer {
+  position: fixed;
+  padding: 10px 20px;
+  right: 0;
+  bottom: 0;
+  text-align: center; 
+  width: 100%;
+  z-index: 1000;
+  box-shadow: inset 0px 2px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.current {
+  color: #c9d1d9;
+  background: #0d1117;
+  border: 1px solid #30363db3;
+  margin: 10px;
+  padding: 10px;
+  padding: 8px 12px;
+  border-radius: 15px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.current:hover {
+  background-color: #292e36;
+}
+
+.next {
+  color: #c9d1d9;
+  background: #0d1117;
+  border: 1px solid #30363db3;
+  margin: 10px;
+  padding: 10px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.next:hover {
+  background-color: #292e36;
+}
+
+.previous {
+  color: #c9d1d9;
+  background: #0d1117;
+  border: 1px solid #30363db3;
+  margin: 10px;
+  padding: 10px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.previous:hover {
+  background-color: #292e36;
 }

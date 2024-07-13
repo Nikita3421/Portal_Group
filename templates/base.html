@@ -21,9 +21,9 @@
         <li><a href="{% url 'announsements:news_list' %}">News</a></li>
         <li><a href="{% url 'forum:thread-list' %}">Forum</a></li>
         <li><a href="{% url 'gallery:gallery_main' %}">Gallery</a></li>
-        <li><a href="{% url 'grades:grades_list' %}" >Електрический дневник</a></li>
+        <li><a href="{% url 'grades:grades_list' %}" >Diary</a></li>
         {% if user|has_perms:'survey.view_survey' %}
-        <li><a href="{% url 'grades:grades_list' %}" >Survey</a></li>
+        <li><a href="{% url 'survey:survey-list' %}" >Survey</a></li>
         {% endif %}
         
         {% if user.is_authenticated %}

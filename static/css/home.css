@@ -490,6 +490,16 @@ select {
     width: 250px;
 }
 
+.media-item {
+    background-color: #010409;
+    border-color: #30363d;
+    border-radius: 0.375rem;
+    border-style: solid;
+    border-width: 1px;
+    padding: 16px;
+    width: 460px;
+}
+
 .project-item-content {
     display: flex;
     width: 100%;
@@ -536,7 +546,7 @@ a {
     text-decoration: none;
 }
 
-.profile-photo-btn {
+.edit-btn {
     text-align: center;
     position: relative;
     display: block;
@@ -618,5 +628,14 @@ a {
     min-width: max-content;
     position: relative;
     text-align: center;
+    margin-right: 5px;
 
+}
+
+.post-btn-container {
+    display: flex;
+}
+
+.block {
+    display: block;
 }
