@@ -2,6 +2,7 @@
 
 {% block content %}
 
+{% load static %}
 {% load i18n %}
 {% load forum %} 
 <div class="layout">
@@ -41,74 +42,170 @@
     
 
   {% elif item|model_name == 'text' %}
-    <h3>{{ item }}  </h3>
-    <p>{{ item.content }}</p>
+  <div class="profile-container">
+    <div class="mb-16px project-item">
+      <div class="project-item-content">
+        <div class="project-item-content-title">
+          {{ item }}
+        </div>
+        <span class="project-item-content-description">{{ item.content }}</span>
+        <div class="project-item-set">
+          {% if item.creator == user or user|has_perms:'forum.change_post' %}
+          <a class="small-gray-btn" href="{% url "forum:post-update" thread.id item|model_name item.id %}">
+            {% translate "Edit" %}
+          </a>
+          {% endif %}
+
+          {% if item.creator == user or user|has_perms:'forum.delete_post' %}
+          <form action="{% url "forum:post-delete" post.id %}" method="post">
+            <input class="small-gray-btn" type="submit" value="Delete">
+            {% csrf_token %}
+          </form>
+          {% endif %}
+        </div>
+
+        <div class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn small-gray-btn">{% translate "Manage" %}</a>
+          <div class="dropdown-content">
+            <a class="dropdown-item" href="{% url 'complaints:complaint-create' 'post'  post.id  %}">{% translate "Complain" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "text"   post.id  %}">{% translate "Reply with text" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "image"  post.id  %}">{% translate "Reply with image" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "video"  post.id  %}">{% translate "Reply with video" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "file"   post.id  %}">{% translate "Reply with file" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "voting" post.id  %}">{% translate "Reply with voting" %}</a>
+          </div>
+      </div>
+    </div>
+  </div>
   {% elif item|model_name == 'image' %}
-    <h3>{{ item }}  </h3>
-    <img src="{{ item.file.url }}">
+  <div class="project-container">
+    <div class="mb-16px media-item">
+      <div class="project-item-content">
+        <div class="project-item-content-title">
+          {{ item }}
+        </div>
+        <span class="project-item-content-description"><img src="{{ item.file.url }}" height="460" width="460"></span>
+        <div class="project-item-set">
+          {% if item.creator == user or user|has_perms:'forum.change_post' %}
+          <a class="small-gray-btn" href="{% url "forum:post-update" thread.id item|model_name item.id %}">
+            {% translate "Edit" %}
+          </a>
+          {% endif %}
+
+          {% if item.creator == user or user|has_perms:'forum.delete_post' %}
+          <form action="{% url "forum:post-delete" post.id %}" method="post">
+            <input class="small-gray-btn" type="submit" value="Delete">
+            {% csrf_token %}
+          </form>
+          {% endif %}
+        </div>
+
+        <div class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn small-gray-btn">{% translate "Manage" %}</a>
+          <div class="dropdown-content">
+            <a class="dropdown-item" href="{% url 'complaints:complaint-create' 'post'  post.id  %}">{% translate "Complain" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "text"   post.id  %}">{% translate "Reply with text" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "image"  post.id  %}">{% translate "Reply with image" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "video"  post.id  %}">{% translate "Reply with video" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "file"   post.id  %}">{% translate "Reply with file" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "voting" post.id  %}">{% translate "Reply with voting" %}</a>
+          </div>
+      </div>
+    </div>
+  </div>
   {% elif item|model_name == 'video' %}
-  <h3>{{ item }}  </h3>
-  {{item.url}}
+  <div class="profile-container">
+    <div class="mb-16px project-item">
+      <div class="project-item-content">
+        <div class="project-item-content-title">
+          {{ item }}
+        </div>
+        <span class="project-item-content-description">{{ item.url }}</span>
+        <div class="project-item-set">
+          {% if item.creator == user or user|has_perms:'forum.change_post' %}
+          <a class="small-gray-btn" href="{% url "forum:post-update" thread.id item|model_name item.id %}">
+            {% translate "Edit" %}
+          </a>
+          {% endif %}
+
+          {% if item.creator == user or user|has_perms:'forum.delete_post' %}
+          <form action="{% url "forum:post-delete" post.id %}" method="post">
+            <input class="small-gray-btn" type="submit" value="Delete">
+            {% csrf_token %}
+          </form>
+          {% endif %}
+        </div>
+
+        <div class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn small-gray-btn">{% translate "Manage" %}</a>
+          <div class="dropdown-content">
+            <a class="dropdown-item" href="{% url 'complaints:complaint-create' 'post'  post.id  %}">{% translate "Complain" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "text"   post.id  %}">{% translate "Reply with text" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "image"  post.id  %}">{% translate "Reply with image" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "video"  post.id  %}">{% translate "Reply with video" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "file"   post.id  %}">{% translate "Reply with file" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "voting" post.id  %}">{% translate "Reply with voting" %}</a>
+          </div>
+      </div>
+    </div>
+  </div>
   {% elif item|model_name == 'file' %}
-  <h3>{{ item }}  </h3>
-  <a href ={{item.file.url}} >{% translate "file" %}</a>
+  <div class="profile-container">
+    <div class="mb-16px project-item">
+      <div class="project-item-content">
+        <div class="project-item-content-title">
+          {{ item }}
+        </div>
+        <span class="project-item-content-description"><a href ={{item.file.url}} >{% translate "file" %}</a></span>
+        <div class="project-item-set">
+          {% if item.creator == user or user|has_perms:'forum.change_post' %}
+          <a class="small-gray-btn" href="{% url "forum:post-update" thread.id item|model_name item.id %}">
+            {% translate "Edit" %}
+          </a>
+          {% endif %}
+
+          {% if item.creator == user or user|has_perms:'forum.delete_post' %}
+          <form action="{% url "forum:post-delete" post.id %}" method="post">
+            <input class="small-gray-btn" type="submit" value="Delete">
+            {% csrf_token %}
+          </form>
+          {% endif %}
+        </div>
+
+        <div class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn small-gray-btn">{% translate "Manage" %}</a>
+          <div class="dropdown-content">
+            <a class="dropdown-item" href="{% url 'complaints:complaint-create' 'post'  post.id  %}">{% translate "Complain" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "text"   post.id  %}">{% translate "Reply with text" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "image"  post.id  %}">{% translate "Reply with image" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "video"  post.id  %}">{% translate "Reply with video" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "file"   post.id  %}">{% translate "Reply with file" %}</a>
+            <a class="dropdown-item" href="{% url 'forum:post-reply'  "voting" post.id  %}">{% translate "Reply with voting" %}</a>
+          </div>
+      </div>
+    </div>
+  </div>
   {% endif %}
 
-
-
-    {% if item.creator == user or user|has_perms:'forum.change_post' %}
-    <a href="{% url "forum:post-update" thread.id item|model_name item.id %}">
-      {% translate "Edit" %}
-    </a>
-    {% endif %}
-
-    {% if item.creator == user or user|has_perms:'forum.delete_post' %}
-    <form action="{% url "forum:post-delete" post.id %}" method="post">
-      <input type="submit" value="Delete">
-      {% csrf_token %}
-    </form>
-    {% endif %}
-
-
     {% endwith %}
-
-    <div class="dropdown">
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="{% url 'complaints:complaint-create' 'post'  post.id  %}">{% translate "Complain" %}</a></li>
-        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "text"   post.id  %}">{% translate "Reply with text" %}</a></li>
-        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "image"  post.id  %}">{% translate "Reply with image" %}</a></li>
-        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "video"  post.id  %}">{% translate "Reply with video" %}</a></li>
-        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "file"   post.id  %}">{% translate "Reply with file" %}</a></li>
-        <li><a class="dropdown-item" href="{% url 'forum:post-reply'  "voting" post.id  %}">{% translate "Reply with voting" %}</a></li>
-      </ul>
-    </div>
-
-
 
 </div>
 {% empty %}
 <p>{% translate "No posts on this thread yet" %}</p>
 {% endfor %}
 
-<h3>{% translate "Add new posts" %} :</h3>
-    <ul >
-      <li>
-        <a href="{% url "forum:post-create" thread.id "text" %}">{% translate "Text" %}</a>
-      </li>
-      <li>
-        <a href="{% url "forum:post-create" thread.id "image" %}">{% translate "Image" %}</a>
-      </li>
-      <li>
-        <a href="{% url "forum:post-create" thread.id "video" %}">{% translate "Video" %}</a>
-      </li>
-      <li>
-        <a href="{% url "forum:post-create" thread.id "file" %}">{% translate "File" %}</a>
-      </li>
-      <li>
-        <a href="{% url "forum:post-create" thread.id "voting" %}">{% translate "Voting" %}</a>
-      </li>
+<div class="mt-16px">
+  <div class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn"><img src={% static "img/plus_icon.png"%} height="250" width="250"></a>
+    <div class="dropdown-content-plus">
+      <a class="dropdown-item" href="{% url "forum:post-create" thread.id "text" %}">{% translate "Text" %}</a>
+      <a class="dropdown-item" href="{% url "forum:post-create" thread.id "image" %}">{% translate "Image" %}</a>
+      <a class="dropdown-item" href="{% url "forum:post-create" thread.id "video" %}">{% translate "Video" %}</a>
+      <a class="dropdown-item" href="{% url "forum:post-create" thread.id "file" %}">{% translate "File" %}</a>
+      <a class="dropdown-item" href="{% url "forum:post-create" thread.id "voting" %}">{% translate "Voting" %}</a>
     </div>
-
+  </div>
+</div>
 
       <footer>
         {% if page_obj.has_previous %}

@@ -13,6 +13,20 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+  const dropdowns = document.querySelectorAll('.dropdown');
+
+  dropdowns.forEach(dropdown => {
+      dropdown.addEventListener('mouseenter', function() {
+          this.querySelector('.dropdown-content-plus').style.display = 'block';
+      });
+
+      dropdown.addEventListener('mouseleave', function() {
+          this.querySelector('.dropdown-content-plus').style.display = 'none';
+      });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('register-form');
     const usernameInput = form.querySelector('#id_username');
     const emailInput = form.querySelector('#id_email');
