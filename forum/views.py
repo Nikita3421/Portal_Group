@@ -25,7 +25,7 @@ class ThreadPostListView(ListView):
     model = models.Post
     context_object_name='posts'
     template_name ='forum/thread_detail.html'
-    paginate_by =10
+    paginate_by = 4
     
     def get_queryset(self):
         return super().get_queryset().filter(thread=self.thread)
