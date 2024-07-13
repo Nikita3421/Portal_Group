@@ -12,7 +12,7 @@
       {{ form.as_p }}
 
       {% if formset %}
-      <h3>{% translate "" %}:</h3>
+      <h3>{% translate "Options" %}:</h3>
         {{ formset.management_form }}
           {% for form in formset %}
               {{ form.as_p }}

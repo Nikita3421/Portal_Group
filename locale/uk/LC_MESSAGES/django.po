@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-13 00:11+0100\n"
-"PO-Revision-Date: 2024-07-13 00:15+0000\n"
+"PO-Revision-Date: 2024-07-13 15:47+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -92,7 +92,7 @@ msgstr "Електронний щоденник"
 
 #: .\templates\base.html:55
 msgid "Survey"
-msgstr "Обстеження"
+msgstr "Опитування"
 
 #: .\templates\base.html:61 .\templates\main\home.html:19
 #: .\templates\portfolio\portfolio_main.html:8
@@ -104,11 +104,11 @@ msgstr "Портфоліо"
 
 #: .\templates\base.html:63
 msgid "Main Portfolio"
-msgstr "Основний портфель"
+msgstr "Основне портфоліо"
 
 #: .\templates\base.html:64
 msgid "Portfolio Information"
-msgstr "Інформація про портфель"
+msgstr "Інформація про портфоліо"
 
 #: .\templates\base.html:65
 msgid "Projects Information"
@@ -212,7 +212,7 @@ msgstr "Додати новий контент"
 #: .\templates\forum\content_form.html:19
 #: .\templates\survey\question_form.html:19
 msgid "Options"
-msgstr "Налаштування"
+msgstr "Варіанти відповідей"
 
 #: .\templates\forum\content_form.html:26 .\templates\forum\reply_form.html:22
 msgid "Save post"
@@ -284,7 +284,7 @@ msgstr "Відповісти голосуванням"
 
 #: .\templates\forum\thread_detail.html:90
 msgid "No posts on this thread yet"
-msgstr "У цій гілці ще немає дописів"
+msgstr "У цій гілці ще немає постів"
 
 #: .\templates\forum\thread_detail.html:93
 msgid "Add new posts"
@@ -314,7 +314,7 @@ msgstr "Голосування"
 #: .\templates\forum\thread_list.html:37 .\templates\news\news_list.html:44
 #: .\templates\portfolio\projects_list.html:23
 msgid "previous"
-msgstr "Голосування"
+msgstr "попередній"
 
 #: .\templates\forum\thread_detail.html:118
 #: .\templates\forum\thread_list.html:41 .\templates\news\news_list.html:48
@@ -363,7 +363,7 @@ msgstr "Ви"
 
 #: .\templates\friends\mailbox.html:16
 msgid "wants to be your friend"
-msgstr "% 1 бажає подружитися з вами"
+msgstr "бажає подружитися з вами"
 
 #: .\templates\friends\mailbox.html:20
 msgid "Accept"
@@ -401,7 +401,7 @@ msgstr "Так, видалити"
 
 #: .\templates\grades\grade_delete.html:11
 msgid "No go back to grades list"
-msgstr "Немає повернення до списку оцінок"
+msgstr "Ні, повернутися до списку оцінок"
 
 #: .\templates\grades\grade_form.html:13
 msgid "Go back to grades list"
@@ -417,7 +417,7 @@ msgstr "тема"
 
 #: .\templates\grades\grades_list.html:13
 msgid "grade"
-msgstr "ЄСПЗБ"
+msgstr "оцінка"
 
 #: .\templates\grades\grades_list.html:14
 msgid "commment"
@@ -499,7 +499,7 @@ msgstr "Видалити оголошення"
 
 #: .\templates\news\announsement_delete.html:6
 msgid "Are you sure you want to delete announcement?"
-msgstr "ви впевнені, що хочете видалити?"
+msgstr "Ви впевнені, що хочете видалити?"
 
 #: .\templates\news\announsement_delete.html:11
 msgid "No, Go back to announcements list"
@@ -544,7 +544,7 @@ msgstr "Оновити інформацію про проєкти"
 
 #: .\templates\portfolio\portfolio_main.html:10
 msgid "Update portfolio"
-msgstr "Оновити звіт"
+msgstr "Оновити портфоліо"
 
 #: .\templates\portfolio\portfolio_main.html:13
 msgid "Would you like to view portfolio?"
@@ -619,7 +619,7 @@ msgstr "Повернутися до опитування"
 
 #: .\templates\survey\page_form.html:13 .\templates\survey\survey_form.html:14
 msgid "save"
-msgstr "зберігши"
+msgstr "зберігти"
 
 #: .\templates\survey\question_form.html:9
 msgid "Edit question"
@@ -639,7 +639,7 @@ msgstr "Посилання на завершення опитування"
 
 #: .\templates\survey\survey_answers.html:12
 msgid "Download in csv file"
-msgstr "Завантажте файл .csv"
+msgstr "Завантажити у форматі csv файла"
 
 #: .\templates\survey\survey_answers.html:18
 msgid "User"
@@ -697,7 +697,7 @@ msgstr "надання"
 
 #: .\templates\survey\syrvey_detail.html:50
 msgid "Delete question"
-msgstr "& Вилучити питання"
+msgstr "Видалити питання"
 
 #: .\templates\survey\syrvey_detail.html:60
 msgid "Add new questions to this page"
@@ -713,7 +713,7 @@ msgstr "Питання з варіантами"
 
 #: .\templates\survey\syrvey_detail.html:73
 msgid "Create new page"
-msgstr "Питання з варіантами"
+msgstr "Створити новий єтап"
 
 #: .\templates\survey\syrvey_list.html:23
 msgid "Create new survey"

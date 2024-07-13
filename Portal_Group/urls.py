@@ -35,6 +35,8 @@ urlpatterns = i18n_patterns(
     path('friends/', include('friends.urls')),
     path('profile/', include('pro_file.urls')),
     path('rosetta/', include('rosetta.urls')),
+    path('media_center/', include('media_center.urls'))
+
 )
 
 urlpatterns += static(

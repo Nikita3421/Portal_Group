@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'pro_file',
     'rosetta',
     'main',
+    'media_center',
 ]
 
 MIDDLEWARE = [
