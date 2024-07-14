@@ -10,7 +10,7 @@
 
     <form method='post'>
         {% csrf_token %}
-        <button type='submit' class='btn btn-danger'>{% translate "Yes, delete" %} </button>
+        <button type='submit' class='small-gray-btn'>{% translate "Yes, delete" %} </button>
         <a href='{% url "forum:thread-list"   %}' > {% translate "Go back to forum" %} </a >
     </form>
 
