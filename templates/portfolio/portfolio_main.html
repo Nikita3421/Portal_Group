@@ -6,7 +6,7 @@
         <h1>{% translate "Would you like to veiw/update your portfolio" %}  "{{ portfolio.user.username }}"?</h1>
         <ul>
             <li><a href="{% url 'portfolio:portfolio_detail' portfolio.pk %}">{% translate "Portfolio" %} </a></li>
-            <li><a href="{% url 'portfolio:projects_list' portfolio.pk %}">{% translate "Update projects info" %} \</a></li>
+            <li><a href="{% url 'portfolio:projects_list' portfolio.pk %}">{% translate "Update projects info" %}</a></li>
             <li><a href="{% url 'portfolio:portfolio_update' portfolio.pk %}">{% translate "Update portfolio" %} </a></li>
         </ul>
     {% else %}
