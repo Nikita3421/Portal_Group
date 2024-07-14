@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 
 from .mixins import PermissionOrOwnerRequiredMixin
 from . import models
-from .forms import OptionFormSet
+from .forms import OptionFormSet, ThreadForm
 
 
 # Create your views here.
@@ -47,7 +47,7 @@ class ThreadPostListView(ListView):
     
 class ThreadCreateView(PermissionRequiredMixin,CreateView): 
     model = models.Thread
-    fields = ['title']
+    form_class = ThreadForm
     permission_required = 'forum.add_thread'
     
     def form_valid(self, form):
