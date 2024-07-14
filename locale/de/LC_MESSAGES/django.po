@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-13 00:11+0100\n"
-"PO-Revision-Date: 2024-07-13 12:06+0000\n"
+"POT-Creation-Date: 2024-07-14 02:05+0100\n"
+"PO-Revision-Date: 2024-07-14 02:07+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,15 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: .\Portal_Group\settings.py:130
+#: .\Portal_Group\settings.py:131
 msgid "English"
 msgstr "English"
 
-#: .\Portal_Group\settings.py:131
+#: .\Portal_Group\settings.py:132
 msgid "German"
 msgstr "German"
 
-#: .\Portal_Group\settings.py:132
+#: .\Portal_Group\settings.py:133
 msgid "Ukrainian"
 msgstr "Ukrainian"
 
@@ -98,7 +98,7 @@ msgstr "Umfrage"
 #: .\templates\portfolio\portfolio_main.html:8
 #: .\templates\portfolio\portfolio_main.html:16
 #: .\templates\profile\profile-update.html:16
-#: .\templates\profile\profile.html:31
+#: .\templates\profile\profile.html:29
 msgid "Portfolio"
 msgstr "Portfolio"
 
@@ -131,7 +131,7 @@ msgid "Sign Up"
 msgstr "Registrieren"
 
 #: .\templates\complaints\complaint_form.html:12
-#: .\templates\forum\thread_form.html:13
+#: .\templates\forum\thread_form.html:12
 #: .\templates\gallery\gallery_form.html:17
 #: .\templates\grades\grade_form.html:12
 #: .\templates\news\announsement_form.html:11
@@ -139,8 +139,8 @@ msgstr "Registrieren"
 #: .\templates\portfolio\projects_form.html:17
 #: .\templates\profile\profile-update.html:13
 #: .\templates\profile\profile-update.html:45
-#: .\templates\profile\profile.html:15 .\templates\profile\profile.html:25
-#: .\templates\profile\profile.html:61 .\templates\profile\profile.html:70
+#: .\templates\profile\profile.html:14 .\templates\profile\profile.html:23
+#: .\templates\profile\profile.html:59 .\templates\profile\profile.html:68
 msgid "Save"
 msgstr "Speichern"
 
@@ -209,7 +209,7 @@ msgstr "Inhalt bearbeiten"
 msgid "Add new content"
 msgstr "Inhalt erstellen"
 
-#: .\templates\forum\content_form.html:19
+#: .\templates\forum\content_form.html:19 .\templates\forum\reply_form.html:15
 #: .\templates\survey\question_form.html:19
 msgid "Options"
 msgstr "Optionen (Options)"
@@ -241,16 +241,15 @@ msgstr "Ja, löschen"
 msgid "Go back to forum"
 msgstr "Zum Forum"
 
-#: .\templates\forum\thread_detail.html:39
+#: .\templates\forum\thread_detail.html:40
 msgid "votes"
 msgstr "Abstimmungen"
 
-#: .\templates\forum\thread_detail.html:54
-msgid "file"
-msgstr "Datei"
-
-#: .\templates\forum\thread_detail.html:61
-#: .\templates\forum\thread_list.html:20 .\templates\news\news_list.html:24
+#: .\templates\forum\thread_detail.html:55
+#: .\templates\forum\thread_detail.html:91
+#: .\templates\forum\thread_detail.html:127
+#: .\templates\forum\thread_detail.html:163
+#: .\templates\forum\thread_list.html:23 .\templates\news\news_list.html:24
 #: .\templates\portfolio\portfolio_form.html:21
 #: .\templates\portfolio\projects_form.html:13
 #: .\templates\survey\syrvey_detail.html:19
@@ -258,83 +257,108 @@ msgstr "Datei"
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: .\templates\forum\thread_detail.html:77
-msgid "Complain"
-msgstr "Beschwerde"
-
-#: .\templates\forum\thread_detail.html:78
-msgid "Reply with text"
-msgstr "Mit Text antworten"
-
-#: .\templates\forum\thread_detail.html:79
-msgid "Reply with image"
-msgstr "Mit Bild antworten"
-
-#: .\templates\forum\thread_detail.html:80
-msgid "Reply with video"
-msgstr "Mit Video antworten"
-
-#: .\templates\forum\thread_detail.html:81
-msgid "Reply with file"
-msgstr "Mit Datei antworten"
-
-#: .\templates\forum\thread_detail.html:82
-msgid "Reply with voting"
-msgstr "Antworten Sie mit Voting"
-
-#: .\templates\forum\thread_detail.html:90
-msgid "No posts on this thread yet"
-msgstr "Noch keine Beiträge in diesem Thread"
-
-#: .\templates\forum\thread_detail.html:93
-msgid "Add new posts"
-msgstr "Neue Beiträge hinzufügen"
-
-#: .\templates\forum\thread_detail.html:96
-msgid "Text"
-msgstr "Text"
-
-#: .\templates\forum\thread_detail.html:99
-msgid "Image"
-msgstr "Bild"
-
-#: .\templates\forum\thread_detail.html:102
-msgid "Video"
-msgstr "Video"
-
-#: .\templates\forum\thread_detail.html:105
-msgid "File"
-msgstr "Datei"
-
-#: .\templates\forum\thread_detail.html:108
-msgid "Voting"
-msgstr "Teilnehmen"
-
-#: .\templates\forum\thread_detail.html:114
-#: .\templates\forum\thread_list.html:37 .\templates\news\news_list.html:44
-#: .\templates\portfolio\projects_list.html:23
-msgid "previous"
-msgstr "vorherige"
-
-#: .\templates\forum\thread_detail.html:118
-#: .\templates\forum\thread_list.html:41 .\templates\news\news_list.html:48
-#: .\templates\portfolio\projects_list.html:29
-msgid "next"
-msgstr "nächste"
-
-#: .\templates\forum\thread_list.html:15 .\templates\news\news_list.html:28
+#: .\templates\forum\thread_detail.html:61
+#: .\templates\forum\thread_detail.html:97
+#: .\templates\forum\thread_detail.html:133
+#: .\templates\forum\thread_detail.html:169
+#: .\templates\forum\thread_list.html:19 .\templates\news\news_list.html:28
 #: .\templates\portfolio\projects_list.html:16
 #: .\templates\survey\syrvey_detail.html:20
 msgid "Delete"
 msgstr "Löschen"
 
-#: .\templates\forum\thread_list.html:25
+#: .\templates\forum\thread_detail.html:68
+#: .\templates\forum\thread_detail.html:104
+#: .\templates\forum\thread_detail.html:140
+#: .\templates\forum\thread_detail.html:176
+msgid "Manage"
+msgstr "Verwalten"
+
+#: .\templates\forum\thread_detail.html:70
+#: .\templates\forum\thread_detail.html:106
+#: .\templates\forum\thread_detail.html:142
+#: .\templates\forum\thread_detail.html:178
+msgid "Complain"
+msgstr "Beschwerde"
+
+#: .\templates\forum\thread_detail.html:71
+#: .\templates\forum\thread_detail.html:107
+#: .\templates\forum\thread_detail.html:143
+#: .\templates\forum\thread_detail.html:179
+msgid "Reply with text"
+msgstr "Mit Text antworten"
+
+#: .\templates\forum\thread_detail.html:72
+#: .\templates\forum\thread_detail.html:108
+#: .\templates\forum\thread_detail.html:144
+#: .\templates\forum\thread_detail.html:180
+msgid "Reply with image"
+msgstr "Mit Bild antworten"
+
+#: .\templates\forum\thread_detail.html:73
+#: .\templates\forum\thread_detail.html:109
+#: .\templates\forum\thread_detail.html:145
+#: .\templates\forum\thread_detail.html:181
+msgid "Reply with video"
+msgstr "Mit Video antworten"
+
+#: .\templates\forum\thread_detail.html:74
+#: .\templates\forum\thread_detail.html:110
+#: .\templates\forum\thread_detail.html:146
+#: .\templates\forum\thread_detail.html:182
+msgid "Reply with file"
+msgstr "Mit Datei antworten"
+
+#: .\templates\forum\thread_detail.html:75
+#: .\templates\forum\thread_detail.html:111
+#: .\templates\forum\thread_detail.html:147
+#: .\templates\forum\thread_detail.html:183
+msgid "Reply with voting"
+msgstr "Antworten Sie mit Voting"
+
+#: .\templates\forum\thread_detail.html:159
+msgid "file"
+msgstr "Datei"
+
+#: .\templates\forum\thread_detail.html:194
+msgid "No posts on this thread yet"
+msgstr "Noch keine Beiträge in diesem Thread"
+
+#: .\templates\forum\thread_detail.html:201
+msgid "Text"
+msgstr "Text"
+
+#: .\templates\forum\thread_detail.html:202
+msgid "Image"
+msgstr "Bild"
+
+#: .\templates\forum\thread_detail.html:203
+msgid "Video"
+msgstr "Video"
+
+#: .\templates\forum\thread_detail.html:204
+msgid "File"
+msgstr "Datei"
+
+#: .\templates\forum\thread_detail.html:205
+msgid "Voting"
+msgstr "Teilnehmen"
+
+#: .\templates\forum\thread_detail.html:212
+#: .\templates\forum\thread_list.html:46 .\templates\news\news_list.html:44
+#: .\templates\portfolio\projects_list.html:23
+msgid "previous"
+msgstr "vorherige"
+
+#: .\templates\forum\thread_detail.html:216
+#: .\templates\forum\thread_list.html:50 .\templates\news\news_list.html:48
+#: .\templates\portfolio\projects_list.html:29
+msgid "next"
+msgstr "nächste"
+
+#: .\templates\forum\thread_list.html:33
 msgid "No thread yet create new one "
 msgstr "Noch kein Thread erstellt"
-
-#: .\templates\forum\thread_list.html:31
-msgid "Create new thread"
-msgstr "Neues Thema erstellen"
 
 #: .\templates\friends\list.html:8
 msgid "Friend List"
@@ -369,11 +393,11 @@ msgstr "Sie"
 msgid "Accept"
 msgstr "Akzeptieren"
 
-#: .\templates\friends\send.html:4 .\templates\friends\send.html:10
+#: .\templates\friends\send.html:5 .\templates\friends\send.html:11
 msgid "Send Friend Request"
 msgstr "Kontaktanfrage abschicken"
 
-#: .\templates\friends\send.html:14
+#: .\templates\friends\send.html:15
 msgid "Send Request"
 msgstr "Anfrage senden"
 
@@ -569,33 +593,33 @@ msgstr "Projektinformationen erstellen"
 
 #: .\templates\profile\profile-update.html:14
 #: .\templates\profile\profile-update.html:46
-#: .\templates\profile\profile.html:16 .\templates\profile\profile.html:26
-#: .\templates\profile\profile.html:62 .\templates\profile\profile.html:71
+#: .\templates\profile\profile.html:15 .\templates\profile\profile.html:24
+#: .\templates\profile\profile.html:60 .\templates\profile\profile.html:69
 msgid "Cancel"
 msgstr "Projektinformationen erstellen"
 
 #: .\templates\profile\profile-update.html:21
 #: .\templates\profile\profile-update.html:53
-#: .\templates\profile\profile.html:36 .\templates\profile\profile.html:81
+#: .\templates\profile\profile.html:34 .\templates\profile\profile.html:79
 msgid "Your projects"
 msgstr "Ihre Projekte"
 
 #: .\templates\profile\profile-update.html:48
-#: .\templates\profile\profile.html:76
+#: .\templates\profile\profile.html:74
 msgid "Portfolio Create"
 msgstr "Portfolio erstellen"
 
 #: .\templates\profile\profile-update.html:54
-#: .\templates\profile\profile.html:82
+#: .\templates\profile\profile.html:80
 msgid "You should first create portfolio"
 msgstr "Sie sollten zuerst ein Portfolio erstellen"
 
-#: .\templates\profile\profile.html:19 .\templates\profile\profile.html:64
-msgid "Edit profile photo"
+#: .\templates\profile\profile.html:27 .\templates\profile\profile.html:72
+msgid "Add profile photo"
 msgstr "Profilfoto bearbeiten"
 
-#: .\templates\profile\profile.html:29 .\templates\profile\profile.html:74
-msgid "Add profile photo"
+#: .\templates\profile\profile.html:62
+msgid "Edit profile photo"
 msgstr "Profilfoto bearbeiten"
 
 #: .\templates\survey\fill_form.html:9
@@ -669,12 +693,11 @@ msgstr "Antworten ändern für"
 msgid "You can't change your answers"
 msgstr "Sie können Ihre Antworten nicht ändern"
 
-#: .\templates\survey\survey_nav_tabs.html:4
-#| msgid "Qustions"
+#: .\templates\survey\survey_nav_tabs.html:5
 msgid "Questions"
 msgstr "Fragen"
 
-#: .\templates\survey\survey_nav_tabs.html:7
+#: .\templates\survey\survey_nav_tabs.html:8
 msgid "Answers"
 msgstr "Antworten"
 
@@ -721,3 +744,9 @@ msgstr "Neue Seite erstellen"
 #: .\templates\survey\syrvey_list.html:23
 msgid "Create new survey"
 msgstr "Neues Quiz/Umfrage erstellen"
+
+#~ msgid "Add new posts"
+#~ msgstr "Neue Beiträge hinzufügen"
+
+#~ msgid "Create new thread"
+#~ msgstr "Neues Thema erstellen"
