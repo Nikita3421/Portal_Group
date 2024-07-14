@@ -5,39 +5,42 @@
 {% load forum %}
 
 {% block content %}
-<div class="layout">
-    {% for thread in threads %}
-    <div class="profile-container">
-        <div class="mb-16px project-item">
-          <div class="project-item-content">
-            <div class="project-item-content-title">
-                <a href='{% url "forum:thread-detail" thread.pk %}'> {{ thread }} </a>
-            </div>
-            <span class="mt-16px">
-                <div class="project-item-set">
-                    {% if user|has_perms:'forum.delete_thread' %}
-                        <a class="small-gray-btn" href='{% url "forum:thread-delete" thread.pk %}'>{% translate "Delete" %}</a>
-                    {% endif %}
-        
-                    {% if user|has_perms:'forum.change_post' %}
-                        <a class="small-gray-btn" href='{% url "forum:thread-update" thread.pk %}'> {% translate "Edit" %}</a>
-                  
-                    {% endif %}
+    <div class="layout">
+        <div class="thread-container">
+            {% for thread in threads %}
+            <div class="profile-container">
+                <div class="mb-16px project-item">
+                    <div class="project-item-content">
+                        <div class="project-item-content-title">
+                            <a href='{% url "forum:thread-detail" thread.pk %}'>{{ thread }}</a>
+                        </div>
+                        <span class="mt-16px">
+                            <div class="project-item-set">
+                                {% if user|has_perms:'forum.delete_thread' %}
+                                    <a class="small-gray-btn" href='{% url "forum:thread-delete" thread.pk %}'>{% translate "Delete" %}</a>
+                                {% endif %}
+                        
+                                {% if user|has_perms:'forum.change_post' %}
+                                    <a class="small-gray-btn" href='{% url "forum:thread-update" thread.pk %}'>{% translate "Edit" %}</a>
+                                {% endif %}
+                            </div>
+                        </span>
+                    </div>
                 </div>
-            </span>
+            </div>
+            {% empty %}
+                <div class="no-thread-message">
+                    {% translate "No thread yet, create a new one" %}
+                </div>
+            {% endfor %}
         </div>
-    </div>
-</div>
 
-    {% empty %}
-        {% translate "No thread yet create new one " %}
-        <br>
-    
-    {% endfor %}
-    {% if user|has_perms:'forum.add_post' %}
-    <a href='{% url "forum:thread-create" %}' >
-        <img src={% static "img/plus_icon.png" %} height="200" width="200">
-    </a>
+        {% if user|has_perms:'forum.add_post' %}
+        <div class="create-thread-container">
+            <a href='{% url "forum:thread-create" %}' class="create-thread-button">
+                <img src="{% static 'img/plus_icon.png' %}" alt="Plus Icon"> 
+            </a>
+        </div>
         {% endif %}
     
         <footer>
