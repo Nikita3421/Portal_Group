@@ -58,7 +58,7 @@
 
           {% if item.creator == user or user|has_perms:'forum.delete_post' %}
           <form action="{% url "forum:post-delete" post.id %}" method="post">
-            <input class="small-gray-btn" type="submit" value="Delete">
+            <input class="small-gray-btn" type="submit" value={% translate "Delete" %}>
             {% csrf_token %}
           </form>
           {% endif %}
@@ -94,7 +94,7 @@
 
           {% if item.creator == user or user|has_perms:'forum.delete_post' %}
           <form action="{% url "forum:post-delete" post.id %}" method="post">
-            <input class="small-gray-btn" type="submit" value="Delete">
+            <input class="small-gray-btn" type="submit" value={% translate "Delete" %}>
             {% csrf_token %}
           </form>
           {% endif %}
@@ -130,7 +130,7 @@
 
           {% if item.creator == user or user|has_perms:'forum.delete_post' %}
           <form action="{% url "forum:post-delete" post.id %}" method="post">
-            <input class="small-gray-btn" type="submit" value="Delete">
+            <input class="small-gray-btn" type="submit" value={% translate "Delete" %}>
             {% csrf_token %}
           </form>
           {% endif %}
@@ -166,7 +166,7 @@
 
           {% if item.creator == user or user|has_perms:'forum.delete_post' %}
           <form action="{% url "forum:post-delete" post.id %}" method="post">
-            <input class="small-gray-btn" type="submit" value="Delete">
+            <input class="small-gray-btn" type="submit" value={% translate "Delete" %}>
             {% csrf_token %}
           </form>
           {% endif %}
