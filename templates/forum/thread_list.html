@@ -36,7 +36,7 @@
     {% endfor %}
     {% if user|has_perms:'forum.add_post' %}
     <a href='{% url "forum:thread-create" %}' >
-        <img src={% static "img/plus_icon.png"%} height="250" width="250">
+        <img src={% static "img/plus_icon.png" %} height="200" width="200">
     </a>
         {% endif %}
 
