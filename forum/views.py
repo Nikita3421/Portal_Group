@@ -192,13 +192,21 @@ class PostReplyView(PostCreateUpdateView):
 
 class PostDeleteView(PermissionOrOwnerRequiredMixin,View):
     permission_required = 'forum.delete_post'
+    def dispatch(self,request,pk):
+        self.obj = get_object_or_404(
+                    models.Post, id=pk
+                )
+        return super().dispatch(request,pk)
+    
+    def get_object(self):
+        return self.obj.item
+        
+    
     def post(self, request, pk):
-        content = get_object_or_404(
-            models.Post, id=pk
-        )
-        thread = content.thread
-        content.item.delete()
-        content.delete()
+
+        thread = self.obj.thread
+        self.obj.item.delete()
+        self.obj.delete()
         return redirect('forum:thread-detail', thread.pk)
     
 class VoteToggle(LoginRequiredMixin,View):
