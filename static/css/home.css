@@ -655,3 +655,155 @@ a {
     text-align: center;
     margin-right: 5px;
 }
+
+.no-thread-message {
+    font-size: 18px;
+    color: #555;
+    margin: 20px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.create-thread-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.create-thread-button img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+.create-thread-button img:hover {
+    transform: scale(1.1);
+}
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.thread-container {
+    margin-bottom: 20px;
+}
+
+.create-post-button img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.create-post-button img:hover {
+    transform: scale(1.1);
+}
+
+.custom-profile-container {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-project-item-content {
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.custom-project-item-content-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.custom-small-gray-btn {
+    color: #6c757d;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+.custom-small-gray-btn:hover {
+    color: #007bff;
+}
+
+.btn svg {
+    margin-right: 5px;
+    position: relative;
+    top: 3px;
+}
+
+
+.survey-nav-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.survey-card {
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.survey-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.survey-card-header {
+    color: #fff;
+    background-color: #0d1117;
+    padding: 10px 20px;
+    border-bottom: 1px solid #30363db3;
+}
+
+.survey-card-body {
+    color: #fff;
+}
+
+.survey-card-title {
+    color: #fff;
+    font-size: 24px;
+}
+
+.survey-card-text {
+    color: #8b949e;
+}
+
+.survey-card-link {
+    color: #4493f8;
+    text-decoration: none;
+}
+
+.survey-card-link:hover {
+    text-decoration: underline;
+}
+
+.survey-add-question {
+    margin-top: 20px;
+}
+
+.survey-add-question-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.survey-add-question-item {
+    margin-bottom: 10px;
+}
+
+.survey-add-question-link {
+    color: #4493f8;
+    text-decoration: none;
+}
+
+.survey-add-question-link:hover {
+    text-decoration: underline;
+}

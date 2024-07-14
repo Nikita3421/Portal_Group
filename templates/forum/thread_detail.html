@@ -51,13 +51,13 @@
         <span class="project-item-content-description">{{ item.content }}</span>
         <div class="project-item-set">
           {% if item.creator == user or user|has_perms:'forum.change_post' %}
-          <a class="small-gray-btn" href="{% url "forum:post-update" thread.id item|model_name item.id %}">
+          <a class="small-gray-btn" href="{% url 'forum:post-update' thread.id item|model_name item.id %}">{% translate "Edit" %}</a>
             {% translate "Edit" %}
           </a>
           {% endif %}
 
           {% if item.creator == user or user|has_perms:'forum.delete_post' %}
-          <form action="{% url "forum:post-delete" post.id %}" method="post">
+          <form action="{% url "{% forum:post-delete" post.id %}" method="post">
             <input class="small-gray-btn" type="submit" value={% translate "Delete" %}>
             {% csrf_token %}
           </form>
@@ -196,7 +196,7 @@
 
 <div class="mt-16px">
   <div class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn"><img src={% static "img/plus_icon.png"%} height="250" width="250"></a>
+    <a href="javascript:void(0)" class="dropbtn"><div class="create-post-button"><img  src={% static "img/plus_icon.png"%}></a></div>
     <div class="dropdown-content-plus">
       <a class="dropdown-item" href="{% url "forum:post-create" thread.id "text" %}">{% translate "Text" %}</a>
       <a class="dropdown-item" href="{% url "forum:post-create" thread.id "image" %}">{% translate "Image" %}</a>
