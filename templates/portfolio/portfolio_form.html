@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 <section class="portfolio-form">
-    <div class="title">Create your portfolio</div>
+    <div class="title">{% translate "Create your portfolio" %} </div>
     <form method="post" class="form" novalidate>
         {% csrf_token %}
         {{ form.name }}
@@ -17,11 +18,11 @@
         {{ form.name_and_url }}
         {% if user == portfolio.user %}
             <div>
-                <button type="submit" class="btn form-btn">Update</button>
+                <button type="submit" class="btn form-btn">{% translate "Edit" %}</button>
             </div>
         {% else %}  
             <div>
-                <button type="submit" class="btn form-btn">Save</button>
+                <button type="submit" class="btn form-btn">{% translate "Save" %} </button>
             </div>
         {% endif %} 
     </form>

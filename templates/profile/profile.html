@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
     {% if user.portfolio.pk %}
     <div class="layout">
@@ -7,32 +8,30 @@
             <div class="profile-username">{{ profiles.username }}</div>
             <div class="mb-16px">
                 {% if user.profile.profile_photo.url %}
-                    <div class="profile-photo-form" id="profilePhotoForm" enctype="multipart/form-data">
-                        <form class="mb-16px" method="post">
-                            {% csrf_token %}
-                            {{ form.profile_photo }}
-                            <button class="small-green-btn" type="submit">Save</button>
-                            <a class="small-gray-btn" href="{% url 'profile:profile-info' %}">Cancel</a>
-                        </form>
-                    </div>
+                    <form class="mb-16px profile-photo-form" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.profile_photo }}
+                        <button class="small-green-btn" type="submit">{% translate "Save" %}</button>
+                        <a class="small-gray-btn" href="{% url 'profile:profile-info' %}">{% translate "Cancel" %}</a>
+                    </form>
                     <a id="profilePhotoBtn" href="{% url 'profile:profile-update' user.profile.pk %}" class="mb-16px btn profile-photo-btn">Edit profile photo</a>
                 {% else %}
-                    <div class="profile-photo-form" id="profilePhotoForm" enctype="multipart/form-data">
-                        <form class="mb-16px" method="post">
-                            {% csrf_token %}
-                            {{ form.profile_photo }}
-                            <button class="small-green-btn" type="submit">Save</button>
-                            <a class="small-gray-btn" href="{% url 'profile:profile-info' %}">Cancel</a>
-                        </form>
-                    </div>
-                    <button id="profilePhotoBtn" class="mb-16px btn profile-photo-btn">Add profile photo</button>
+                <div class="profile-photo-form" id="profilePhotoForm" enctype="multipart/form-data">
+                    <form class="mb-16px" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.profile_photo }}
+                        <button class="small-green-btn" type="submit">{% translate "Save" %}</button>
+                            <a class="small-gray-btn" href="{% url 'profile:profile-info' %}">{% translate "Cancel" %}</a>
+                    </form>
+                </div>
+                <button id="profilePhotoBtn" class="mb-16px btn profile-photo-btn">{% translate "Add profile photo" %}</button>
                 {% endif %}
-                <a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}">Portfolio</a>
+                <a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}">{% translate "Portfolio" %} </a>
             </div>
         </div>
         <div class="mt-16px">
             <div class="project-container">
-                <h1>Your projects</h1>
+                <h1>{% translate "Your projects" %} </h1>
                 {% for portfolio_project in portfolio_projects %}
                     <div class="mb-16px project-item">
                         <div class="project-item-content">
@@ -57,28 +56,28 @@
                     <form class="mb-16px profile-photo-form" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.profile_photo }}
-                        <button class="small-green-btn" type="submit">Save</button>
-                        <a class="small-gray-btn" href="{% url 'profile:profile-info' %}">Cancel</a>
+                        <button class="small-green-btn" type="submit">{% translate "Save" %} </button>
+                        <a class="small-gray-btn" href="{% url 'profile:profile-info' %}">{% translate "Cancel" %} </a>
                     </form>
-                    <a id="profilePhotoBtn" href="{% url 'profile:profile-update' user.profile.pk %}" class="mb-16px btn profile-photo-btn">Edit profile photo</a>
+                    <a id="profilePhotoBtn" href="{% url 'profile:profile-update' user.profile.pk %}" class="mb-16px btn profile-photo-btn">{% translate "Edit profile photo" %} </a>
                 {% else %}
                 <div class="profile-photo-form" id="profilePhotoForm" enctype="multipart/form-data">
                     <form class="mb-16px" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.profile_photo }}
-                        <button class="small-green-btn" type="submit">Save</button>
-                            <a class="small-gray-btn" href="{% url 'profile:profile-info' %}">Cancel</a>
+                        <button class="small-green-btn" type="submit">{% translate "Save" %} </button>
+                            <a class="small-gray-btn" href="{% url 'profile:profile-info' %}">{% translate "Cancel" %} </a>
                     </form>
                 </div>
-                <button id="profilePhotoBtn" class="mb-16px btn profile-photo-btn">Add profile photo</button>
+                <button id="profilePhotoBtn" class="mb-16px btn profile-photo-btn">{% translate "Add profile photo" %} </button>
                 {% endif %}
-                <a href="{% url 'portfolio:portfolio_create'%}">Portfolio Create</a>
+                <a href="{% url 'portfolio:portfolio_create'%}">{% translate "Portfolio Create" %} </a>
             </div>
         </div>
         <div class="mt-16px">
             <div class="project-container">
-                <h1>Your projects</h1>
-                <div>You should first create portfolio</div>
+                <h1>{% translate "Your projects" %} </h1>
+                <div>{% translate "You should first create portfolio" %} </div>
             </div>
         </div>
     </div>

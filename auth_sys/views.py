@@ -30,4 +30,4 @@ class CustomLoginView(AuthLoginView):
 def logout_view(request):
     logout(request)
     messages.success(request, 'You left the system successfully!')
-    return redirect(reverse_lazy("auth_sys:signup"))
+    return redirect(reverse_lazy("auth_sys:login"))

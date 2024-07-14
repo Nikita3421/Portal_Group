@@ -4,7 +4,7 @@ from announsements import models
 from announsements.mixins import UserIsOwnerMixin
 from django.urls import reverse_lazy
 from announsements.forms import AnnounsementForm
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 
@@ -28,25 +28,30 @@ class AnnounsementLikeToggle(LoginRequiredMixin, View):
         return HttpResponseRedirect(announsement.get_absolute_url())
 
 
-class AnnounsementCreateView(LoginRequiredMixin, CreateView, UserIsOwnerMixin):
+class AnnounsementCreateView(PermissionRequiredMixin, CreateView):
     model = models.Announsement
     template_name = "news/announsement_form.html"
     form_class = AnnounsementForm
     success_url = reverse_lazy("announsements:news_list")
+    permission_required = 'announsements.add_announsement'
 
     def form_valid(self, form):
         form.instance.creator = self.request.user
         return super().form_valid(form)
     
 
-class AnnounsementUpdateView(LoginRequiredMixin, UpdateView):
+class AnnounsementUpdateView(PermissionRequiredMixin, UpdateView):
     model = models.Announsement
     form_class = AnnounsementForm
     template_name = "news/announsement_update.html"
     success_url = reverse_lazy("announsements:news_list")
+    permission_required = 'announsements.change_announsement'
 
 
-class AnnounsementDeleteView(LoginRequiredMixin, DeleteView):
+
+class AnnounsementDeleteView(PermissionRequiredMixin, DeleteView):
     model = models.Announsement
     success_url = reverse_lazy("announsements:news_list")
     template_name = "news/announsement_delete.html"
+    permission_required = 'announsements.delete_announsement'
+    

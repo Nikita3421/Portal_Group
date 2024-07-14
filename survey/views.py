@@ -10,9 +10,6 @@ from django.forms import formsets
 from django.urls import reverse_lazy
 from django.utils.decorators import classonlymethod
 
-
-
-
 from formtools.wizard.storage.exceptions import NoFileStorageConfigured
 from formtools.wizard.views import SessionWizardView
 import tempfile
@@ -24,42 +21,53 @@ from collections import OrderedDict
 from .forms import OptionFormSet
 from . import models
 
-class SurveyListView(ListView):
+class SurveyListView(PermissionRequiredMixin,ListView):
     model = models.Survey
     context_object_name = 'surveys'
     template_name = 'survey/syrvey_list.html'
+    permission_required = 'survey.view_survey'
     
-class SurveyDetailView(LoginRequiredMixin,DetailView):
+class SurveyDetailView(PermissionRequiredMixin,DetailView):
     model = models.Survey
     context_object_name = 'survey'
     template_name = 'survey/syrvey_detail.html'
+    permission_required = 'survey.view_survey'
     
     
-class SurveyMessageView(SurveyDetailView):
+class SurveyAnswersView(SurveyDetailView):
+    permission_required = 'survey.view_survey'
+    template_name = 'survey/survey_answers.html'
+    
+    def get_context_data(self, **kwargs) :
+        context =super().get_context_data(**kwargs)
+        context['answer'] = 'active'
+        return context    
+    
+class SurveyMessageView(LoginRequiredMixin,DetailView):
+    model = models.Survey
+    context_object_name = 'survey'
     template_name = 'survey/survey_message.html'
+    
     def dipatch(self,*args, **kwargs):
         survey= self.get_object()
         if not self.survey.results.filter(user=self.request.user).exists():
             return redirect('survey:fill-survey',survey.pk)
         return super().dipatch(*args, **kwargs)
     
-class SurveyAnswersView(SurveyDetailView):
-    template_name = 'survey/survey_answers.html'
-    def get_context_data(self, **kwargs) :
-        context =super().get_context_data(**kwargs)
-        context['answer'] = 'active'
-        return context    
+
     
-class SurveyUpdateVIew(LoginRequiredMixin,UpdateView):
+class SurveyUpdateView(PermissionRequiredMixin,UpdateView):
     model = models.Survey
     fields = ['title','recomplete']
     template_name = 'survey/survey_form.html'
     success_url = reverse_lazy('survey:survey-list')
+    permission_required = 'survey.change_survey'
     
-class SurveyCreateView(LoginRequiredMixin,CreateView):
+class SurveyCreateView(PermissionRequiredMixin,CreateView):
     model = models.Survey
     fields = ['title','recomplete']
     template_name = 'survey/survey_form.html'
+    permission_required = 'survey.add_survey'
     
     def form_valid(self, form):
         form.instance.created = self.request.user
@@ -67,15 +75,17 @@ class SurveyCreateView(LoginRequiredMixin,CreateView):
         models.Page.objects.create(survey=form.instance)
         return super().form_valid(form)
 
-class SurveyDeleteView(LoginRequiredMixin,DeleteView):
+class SurveyDeleteView(PermissionRequiredMixin,DeleteView):
     model = models.Survey
     template_name = 'survey/syrvey_confirm_delete.html'
     success_url = reverse_lazy('survey:survey-list')
+    permission_required = 'survey.delete_survey'
     
-class PageCreateView(LoginRequiredMixin,CreateView):
+class PageCreateView(PermissionRequiredMixin,CreateView):
     model = models.Page
     fields = ['title','description']
     template_name = 'survey/page_form.html'
+    permission_required = 'survey.add_page'
     
     def dispatch(self,*args, **kwargs):
         self.survey = get_object_or_404(models.Survey,id=self.kwargs.get('survey_id'))
@@ -85,14 +95,18 @@ class PageCreateView(LoginRequiredMixin,CreateView):
         form.instance.survey = self.survey
         return super().form_valid(form)
    
-class PageUpdateView(LoginRequiredMixin,UpdateView):
+class PageUpdateView(PermissionRequiredMixin,UpdateView):
     model = models.Page
     fields = ['title','description']
     template_name = 'survey/page_form.html'
+    permission_required = 'survey.change_page'
+    
 
-class PageDeleteView(LoginRequiredMixin,DeleteView):
+class PageDeleteView(PermissionRequiredMixin,DeleteView):
     model = models.Page
     template_name = 'survey/page_confirm_delete.html'
+    permission_required = 'survey.delete_page'
+    
     
     def get_success_url(self) -> str:
         return reverse_lazy('survey:survey-detail',args=[self.get_object().survey.pk] )
@@ -101,8 +115,6 @@ class PageDeleteView(LoginRequiredMixin,DeleteView):
 class FillSurveyView(LoginRequiredMixin,SessionWizardView):
     template_name = 'survey/fill_form.html'
     form_list = [OptionFormSet,OptionFormSet]
-    
-    
     
     def setup(self,request,pk,*args, **kwargs):
         self.survey = get_object_or_404(
@@ -191,11 +203,13 @@ class FillSurveyView(LoginRequiredMixin,SessionWizardView):
         return redirect('survey:survey-message',self.survey.pk)
     
 
-class QuestionCreateUpdateView(LoginRequiredMixin,TemplateResponseMixin, View):
+class QuestionCreateUpdateView(PermissionRequiredMixin,TemplateResponseMixin, View):
     page = None
     model = None
     obj = None
     template_name = 'survey/question_form.html'
+    permission_required = 'survey.change_question'
+    
 
     def get_model(self, model_name):
         if model_name in ['textquestion', 'optionquestion',]:
@@ -257,14 +271,19 @@ class QuestionCreateUpdateView(LoginRequiredMixin,TemplateResponseMixin, View):
             {'form': form, 'object': self.obj}
         )
         
-class QuestionDeleteView(View):
+class QuestionDeleteView(PermissionRequiredMixin,View):
+    permission_required = 'survey.delete_question'
+    
+    
     def post(self,request,pk):
         question = get_object_or_404(models.Question,id=pk)
         question.item.delete()
         question.delete()
         return redirect('survey:survey-detail',question.page.survey.pk)
         
-class DownloadAnswersview(View):
+class DownloadAnswersView(PermissionRequiredMixin,View):
+    permission_required = 'survey.view_survey'
+    
     def get(self,request,pk):
         survey = get_object_or_404(models.Survey,id=pk)
         

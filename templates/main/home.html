@@ -1,36 +1,47 @@
 {% extends "base.html" %}
+{% load i18n %}
 
   {% block content %}
-  <h1 style="text-align: center;">Welcome to the Portal</h1>
+  <h1 style="text-align: center;">{% translate "Welcome to the Portal" %}</h1>
   
   <div class="card-container">
     <div class="card">
-      <h2>Forum</h2>
-      <p>Join the discussion on our forum.</p>
-      <a href="{% url 'forum:thread-list' %}" class="btn_3">Go to Forum</a>
+      <h2>{% translate "Forum" %} </h2>
+      <p>{% translate "Join the discussion on our forum" %}. </p>
+      <a href="{% url 'forum:thread-list' %}" class="btn_3">{% translate "Go to Forum" %} </a>
     </div>
     <div class="card">
-      <h2>News</h2>
-      <p>Stay updated with the latest news.</p>
-      <a href="{% url 'announsements:news_list' %}" class="btn_3">Read News</a>
+      <h2>{% translate "News" %} </h2>
+      <p>{% translate "Stay updated with the latest news" %}. </p>
+      <a href="{% url 'announsements:news_list' %}" class="btn_3">{% translate "Read News" %} </a>
     </div>
     <div class="card">
-      <h2>Portfolio</h2>
-      <p>Create and manage your projects.</p>
+      <h2>{% translate "Portfolio" %} </h2>
+      <p>{% translate "Create and manage your projects" %}. </p>
       {% if user.is_authenticated %}
       {% if user.portfolio and user.portfolio.pk %}
-      <a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}" class="btn_3">Go to Portfolio</a>
+      <a href="{% url 'portfolio:portfolio_main' user.portfolio.pk %}" class="btn_3">{% translate "Go to Portfolio" %} </a>
       {% else %}
-      <a href="{% url 'portfolio:portfolio_create' %}" class="btn_3">Create Portfolio</a>
+      <a href="{% url 'portfolio:portfolio_create' %}" class="btn_3">{% translate "Create Portfolio" %} </a>
       {% endif %}
       {% else %}
-      <a href="{% url 'auth_sys:login' %}" class="btn_3">Sign in to Create Portfolio</a>
+      <a href="{% url 'auth_sys:login' %}" class="btn_3">{% translate "Sign in to Create Portfolio" %} </a>
       {% endif %}
     </div>
     <div class="card">
-      <h2>Friends</h2>
-      <p>Find a friends and chat with them.</p>
-      <a href="{% url 'friends:friend_list' %}" class="btn_3">Find a Friend</a>
+      <h2>{% translate "Friends" %} </h2>
+      <p>{% translate "Find a friends and chat with them" %}. </p>
+      <a href="{% url 'friends:friend_list' %}" class="btn_3">{% translate "Find a Friend" %} </a>
+    </div>
+    <div class="card">
+      <h2>{% translate "Gallery" %} </h2>
+      <p>{% translate "If you want see intresting, funny, scary photo go to the Gallery" %}. </p>
+      <a href="{% url 'friends:friend_list' %}" class="btn_3" >{% translate "Go to the Gallery" %}</a>
+    </div>
+    <div class="card">
+      <h2>{% translate "E-diary" %} </h2>
+      <p>{% translate "Monitor your grades" %}.</p>
+      <a href="{% url 'friends:friend_list' %}" class="btn_3">{% translate "See your Grades" %}</a>
     </div>
   </div>
   <div class>

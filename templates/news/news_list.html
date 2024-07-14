@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% load i18n %}
+
+
+{% load forum %} 
 
 {% block content %}
     
@@ -8,17 +12,21 @@
     <div class="card-body">
       <h2 class="card-title">{{announsement.title}}</h2>
       <p class="card-text">{{announsement.text}}</p>
-      <p class="card-text"><small class="text-body-secondary">Last updated {{announsement.creation_date}} by {{announsement.creator}}</small></p>
+      <p class="card-text"><small class="text-body-secondary">{% translate "Last updated" %}  {{announsement.creation_date}} {% translate "by" %}  {{announsement.creator}}</small></p>
       <!-- лайки -->
       <form action="{% url 'announsements:announsement_like_toggle' announsement.id %}" method="post">
         {% csrf_token %}
         <button type="submit" class="btn btn-sm {% if request.user in announsement.likes.all %}btn-success{% else %}btn-outline-success{% endif %}">
-            нравится {{ announsement.likes.count }}
+            {% translate "Like" %}  {{ announsement.likes.count }}
         </button>
 
-        {% if user.is_superuser %}
-          <a href="{% url 'announsements:announsement_update' announsement.id%}" class="btn btn-secondary">редактировать</a>
+        {% if user|has_perms:'announsements.change_announsement' %}
+          <a href="{% url 'announsements:announsement_update' announsement.id%}" class="btn btn-secondary">{% translate "Edit" %} </a>
         {% endif %}  
+
+        {% if user|has_perms:'announsements.delete_announsement' %}
+        <a href="{% url 'announsements:announsement_delete' announsement.id%}" class="btn btn-secondary">{% translate "Delete" %} </a>
+      {% endif %}  
 
       </form>
     </div>
@@ -27,17 +35,17 @@
   <p></p>
 {% endfor %}
   
-  {% if user.is_superuser %}
-    <a href="{% url 'announsements:announsement_create' %}" class="btn btn-primary">Создать обьявление</a>
-  {% endif %}
+{% if user|has_perms:'announsements.add_announsement' %}
+  <a href="{% url 'announsements:announsement_create' %}" class="btn btn-primary">{% translate "Create announcement" %} </a>
+{% endif %}
 
 <footer>
   {% if page_obj.has_previous %}
-      <a href="?page={{ page_obj.previous_page_number }}" class="previous">previous</a>
+      <a href="?page={{ page_obj.previous_page_number }}" class="previous">{% translate "previous" %} </a>
   {% endif %}
   <a href="?page={{ page_obj.number }}" class="current">{{ page_obj.number }}</a>
   {% if page_obj.has_next %}
-      <a href="?page={{ page_obj.next_page_number }}" class="next">next</a>
+      <a href="?page={{ page_obj.next_page_number }}" class="next">{% translate "next" %} </a>
   {% endif %}
 </footer>
 

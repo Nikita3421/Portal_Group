@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Загрузка медиафайлов</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media_upload.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Загрузить медиафайл</h1>
+            <form method="post" enctype="multipart/form-data" class="upload-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn">Загрузить</button>
+            </form>
+            <a href="{% url 'media_list' %}" class="btn">Посмотреть все файлы</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -20,3 +20,4 @@ def has_perms(user,perms):
         perms = (perms,)
     return user.has_perms(perms)
 
+

@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
 
 {% block content %}
 <div class="container mt-3">
@@ -7,8 +9,8 @@
         
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Зберегти</button>
-        <a href="{% url 'grades:grades_list' %}" class="btn btn-secondary">Назад до списку оголошень</a>
+        <button type="submit" class="btn btn-success">{% translate "Save" %} </button>
+        <a href="{% url 'grades:grades_list' %}" class="btn btn-secondary">{% translate "Go back to grades list" %} </a>
     </form>
 </div>
 {% endblock %}

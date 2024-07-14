@@ -11,7 +11,7 @@ urlpatterns = [
     path('<int:pk>/message', views.SurveyMessageView.as_view(),name='survey-message'),    
     
     path('create', views.SurveyCreateView.as_view(),name='survey-create'),
-    path('<int:pk>/edit', views.SurveyUpdateVIew.as_view(),name='survey-update'),
+    path('<int:pk>/edit', views.SurveyUpdateView.as_view(),name='survey-update'),
     path('<int:pk>/delete', views.SurveyDeleteView.as_view(),name='survey-delete'),
     
     path('<int:survey_id>/page/create', views.PageCreateView.as_view(),name='page-create'),
@@ -19,7 +19,7 @@ urlpatterns = [
     path('page/<int:pk>/delete', views.PageDeleteView.as_view(),name='page-delete'),
     
     path('<int:pk>/fill', views.FillSurveyView.as_view(),name='fill-survey'),
-    path('<int:pk>/answers/download', views.DownloadAnswersview.as_view(),name='survey-answers-download'),
+    path('<int:pk>/answers/download', views.DownloadAnswersView.as_view(),name='survey-answers-download'),
     
     path('<int:page_id>/question/<str:model_name>/create', views.QuestionCreateUpdateView.as_view(),name='question-create'),
     path('<int:page_id>/question/<str:model_name>/<int:id>', views.QuestionCreateUpdateView.as_view(),name='question-update'),
