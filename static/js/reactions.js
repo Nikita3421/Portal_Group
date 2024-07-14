@@ -3,7 +3,7 @@ document.getElementById('chat-box').style.display = 'none';
 document.querySelectorAll('.message-button').forEach(button => {
     button.addEventListener('click', () => {
         const friendId = button.getAttribute('data-friend-id');
-        fetch(`/friends/chat/${friendId}/`)
+        fetch(`/en/friends/chat/${friendId}/`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -30,7 +30,7 @@ document.querySelectorAll('.message-button').forEach(button => {
 
                 document.getElementById('chat-send-button').onclick = () => {
                     const message = document.getElementById('chat-input').value;
-                    fetch(`/friends/send_message/`, {
+                    fetch(`/en/friends/send_message/`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ document.querySelectorAll('.message-button').forEach(button => {
                         body: JSON.stringify({ receiver_id: friendId, message: message })
                     }).then(() => {
                         document.getElementById('chat-input').value = '';
-                        fetch(`/friends/chat/${friendId}/`)
+                        fetch(`/en/friends/chat/${friendId}/`)
                             .then(response => response.json())
                             .then(data => {
                                 document.getElementById('chat-messages').innerHTML = data.messages.map(message => {
